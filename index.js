@@ -25,4 +25,4 @@
 // outer();
 // console.log(a); 
 
-console.log(window);
+console.log(andy);
