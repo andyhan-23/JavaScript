@@ -19,10 +19,10 @@
 // };
 // a(3)
 
-var a=13;
-var b;
+const divWidth= div1.clientWidth;
+div2.style.width= `${divWidth}px`;
+const divHeight = div1.clientWidth;
+div2.style.height= `${divHeight}px`;
 
-b=a;
-
-b=10;
-console.log(a);
+const divWidth = div1.clientWidth;
+const divHeight = div2.clientHeight;
