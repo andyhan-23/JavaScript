@@ -53,16 +53,8 @@
 // setTimeout(foo, 3000);
 // bar();
 
-function second() {
-    setTimeout(function(){
-        console.log('2+2')
-    }, 0)
-}
+let a=0.1;
+let b=0.2;
+let sum=a+b;
 
-function first() {
-    console.log('1+1');
-    second();
-    console.log('3+3');
-}
-
-first();
+console.log(sum==0.3);
