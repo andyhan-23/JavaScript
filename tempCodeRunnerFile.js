@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded",()=>{
-//     console.log("원하는 문구 적기")
-    
-// })
+var a=1;
+// window.b=2;
+// console.log(a, window.a, this.a);
