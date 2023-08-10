@@ -44,22 +44,16 @@
 // };
 // outer();
 
-console.log(sum(1,2));
-console.log(sum(3,4));
-
-function sum(a,b){
-    return a+b;
-}
-
-var sum=function(a,b){
-    var sum=function(a,b){
-        return a+"+"+b+"="+(a+b);
+var a=3;
+function test(){
+    function test2(){
+        var a=2; 
+        function test3(){
+            console.log(a);
+        }
+        test3();
     }
-    return sum(a,b);
+    test2();
 }
-
-console.log(sum(1,3));
-
-console.log(sum(1,3));
-
-
+test();
+s
