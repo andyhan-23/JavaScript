@@ -1,3 +1,10 @@
 var a=1;
-// window.b=2;
-// console.log(a, window.a, this.a);
+// var outer= function(){
+//     //a=3;
+//     var inner=function(){
+//         console.log(a);
+//         var a=2;
+//     }
+//     inner();
+// }
+// outer();
