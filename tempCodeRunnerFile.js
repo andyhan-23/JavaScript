@@ -1,3 +1,5 @@
-Array.prototype.every.call(str,function(char){return char!==' ';});
-
-// console.log(str);
+var newArr=[10,20,30].map(function(currentValue, index){
+//     console.log(currentValue,index);
+//     return currentValue;
+// })
+// console.log(newArr);
