@@ -1,5 +1,10 @@
-var newArr=[10,20,30].map(function(currentValue, index){
-//     console.log(currentValue,index);
-//     return currentValue;
-// })
-// console.log(newArr);
+var obj ={
+//     outer: function(){
+//         console.log(this);
+//         var innerFunc = function(){
+//             console.log(this);
+//         }
+//         innerFunc.call(this)
+//     }
+//     };
+// obj.outer();
