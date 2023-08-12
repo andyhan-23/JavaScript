@@ -260,11 +260,41 @@
 
 // obj.outer();
 
-var count=0;
-var timer= setInterval(function(){
-    count++;
-    if(count===2){
-        clearInterval(timer);
-    };
-},1000);
+// var count=2;
+// // var timer= setInterval(function(){
+// //     count++;
+// //     if(count===2){
+// //         clearInterval(timer);
+// //     };
+// // },1000);
 
+// var cbFunc=function(){
+//     count++;
+//     console.log(count);
+//     if(count>4){
+//         clearInterval(timer);
+//     };
+// };
+// var timer =setInterval(cbFunc,1000);
+
+// var count= 1;
+
+// console.log(++count);
+
+// var count= 0;
+
+// var cbFunc=function(){
+//     if(++count>4){
+//         clearInterval(timer);
+//     }
+//     console.log(count);
+// };
+
+// var timer= setInterval(cbFunc,1000);
+
+var newArr=[10,20,30].map(function(currentValue, index){
+    console.log(currentValue, index);
+    return currentValue+5;
+})
+
+console.log(newArr);
