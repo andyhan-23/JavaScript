@@ -12,7 +12,7 @@ var car ={
     moved: 0,
     run: function(){
         var km=Math.ceil(Math.random()*6);
-        var watedFuel = km/this.power;
+        var wastedFuel = km/this.power;
         if(this.fuel<wastedFuel){
             console.log('이동 불가');
         return;
@@ -20,15 +20,10 @@ var car ={
         this.fuel -=wastedFuel;
         this.moved+=km;
 
-        car.fuel=1000;
-        car.moved=1000;
-        car.power=10;
+        
         console.log(km+'km 이동 (총'+this.moved+'km)');
 
-        car.fuel=1000;
-        car.moved=1000;
-        car.power=10;
     }
 };
 
-console.log(car);
+car.run();
