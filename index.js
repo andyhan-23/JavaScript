@@ -292,9 +292,213 @@
 
 // var timer= setInterval(cbFunc,1000);
 
-var newArr=[10,20,30].map(function(currentValue, index){
-    console.log(currentValue, index);
-    return currentValue+5;
-})
+// var newArr=[10,20,30].map(function(currentValue, index){
+//     console.log(currentValue, index);
+//     return currentValue+5;
+// })
 
-console.log(newArr);
+// console.log(newArr);
+
+// setTimeout(function(name){
+//     var coffeeList =name;
+//     console.log(coffeeList);
+
+//     setTimeout(function(name){
+//         coffeeList+=','+name;
+//         console.log(coffeeList);
+    
+//         setTimeout(function(name){
+//             coffeeList+=','+name;
+//             console.log(coffeeList);
+
+//             setTimeout(function(name){
+//                 coffeeList+=','+name;
+//                 console.log(coffeeList);
+//             },1000,'카페라떼')
+//         },1000,'카페모카')
+//     },1000,'아메리카노')
+// },1000,'에스프레소') 
+
+
+// var coffeeList='';
+
+// var addEspresso=function (name){
+//     coffeeList = name;
+//     console.log(coffeeList);
+//     setTimeout(addAmericano,1000,'아메리카노');
+// }
+
+// var addAmericano=function(name){
+//     coffeeList+=','+name;
+//     console.log(coffeeList);
+//     setTimeout(addMocha,1000,'카페모카');
+// }
+
+// var addMocha=function(name){
+//     coffeeList+=','+name;
+//     console.log(coffeeList);
+//     setTimeout(addLatte,1000,'카페라떼');
+// }
+
+// var addLatte=function(name){
+//     coffeeList+=','+name;
+//     console.log(coffeeList);
+// }
+
+// setTimeout(addEspresso, 1000,'에스프레소');
+
+// function test(callback, time){
+//     setTimeout(callback, time);
+// };
+
+// function test2(print)
+// {
+//     print();
+// };
+
+// test(function(){
+//     console.log("asdasd")
+// },1000)
+
+// test2(()=>console.log("Adasd"));
+
+//promise문
+/* 
+state: pending -> fulfilled or rejected
+producer or consumer;
+*/
+
+// //producer
+// const promise = new Promise((resolve, reject)=>{
+//     console.log("doing something...");
+//     setTimeout(function(){
+//         resolve('andy');
+//         reject(new Error('no network'));
+//     },2000)
+// });
+
+// //consumer:then, catch, finally
+// promise
+//     .then(function(value){
+//     console.log(value);
+//     })
+//     .catch(function(error){
+//         console.log(error);
+//     })
+//     .finally(function(){
+//         console.log("done")
+//     })
+
+// function plusFactory(defaul){
+//     function plus(num){
+//         return defaul+num;
+//     }
+//     return plus;
+// }
+
+// var factory2= plusFactory(2);
+// console.log(factory2(3));
+
+// var outer =function(){
+//     var a=1;
+//     var inner = function(){
+//         console.log(a++);
+//     }
+//     inner();
+//     console.log(a);
+// }
+// outer();
+
+// var outer= function(){
+//     var a=1;
+//     var inner =function(){
+//         return ++a;
+//     };
+//     return inner();
+// };
+// var outer2= outer();
+// console.log(outer2);
+// console.log(outer2);
+
+// (function(){
+//     var a=0;
+//     var intervalId = null;
+//     var inner = function(){
+//         console.log(a);
+//         if(++a>=10){
+//             clearInterval(intervalId);
+//         }
+//         //console.log(a);
+//     };
+//     intervalId= setInterval(inner, 1000);
+    
+// })
+
+// ();
+
+// var outer =(function (){
+//     var a=1;
+//     var inner = function(){
+//         return ++a;
+//     };
+//     return inner;
+// })();
+// console.log(outer());
+// console.log(outer());
+// outer=null;
+
+// var outer = function(){
+//     var a=1;
+//     var inner =function(){
+//         return ++a;
+//     };
+//     return inner;
+// };
+// var a = outer();
+// console.log(outer2());
+// console.log(outer());
+// console.log(outer());
+
+// function test(){
+//     function innerTest(){
+//         var a=1;
+//         return a;
+//     }
+//     return innerTest;
+// };
+
+// var result = test();
+
+// console.log(result());
+
+// function hello(){
+//     console.log('hello');
+// }
+
+// function test(asdasd){
+//     asdasd();
+// }
+// test(hello);
+
+// var outer =(function(){
+//     var a=1;
+//     var inner= function(){
+//         return ++a;
+//     };
+//     return inner;
+// })();
+// console.log(outer());
+// console.log(outer());
+// outer=null;
+// console.log(outer());
+
+var outer = (function(){
+    var a=1;
+    var inner = function(){
+        return ++a;
+    };
+    return inner;
+})();
+
+console.log(outer());
+
