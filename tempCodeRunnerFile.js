@@ -1,15 +1,4 @@
-
-// var obj={
-//     methodA: function(){
-//         console.log(this);
-//     },
-//     inner:{
-//         methodB: function(){
-//             console.log(this);
-//         },
-//     }
+var func= function(a,b,c){
+//     console.log(this,a,b,c);
 // };
-
-// obj.methodA();
-// //obj['methodA']();
-// obj.inner.methodB();
+// func.apply({x:1},[4,5,6]);

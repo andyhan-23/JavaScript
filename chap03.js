@@ -88,13 +88,62 @@
 // var arr= Array.prototype.slice.call(obj);
 // console.log(arr);
 
- var str='andy';
-Array.prototype.concat.call(str,',han');
-// Array.prototype.every.call(str,function(char){return char!==' ';});
+//  var str='andy';
+// Array.prototype.concat.call(str,',han');
+// // Array.prototype.every.call(str,function(char){return char!==' ';});
 
- console.log(str);
+//  console.log(str);
 
- var a ="ab";
- var b="ab";
+//  var a ="ab";
+//  var b="ab";
 
- console.log(a==b);
+//  console.log(a==b);
+
+// var arr=[1,2,3,4,5];
+
+// arr.forEach(function(number){
+//     console.log(number);
+// }); 
+
+// function Person(fisrt, second){
+//     this.first=fisrt;
+//     this.second=second
+// }
+
+// Person.prototype.name=function(name){
+//     this.name=name;
+//     console.log(name);
+// };
+
+// var andy = new Person('andy',10,20);
+
+// console.log(andy.name);
+
+// var obj={
+//     a:1,
+//     method: function(x,y){
+//         console.log(this.a, x,y);
+//     }
+// };
+
+// obj.method(2,3);
+
+// obj.method.call({a:2},5,6)
+
+// var func= function(a,b,c){
+//     console.log(this,a,b,c);
+// };
+// func.apply({x:1},[4,5,6]);
+
+// var arr=[1,2,3,4,5];
+// var newArr= arr.slice(1,3);
+// console.log(newArr);
+
+function a(){
+    var argv= Array.prototype.slice.call(arguments);
+    argv.forEach(function(test){
+        console.log(test)
+    })
+}
+a(1,2,3);
+
