@@ -1,5 +1,15 @@
 
-// for(var i in obj)
-// {
-//     console.log(i,obj[i]);
-// }
+// var obj={
+//     methodA: function(){
+//         console.log(this);
+//     },
+//     inner:{
+//         methodB: function(){
+//             console.log(this);
+//         },
+//     }
+// };
+
+// obj.methodA();
+// //obj['methodA']();
+// obj.inner.methodB();

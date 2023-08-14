@@ -116,26 +116,129 @@
 // test();
 
 
-var obj={
-    a: 1,
-    b: 2,
-    c: 3,
-};
+// var obj={
+//     a: 1,
+//     b: 2,
+//     c: 3,
+// };
 
-// for(var i in obj)
-// {
-//     console.log(i,obj[i]);
+// // for(var i in obj)
+// // {
+// //     console.log(i,obj[i]);
+// // }
+
+// console.log(obj);
+
+// var test = function(obj){
+//     var result={};
+//     for(var key in obj){
+//         result[key]=obj[key];
+//     }
+//     return result;
 // }
 
-console.log(obj);
+// var copy = test(obj);
+// console.log(copy);
 
-var test = function(obj){
-    var result={};
-    for(var key in obj){
-        result[key]=obj[key];
+// console.log(global);
+
+// var func= function(x){
+//     console.log(this,x);
+// };
+// func(1);;
+
+// var obj={
+//     method: func
+// };
+// obj.method(2);
+
+// var obj ={
+//     method: function(x){
+//         console.log(this,x);
+//     },
+//     time:  function(){
+//         console.log(this);
+//     }
+// };
+
+// obj.method(2);
+// obj['method'](2);
+
+// var obj={
+//     methodA: function(){
+//         console.log(this);
+//     },
+//     inner:{
+//         methodB: function(){
+//             console.log(this);
+//         },
+//     }
+// };
+
+// obj.methodA();
+// //obj['methodA']();
+// obj.inner.methodB();
+
+// var obj={
+//     method: function(){
+//         console.log(this);
+//     },
+//     inner:
+//     {
+//         methodB: function(){
+//             console.log(this);
+//         }
+//     }
+// }
+
+// obj.inner['methodB']();
+
+// var obj={
+//     outer: function(){
+//         console.log('첫번째',this);
+//         var innerFunc =  function(){
+//             console.log('두번째',this);
+//         }
+//         innerFunc();
+
+//         var obj2 ={
+//             innerMethod: innerFunc
+//         }
+//         obj2.innerMethod();
+//     }
+// };
+
+// obj.outer();
+
+// var obj={
+//     outer: function(){
+//         console.log(this);
+//         var innerFunc=function(){
+//             console.log(this);
+//         };
+//         innerFunc();
+
+//         var self = this;
+//         var innerFunc2 = function(){
+//             console.log(self);
+//         }
+//         innerFunc2();
+//     }
+// };
+// obj.outer();
+
+var obj= {
+    outer: function(){
+        console.log(this);
+        var innerFunc=()=>{
+            console.log(this);   
+        }
+        innerFunc();
+        var self = this;
+        var innerFunc2= function(){
+            console.log(self);
+        }
+        innerFunc2();
     }
-    return result;
 }
-
-var copy = test(obj);
-console.log(copy);
+obj.outer(); 
