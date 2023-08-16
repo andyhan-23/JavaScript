@@ -1,4 +1,11 @@
-var func= function(a,b,c){
-//     console.log(this,a,b,c);
-// };
-// func.apply({x:1},[4,5,6]);
+(function(){
+//     var a=10;
+//     var intervalId= null;
+//     var inner= function(){
+//         if(++a>=10){
+//             clearInterval(intervalId);
+//         }
+//         console.log(a);
+//     };
+//     intervalId= setInterval(inner, 1000);
+// })();
