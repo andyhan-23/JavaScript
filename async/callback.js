@@ -580,9 +580,15 @@ woody 멘토님, 질문이 하나 더 있어서 이렇게 밑에 남김니다. �
 // var sym2= Symbol('andy');
 // var sym3= Symbol('han');
 
-var a = new String();
-console.log(typeof a);
+// var a = new String();
+// console.log(typeof a);
 
 // console.log(sym1);
 // console.log(sym2);
 // console.log(sym3);
+
+//이름에 대한 불변함
+/* 
+1. 값의 이름
+2. 값 자체
+*/
