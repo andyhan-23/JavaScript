@@ -1,11 +1,2 @@
-// (function(){
-// //     var a=10;
-// //     var intervalId= null;
-// //     var inner= function(){
-// //         if(++a>=10){
-// //             clearInterval(intervalId);
-// //         }
-// //         console.log(a);
-// //     };
-// //     intervalId= setInterval(inner, 1000);
-// // })();
+var addPartial = partial(add, 1,2,3,4,5);
+console.log(addPartial(6,7,8,9,10));

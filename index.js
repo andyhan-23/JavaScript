@@ -492,13 +492,48 @@ producer or consumer;
 // outer=null;
 // console.log(outer());
 
-var outer = (function(){
-    var a=1;
-    var inner = function(){
-        return ++a;
+// var outer = (function(){
+//     var a=1;
+//     var inner = function(){
+//         return ++a;
+//     };
+//     return inner;
+// })();
+
+// console.log(outer());
+
+
+
+// var test =function(){};
+
+// console.log(typeof test);
+
+
+// var arr=[1,2,3,4,5];
+
+// var test=arr.shift();
+// test=arr.shift();
+// console.log(arr);
+
+var debounce = function(eventName, func, wait){
+    var timerId=null;
+    return function(event){
+        var self = this;
+        console.log(eventName, 'event 발생');
+        clearTimeout(timeoutId);
+        timeoutId= setTimeout(func.bind(self, event), wait);
     };
-    return inner;
-})();
+};
 
-console.log(outer());
+var moveHandler = function(e){
+    console.log('move event 처리');
+};
 
+var wheelHandler = function(e){
+    console.log('wheel event 처리')
+}
+
+document.body.addEventListener('mouseover', debounce('move', moveHandler,
+500));
+document.body.addEventListener('mousewheel', debounce('wheel', wheelHandler,
+700)); 

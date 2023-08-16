@@ -592,3 +592,69 @@ woody 멘토님, 질문이 하나 더 있어서 이렇게 밑에 남김니다. �
 1. 값의 이름
 2. 값 자체
 */
+
+// var debounce = function(eventName, func, wait){
+//     var timerId=null;
+//     return function(event){
+//         var self = this;
+//         console.log(eventName, 'event 발생');
+//         clearTimeout(timeoutId);
+//         timeoutId= setTimeout(func.bind(self, event), wait);
+//     };
+// };
+
+// var moveHandler = function(e){
+//     console.log('move event 처리');
+// };
+
+// var wheelHandler = function(e){
+//     console.log('wheel event 처리')
+// }
+
+// document.body.addEventListener('mouseover', debounce('move', moveHandler,
+// 500));
+// document.body.addEventListener('mousewheel', debounce('wheel', wheelHandler,
+// 700)); 
+
+
+// var curry3 =function(func){
+//     return function(a){
+//         return function(b){
+//             return func(a, b);
+//         };
+//     };
+// };
+
+// var getMaxWith10 = curry3(Math.max)(10);
+// console.log(getMaxWith10(8));
+// console.log(getMaxWith10(25));
+
+
+// var curry5 = function(func){
+//     return function(a){
+//         return function(b){
+//             return function(c){
+//                 return function(d){
+//                     return function(e){
+//                         return func(a,b,c,d,e);
+//                     };
+//                 };
+//             };
+//         };
+//     };
+// };
+// var getMax=curry5(Math.max);
+// console.log(getMax(1)(2)(3)(4)(5));
+
+var curry5 = function(func){
+    return function(a){
+        return function(b){
+            return func(a,b);
+        };
+    };
+};
+
+//var curry5 = func=>a=>b=>func(a,b);
+
+var test =curry5(console.log);
+console.log(test(1)(2));
