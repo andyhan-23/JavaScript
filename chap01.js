@@ -248,22 +248,110 @@
 // user = null;
 // console.log(user);
 
-var andy={
-    name: 'andy'
-};
-
-var han={
-    name: 'han'
-};
-
-//var map = new Map();
-var weakmap= new WeakMap();
-weakmap.set(andy,"andy value");
-weakmap.set(han, "han value");
-
-andy= null;
-console.log(weakmap.has(andy)); //false
-// for(var obj of weakmap.keys()){
-//     console.log(obj);
+// var andy={
+//     name: 'andy'
 // };
 
+// var han={
+//     name: 'han'
+// };
+
+// //var map = new Map();
+// var weakmap= new WeakMap();
+// weakmap.set(andy,"andy value");
+// weakmap.set(han, "han value");
+
+// andy= null;
+// console.log(weakmap.has(andy)); //false
+// // for(var obj of weakmap.keys()){
+// //     console.log(obj);
+// // };
+
+// var obj={
+//     a: 1,
+//     b:[1,2,3]
+// };
+// obj.b='asd';
+// console.log(obj);
+
+// var a=10;
+ 
+// var user ={
+//     name: 'andy',
+//     extra : {
+//         age: 25,
+//         gender: 'male',
+//     }
+// };
+// var deepCopyObject = function(target){
+//     return JSON.parse(JSON.stringify(target));
+// };
+
+// var result= deepCopyObject(user);
+
+// result.name='kim';
+// result.extra.age=14;
+// result.extra.gender="asd";
+// console.log(result);
+
+//배열의 뒷부분 값을 삭제
+var arr= new Array();
+ arr= [1,2,3,4];
+ arr.pop();
+ console.log(arr); //[1,2,3]
+
+ //배열 뒷부분에 값을 삽입
+ arr=[1,2,3]
+ arr.push(4);
+ console.log(arr); //[1,2,3,4]
+
+ //배열 앞부분에 값을 삽입
+ arr=[1,2,3];
+ arr.unshift(0);
+ console.log(arr);
+
+ //배열 앞부분의 값을 삭제
+ arr=[1,2,3,4];
+ arr.shift();
+ console.log(arr); //[2,3,4]
+
+//배열의 특정위치에 요소를 추가하거나 삭제
+//매개변수로(index, 제거할 요소 개수, 배열에 추가될 요소)
+var arr=[1,2,3,4,5]; 
+arr.splice(2,2);
+console.log(arr); //2번째 인덱스부터 2개 제거
+
+var arr=[1,2,3,4,5];
+arr.splice(2,1,0);
+console.log(arr); //2번째 인덱스부터 1개 제거후 숫자 0 추가
+
+//다수의 배열을 합치고 병합된 배열의 사본을 반환
+var arr1= [1,2,3];
+var arr2= [4,5,6];
+var arr3= arr1.concat(arr2);
+console.log(arr3);
+
+//배열의 모든 요소가 제공한 함수로 구현된 테스트를 통과했는지를 테스트
+arr =[1,2,4];
+
+var even =function(value){
+    return value %2===0;
+};
+console.log(arr.every(even));
+
+//지정된 함수의 결과가 true일때까지 배열의 각 원소를 반복
+arr =[1,2,4];
+
+var even =function(value){
+    return value %2===0;
+};
+console.log(arr.some(even)); // true, 하나라도 true이면 true를 반환
+
+//배열의 각 원소별로 지정된 함수를 실행
+var arr=[1,2,3];
+arr.forEach(function(value){
+    console.log(value); /*1
+                          2
+                          3
+                          */         
+})
