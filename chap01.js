@@ -1,184 +1,269 @@
-// //변수 선언 및 할당
-// var a="abc";
-// /* 
-// 1. 변수 영역에서 빈공간(@1001)을 찾는다.
-// 2. @1001공간에 식별자를 a로 지정한다.
-// 3. 데이터 영역에서 빈공간(@2001)에 문자열 "abc"를 저장한다.
-// 4. 변수 영역에서 a라는 식별자를 검색한다(@1001).
-// 5. 앞서 저장한 문자열 "abc"를 가지고 있는 주소 값을 @1001공간에 대입한다.
-// */
+// //심볼의 생성 및 활용
+// var sym1 = Symbol();
+// var sym2 = Symbol('andy');
+// var sym3 = Symbol('han');
 
-// var a="andy"
-// /*
-// 1. 변수 영역에서 빈 공간(@1001)을 찾는다.
-// 2. @1001 공간에 식별자로 a를 지정한다.
-// 3. 데이터 영역에서 빈 공간(@2001)에 문자열 'andy'를 저장한다.
-// 4. 변수 영역에서 a라는 식별자를 검색한다.(@1001)
-// 5. 앞서 저장한 문자열 "andy" 를 가지고 있는 주소 값을 @1001 공간에 대입한다.
-// */
+// //자바스크립트에서 객체의 프로퍼티 키는 보통 문자열 값이다.
+// var obj={};
 
-// //참조형 데이터의 할당
-// var obj1={
-//     a: 1,
-//     b: 'bbb'
+// obj.propertyKey1 = 'propertyValue1';
+// obj['propertyKey2']= 'propertyValue2';
+// obj[2]= 'propertyValue3';
+// console.log(obj[2]); //property value
+
+// var obj2={
+//     1: 'andy',
+//     2: 'han',
+//     2: 'kim',
+//     1: 'adasd',
 // };
-// /* 
-// 1. 변수 영역에서 빈공간을(@1001)을 찾는다.
-// 2. @1001 공간에 식별자로 obj1을 지정한다.
-// 3. 데이터 영역에서 빈공간(@2001)에 데이터 값을 저장하려고 보았더니 여러개의 프로퍼티로 이루어진 데이터 그룹이라, 이 그룹 내부의 프로퍼티들을 저장하기 위해 별도의 변수 영역을 마련합니다.
-// 그 영역의 주소(@3001~?)를 (@2001) 공간에 집어넣습니다.
-// 4. @3001, 3002 에 각각 a 와 b 라는 프로퍼티 이름을 지정합니다.
-// 5. 데이터 영역에서 숫자 1을 검색했는데 없으니까 (@2002)공간에 저장하고 이 주소를 @3001공간에 집어넣습니다.
-// 6. 데이터 영역에서 문자열 'bbb'를 검색했는데 없으니까 (@2003)공간에 저장하고 이 주소를 @3002공간에 집어넣습니다.
-// */
+// console.log(obj2);
 
-// //참조형 데이터의 프로퍼티 재할당
-// var obj1 ={
-//     a: 1,
-//     b: 'bbb'
+//문자열 대신 심볼도 프로퍼티 키로 사용될 수 있다.-> 이 경우 기본적으로 심볼은 고유하기 때문에 
+//심볼을 키로 값는 프로퍼티는 다른 어떤 프로퍼티와도 충돌하지 않음
+// var obj={};
+// var key1 = Symbol(); 
+// var key2 = Symbol('andy');
+// var key3 = Symbol('andy');
+
+// obj[key1] = 'jaehyeok';
+// obj[key2] = 'andy';
+// obj[key3] = 'han'; //충돌이 일어나지 않음
+
+// console.log(obj);
+ 
+//내장 심볼
+
+// //Symbol.for()메소드
+// var sym1 = Symbol.for('foo'); //create symbol
+// var sym2 = Symbol.for('foo'); //reuse symbol
+
+// console.log(sym1===sym2);
+
+// //Symbol.keyFor()메서드
+// var name = Symbol('andy');
+
+// var id = Symbol.keyFor(name);
+// console.log(id); //undefined
+
+// var test = Symbol.for('andy');
+// var result= Symbol.keyFor(test);
+// console.log(test); //andy
+// //인자로 전달받은 심보을 전역 심볼 레지스터리에서 찾고, 그 심볼의 키를 반환하고, 탐색에 실패하면 undefined를 반환합니다.
+
+// var obj={};
+
+// obj[Symbol('a')] ='a';
+// obj[Symbol('b')]='b';
+// obj.c = 'c';
+// obj['d']='d';
+
+// for(var key in obj){
+//     console.log(key); //c, d
 // }
 
-// obj1.a=2;
-// /*
-// 1. 변수 영역에서 빈공간을(@1001)을 찾는다.
-// 2. @1001 공간에 식별자로 obj1을 지정한다.
-// 3. 데이터 영역에서 빈공간(@2001)에 데이터 값을 저장하려고 보았더니 여러개의 프로퍼티로 이루어진 데이터 그룹이라, 이 그룹 내부의 프로퍼티들을 저장하기 위해 별도의 변수 영역을 마련합니다.
-// 그 영역의 주소(@3001~?)를 (@2001) 공간에 집어넣습니다.
-// 4. @3001, 3002 에 각각 a 와 b 라는 프로퍼티 이름을 지정합니다.
-// 5. 데이터 영역에서 숫자 1을 검색했는데 없으니까 (@2002)공간에 저장하고 이 주소를 @3001공간에 집어넣습니다.
-// 6. 데이터 영역에서 문자열 'bbb'를 검색했는데 없으니까 (@2003)공간에 저장하고 이 주소를 @3002공간에 집어넣습니다.
-// */
+// var sym = Symbol('andy');
 
-// //중첩된 참조형 데이터(객체)의 프로퍼티 재할당
 // var obj ={
-//     x:3,
-//     arr:[3,4,5]
-// };
-// /*
-// 1. 변수 영역에서 빈공간(@1001)을 찾고 식별자로 obj를 지정한다
-// 2. 데이터 영역에서 (@2001)에 데이터 값을 저장하려고 보았더니, 여러개의 프로퍼티로 이루어진 그룹이라, 이 그룹 내부의 프로퍼티들을 저장하기 위해 별도의 변수 영역을 마련합니다.
-// 그 영역의 주소를 (@3001~?)를 (@2001)공간에 집어넣습니다.
-// 3. @3001, @3002에 각각 x, arr 라는 프로퍼티 이름을 지정합니다.
-// 4. 데이터 영역에서 숫자 3을 검색해봤는데 없으니까 @2002에 공간에 저장하고 이 주소를 @3001공간에 집어넣습니다.
-// 5. 그 다음은 하나가 아닌 여러개의 데이터 로 이루어진 배열이라 이 그룹 내부의 프로퍼티들을 저장하기 위해 별도의 변수 영역을 마련합니다.
-// 그 영역의 주소를(@3003~?)를 (@2003)공간에 집어넣습니다.
-// 6. @2003주소를 @3002공간에 집어넣습니다.
-// 7. 배열의 요소가 3개이므로 3개의 변수 공간을 확보하고 각각 인덱스를 부여합니다(0,1,2)
-// 8. 데이터 영역에서 숫자 3을 검색해서 @2002주소를 @3003공간에 넣습니다.
-// 9. 데이터 영역에서 숫자 4를 검색했는데 없으니까 새로 @2004공간에 저장하고 이 주소를 @3004공간에 넣습니다.
-// 10. 데이터 영역에서 숫자 5을 검색했는데 없늬까 새로 @2005공간에 저장하고 이 주소를 @3005공간에 넣습니다.
-// */
+//     [sym]: 'andy',
+//     han: 'han',
+//     1:123
+// }
 
-// //객체의 가변성에 따른 문제점
-// var user ={
-//     name:'andy',
-//     side : {
-//         gender: 'male',
-//         age:25
+// console.log(obj['1']);
+
+// var a='1';
+// var b=1;
+// console.log(a===b);
+
+// //다른 개발자가 만들어 놓은 객체
+// var user = {
+//    name: 'andy',
+//    age: 25, 
+// };
+
+// function test(){
+//     return console.log(user);
+// }
+
+// //내가 작업
+// var key= Symbol('andy'); 
+
+// // user[key]= function(){
+// //     console.log(this.age);
+// // };
+
+// user[key]=12;
+// // //사용자가 접속하면 보는 메세지
+// // for(key in user){
+// //     console.log(`his ${key} is ${user[key]}.`);
+// // }
+
+// // console.log(user[key]);
+// user[key];
+// test();
+
+//정규 표현식
+
+//정규표현식 리터럴: 다음과 같이 슬래시로 패턴을 감싸서 작성합니다.
+// var regExp = /a/;
+// console.log(regExp);
+
+// var re = new RegExp("ab+c");
+// console.log(re);
+
+// //정규표현식으로 아래와 같은 패턴을 만들어주면, 특정 문자열이 해당 페턴이 맞는지 체크 가능
+// const phoneNumber = /\d{3}-\d{4}-\d{4}/;
+// var result=phoneNumber.test('0123-123-123');
+// var result=phoneNumber.test('010-1234-5678');
+// console.log(result);
+
+// //정규 표현식 객체 생성자
+// //var pattern  = new regExp('a');
+
+// var result=regExp.exec('aasdasdasd');
+
+// var regExp = /a./;
+// //여기서 .은 하나의 문자 -> .안에는 문자가 와야 하고 반드시 앞에는 a가 있어야 함
+// var result=regExp.exec("asdasdadasd");
+// console.log(result); // "as"
+// var result2 =regExp.test("as");
+// console.log(result2);
+
+//map
+
+// var user ={};
+
+// user.name= "andy";
+// user.age =25;
+
+// console.log(user.age);
+
+// //object 객체 에서 name가져올때
+// var user ={};
+// user.name="andy"; 
+// user.age= 25;
+// user.job="front-end developer";
+
+// console.log(user.name);
+
+// //map 객체 생성해서 name 가져올때
+// var userMap = new Map();
+
+// userMap.set("이름", "andy");
+// userMap.set("나이", 25);
+// userMap.set("직업", "frontend-developer");
+// userMap.set(1,"Adads");
+
+// console.log(userMap.get("1"));
+
+//object
+// var GuestArr=[
+//     {name: "A" , city: "SEOUL"},
+//     {name: "B" , city: "SEOUL"},
+//     {name: "C" , city: "SEOUL"},
+//     {name: "D" , city: "JEJU"},
+//     {name: "E" , city: "JEJU"},
+//     {name: "F" , city: "SEOUL"},
+// ];
+
+// var guest={};
+// GuestArr.forEach(function(item){
+//     if(!guest[item.city]){
+//         guest[item.city] =[];
 //     }
-// };
+//     guest[item.city].push(item.name);
+// })
+// console.log(guest);
 
+// //map
+// var mapGuest = new Map();
 
-
-// var changeName= function(user, newName){
-//     var newUser= user;
-//     newUser.name = newName;
-//     return newUser;
-// }
-
-// var changeName2 =function(user, newName){
-//     return{
-//         name: newName,
-//         gender: user.gender
-//     };
-// };
-
-// var copyObject=function(target){
-//     var result={};
-//     for(var prop in target){
-//         result[prop]=target[prop];
+// GuestArr.forEach(function(item){
+//     if(!mapGuest.has(item.city)){
+//         mapGuest.set(item.city, []);
 //     }
-//     return result;
+//     mapGuest.get(item.city).push(item.name);
+// })
+
+// console.log(mapGuest);
+
+// var m = new Map();
+
+// m.set("a","b");
+// m.set({a:'a'},{b:'b'});
+
+// console.log({a:'a'}==={a: 'b'});
+
+// var key = {key: 'key'};
+// m.set(key, "123");
+
+// console.log(m.size);
+
+// var obj ={a:'a', b:'b', c:'c'};
+
+// for(var i in obj){
+//     console.log(obj[i]);
 // }
 
-// var user2 = copyObject(user);
-// user2.side = copyObject(user.side);
-// user2.name='ha';
-// //user2.gender='fe';
-// user2.side.age=10;
-// if(user!==user2){
-//     console.log("유저 정보가 다릅니다.");
+// var set = new Set();
+
+// set.add(3);
+// set.add(2);
+// set.add(2);
+// console.log(set);
+
+// var arr2  =[1,2,3,4,5,6,6,6];
+
+// var set = new Set(arr2);
+// //console.log(set);
+// var result=Array.from(set);
+// console.log(result);
+
+// var wm = new WeakMap();
+
+// var m = new Map();
+// var obj={a:'a'};
+// var key={a:'a'};
+// wm.set(obj, '123');
+// m.set(key, '123');
+// console.log(wm.get(obj));
+// console.log(wm);
+// obj= null;
+// //console.log(wm.get(obj));
+// //console.log(m.get(key));
+// key=null;
+// //console.log(m);
+
+// var test ={
+//     name: 'andy'
 // }
+// test=null;
+// console.log(test);
 
-// console.log(user.name, user2.name);
-// console.log(user.side, user2.side);
-// console.log(user===user2);
+// var user = { 
+//     name: "andy",
+//     age: 25,
+//  }
+// user = null;
+// console.log(user);
 
-// var arr1 =[undefined, 1];
-// var arr2= [];
-// arr2[1] =1;
-// arr1.forEach(function(v,i){console.log(v,i);});
-// arr2.forEach(function(v,i){console.log(v,i);});
-// arr1.map(function(v,i){return v+i;});
-// arr2.map(function(v,i){return v+i;});
-
-// var a=1;
-// var b="1"
-// console.log("10"==10);
-
-//변수 영역에서 데이터 할당 및 선언
-var a=1;
-/*
-1. 변수 영역에서 빈공간(@1001)에 식별자로 a를 지정
-2. 데이터 영역에서 빈공간 (@2001)에 숫가 1이라는 값을 저장
-3. 변수 영역 @1001공간에 데이터 영역에서 숫자 1이 들어간 주소 값을 저장
-*/
-
-//참조형 데이터 할당
-var obj={
-    name: 'andy',
-    age: 25
+var andy={
+    name: 'andy'
 };
 
-obj.age=23;
-/*
-1. 변수 영역에서 빈공간(@1001)에 식별자로 obj를 지정한다.
-2. 데이터 영역에서 빈공간(@2001)에 값을 넣으려고 봤더니 여러개의 프로퍼티로 이루어진 그룹들이므로, 각 내부의 프로퍼티를 저정하기 위해 별도의 변수 영역을 만들어 주고 그 영역의 주소를 (@3001~?)를 (@2001)영역에 저장합니다.
-3. 객체 (@2001)의 대한 변수 영역을 @3001에 name @3002에 age 라는 각각의 프로퍼티 이름을 지정합니다.
-4. 데이터 영역에서 문자열'andy'를 검색했는데 없으니까 @2002에 데이터를 저정하고 그 주소값을 @3001에 저장한다.
-5. 데이터 영역에서 숫자 25를 검색했는데 없으니까 @2003에 데이터를 저장하고 그 주소값을 @3002에 저장한다.
-
-//프로퍼티 재할당 할 경우
-6. 데이터 영역에서 숫자 23을 검색했는데 없으니까 @2004에 데이터를 저정하고 기존에 저장된 @2003주소값을 @2004로 바꿉니다.
-*/
-
-//참조형 데이터의 프로퍼티에 다시 참조형 프로퍼티를 재할당하는 경우= 중첩객체
-var  obj={
-    num: 1,
-    array: [1,2,3]
-};
-/*
-1. 변수영역에서 빈 공간 @1001에 식별자로 obj지정
-2. 데이터 영역에서 빈공간@2001에 데이터 값을 집어넣으려고 봤더니 여러개의 프로퍼티로 이루어진 그룹들이라, 각 내부의 프로퍼티를 저장하기 위해서는 별도의 변수 영역을 만들어 주고 그 영역의 주소를 @3001~? 를 @2001영역에 저장합니다.
-3. 객체@2001의 대한 변수 영역을 @3001에 num을 넣고 @3002에 array를 넣으려고 봤더니 array 안에는 여러개의 값들로 이우어진 배열 형태 이다.
-4. 그래서 다시 데이터 영역으로 올라가 @2002에 여러개의 값들로 이루어진 배열을 저장하기 위한 별도의 변수 영역을 만들고 그 영역의 주수(@3003~?)를 @2002에 저장합니다. 
-5. 숫자 1을 검색해봤더니 없으니까 데이터 영역에서 @2003에 값을 저장한다. 그리고 그 주소값을 @3001에 저장한다.
-6. 그리고 배열로 다시 들어와 요소가 3개 이므로 3개의 변수 영역을 만들고 인덱스 0,1,2 로 합니다. 
-7. 0번 인덱스 에 1이라는 값을 검색해봤더니 이미 있으모로 1을 참조하는 주소값@2003을 저장합니다.
-8. 동일시 하게 1,2 번 인덱스에 2,3, 을 검색해봤더니 없으므로 데이터 영역에서 새로운 빈공간에 각각 저장하고 그 주소값들을 @3004,@3005에 저장합니다.
-*/
-
-var person={
-    name:'andy'
+var han={
+    name: 'han'
 };
 
-var person2= person;
+//var map = new Map();
+var weakmap= new WeakMap();
+weakmap.set(andy,"andy value");
+weakmap.set(han, "han value");
 
-person2.name ="han";
+andy= null;
+console.log(weakmap.has(andy)); //false
+// for(var obj of weakmap.keys()){
+//     console.log(obj);
+// };
 
-console.log(person.age);
-
-var a=0.1;
-var b=0.2;
-var sum=a+b;
-console.log(sum.toFixed(2));
