@@ -227,18 +227,74 @@
 // };
 // obj.outer();
 
-var obj= {
-    outer: function(){
-        console.log(this);
-        var innerFunc=()=>{
-            console.log(this);   
-        }
-        innerFunc();
-        var self = this;
-        var innerFunc2= function(){
-            console.log(self);
-        }
-        innerFunc2();
+// var obj= {
+//     outer: function(){
+//         console.log(this);
+//         var innerFunc=()=>{
+//             console.log(this);   
+//         }
+//         innerFunc();
+//         var self = this;
+//         var innerFunc2= function(){
+//             console.log(self);
+//         }
+//         innerFunc2();
+//     }
+// }
+// obj.outer(); 
+
+//배열의 원소를 알파벳순으로, 또는 지정된 함수에 따른 순서로 정렬한다. 모든 원소를 문자열로 취급해 사전적으로 정렬
+// var arr=[4,3,2,1];
+// arr.sort(function(a,b){
+//     return b-a;
+// });
+// console.log(arr); // [4,3,2,1]
+
+// var arr=[1,2];
+// arr.sort(function(a,b){
+//     return a-b;
+// })
+// console.log(arr);
+
+var user ={
+    name: 'andy',
+    extra: {
+        age: 25,
+        gender: 'male',
     }
-}
-obj.outer(); 
+};
+
+//user.name='kim'; // 내부의 프로퍼티
+
+
+var changeName= function(name, user){
+    return{
+        name: name,
+        extra: user.extra,
+    }
+};
+
+var result = changeName("kim", user);
+console.log(user.name);
+
+//toString
+
+//배열을 문자열로 바꾸어 반환한다.
+var arr=[1,2,3,4];
+console.log(arr.toString());
+
+//toString 과 비슷, 그러나 배열을 반환
+var arr=[1,2,3,4,5];
+console.log(arr.valueOf()); // [1,2,3,4];
+
+//ValueOf
+//toString과 비슷, 그러나 배열을 반환
+var arr= [1,2,3,4];
+console.log(arr.valueOf()); //[1,2,3,4]
+
+
+//join
+//배열 원소 전부를 하나의 문자열로 합친다.
+var arr=[1,2,3,4];
+console.log(arr.join("+"));
+

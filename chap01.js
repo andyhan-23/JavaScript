@@ -294,129 +294,165 @@
 // result.extra.gender="asd";
 // console.log(result);
 
-//배열의 뒷부분 값을 삭제
-var arr= new Array();
- arr= [1,2,3,4];
- arr.pop();
- console.log(arr); //[1,2,3]
+// //배열의 뒷부분 값을 삭제
+// var arr= new Array();
+//  arr= [1,2,3,4];
+//  arr.pop();
+//  console.log(arr); //[1,2,3]
 
- //배열 뒷부분에 값을 삽입
- arr=[1,2,3]
- arr.push(4);
- console.log(arr); //[1,2,3,4]
+//  //배열 뒷부분에 값을 삽입
+//  arr=[1,2,3]
+//  arr.push(4);
+//  console.log(arr); //[1,2,3,4]
 
- //배열 앞부분에 값을 삽입
- arr=[1,2,3];
- arr.unshift(0);
- console.log(arr);
+//  //배열 앞부분에 값을 삽입
+//  arr=[1,2,3];
+//  arr.unshift(0);
+//  console.log(arr);
 
- //배열 앞부분의 값을 삭제
- arr=[1,2,3,4];
- arr.shift();
- console.log(arr); //[2,3,4]
+//  //배열 앞부분의 값을 삭제
+//  arr=[1,2,3,4];
+//  arr.shift();
+//  console.log(arr); //[2,3,4]
 
-//배열의 특정위치에 요소를 추가하거나 삭제
-//매개변수로(index, 제거할 요소 개수, 배열에 추가될 요소)
-var arr=[1,2,3,4,5]; 
-arr.splice(2,2);
-console.log(arr); //2번째 인덱스부터 2개 제거
+// //배열의 특정위치에 요소를 추가하거나 삭제
+// //매개변수로(index, 제거할 요소 개수, 배열에 추가될 요소)
+// var arr=[1,2,3,4,5]; 
+// arr.splice(2,2);
+// console.log(arr); //2번째 인덱스부터 2개 제거
 
-var arr=[1,2,3,4,5];
-arr.splice(2,1,0);
-console.log(arr); //2번째 인덱스부터 1개 제거후 숫자 0 추가
+// var arr=[1,2,3,4,5];
+// arr.splice(2,1,0);
+// console.log(arr); //2번째 인덱스부터 1개 제거후 숫자 0 추가
 
-//다수의 배열을 합치고 병합된 배열의 사본을 반환
-var arr1= [1,2,3];
-var arr2= [4,5,6];
-var arr3= arr1.concat(arr2);
-console.log(arr3);
+// //다수의 배열을 합치고 병합된 배열의 사본을 반환
+// var arr1= [1,2,3];
+// var arr2= [4,5,6];
+// var arr3= arr1.concat(arr2);
+// console.log(arr3);
 
-//배열의 모든 요소가 제공한 함수로 구현된 테스트를 통과했는지를 테스트
-arr =[1,2,4];
+// //배열의 모든 요소가 제공한 함수로 구현된 테스트를 통과했는지를 테스트
+// arr =[1,2,4];
 
-var even =function(value){
-    return value %2===0;
-};
-console.log(arr.every(even));
+// var even =function(value){
+//     return value %2===0;
+// };
+// console.log(arr.every(even));
 
-//지정된 함수의 결과가 true일때까지 배열의 각 원소를 반복
-arr =[1,2,4];
+// //지정된 함수의 결과가 true일때까지 배열의 각 원소를 반복
+// arr =[1,2,4];
 
-var even =function(value){
-    return value %2===0;
-};
-console.log(arr.some(even)); // true, 하나라도 true이면 true를 반환
+// var even =function(value){
+//     return value %2===0;
+// };
+// console.log(arr.some(even)); // true, 하나라도 true이면 true를 반환
 
-//배열의 각 원소별로 지정된 함수를 실행
-var arr=[1,2,3];
-arr.forEach(function(value){
-    console.log(value); /*1
-                          2
-                          3
-                          */         
-})
+// //배열의 각 원소별로 지정된 함수를 실행
+// var arr=[1,2,3];
+// arr.forEach(function(value){
+//     console.log(value); /*1
+//                           2
+//                           3
+//                           */         
+// })
 
 
-//map 메서드는 파라미터로 콜백함수를 받는데, 그 콜백 함수의 파라미터는 요소, index, map메서드를 호출한 배열이디.
-var arr =  [1,2,3,4,5];
+// //map 메서드는 파라미터로 콜백함수를 받는데, 그 콜백 함수의 파라미터는 요소, index, map메서드를 호출한 배열이디.
+// var arr =  [1,2,3,4,5];
 
-var myArr= arr.map(function(current, index, array){
+// var myArr= arr.map(function(current, index, array){
 
-    return current *2;
-});
+//     return current *2;
+// });
 
-console.log(myArr);
+// console.log(myArr);
 
-var arr=[1,2,3,4,5];
+// var arr=[1,2,3,4,5];
 
-var newArr= arr.map(function(current, index){
-    console.log(`요소${current}`);
-    console.log(`키${index}`);
+// var newArr= arr.map(function(current, index){
+//     console.log(`요소${current}`);
+//     console.log(`키${index}`);
     
-    return current *2; // [2,4,6,8,10]
-})
+//     return current *2; // [2,4,6,8,10]
+// })
 
-console.log(newArr);
-//결과적으로 map은 메서드를 호출한 배열의 길이 만큼의 새로운 배열을 만들어내는게 핵심인데, 콜백 함수의 return 값을 통해 새로운 배열들의 각 요소를 변형할수 있다는 특징
+// console.log(newArr);
+// //결과적으로 map은 메서드를 호출한 배열의 길이 만큼의 새로운 배열을 만들어내는게 핵심인데, 콜백 함수의 return 값을 통해 새로운 배열들의 각 요소를 변형할수 있다는 특징
 
 
-//끝으로 만약 map메서드의 콜백 함수가 아무것도 리턴하지 않을 경우 호출한 배열의 길이 만큼 undefined가 채워진 배열이 리턴된다.
-var arr=["asd","aasd"];
+// //끝으로 만약 map메서드의 콜백 함수가 아무것도 리턴하지 않을 경우 호출한 배열의 길이 만큼 undefined가 채워진 배열이 리턴된다.
+// var arr=["asd","aasd"];
 
-var newArr=arr.map(function(){
+// var newArr=arr.map(function(){
  
-});
-console.log(newArr); //[undefined undefined] 
+// });
+// console.log(newArr); //[undefined undefined] 
 
-//filter
+// //filter
 
-//지정된 함수의 결과 값을 true로 만드는 원소들로만 구성된 별도의 배열을 반환한다.
-var arr= [1,2,3,4,5,6,7,8,9,10];
-var even = function(value){
-    return value % 2=== 0;
+// //지정된 함수의 결과 값을 true로 만드는 원소들로만 구성된 별도의 배열을 반환한다.
+// var arr= [1,2,3,4,5,6,7,8,9,10];
+// var even = function(value){
+//     return value % 2=== 0;
+// };
+
+// var newArr = arr.filter(even);
+// console.log(newArr); [2,4,6,8,10] 
+
+// //reduce
+// //누산기(accumulator) 및 배열의 각 값(좌에서 우로)에 대해 (누산된) 한 값으로 줄도록 함수를 적용
+// var arr=[1,2,3,4,5,6,7,8,9,10];
+
+// var value = arr.reduce(function(accumulator, current, index){
+//     return accumulator+current+index;
+// });
+// console.log(value); //55
+
+// //배열의 원소 순서를 거꾸로 바꾼다
+
+// var arr= [1,2,3,4];
+// arr.reverse();
+// console.log(arr);
+
+// //배열의 원소를 알파벳순으로, 또는 지정된 함수에 따른 순서로 정렬한다. 모든 원소를 문자열로 취급해 사전적으로 정렬
+// var arr=[4,3,2,1];
+// arr.sort();
+// console.log(arr);
+
+// //배열을 문자열로 바꾸어 반환한다.
+// var arr= ["1","2"];
+// console.log(arr.toString());
+
+var user ={
+    name: 'andy',
+    age: 25,
+    extra: {
+        job: 'frontend-developer'
+    }
 };
 
-var newArr = arr.filter(even);
-console.log(newArr); [2,4,6,8,10] 
+var change = function(name,age,user){
+    return{
+        name: name,
+        age: age,
+        extra: user.extra,
+    }
+};
 
-//reduce
-//누산기(accumulator) 및 배열의 각 값(좌에서 우로)에 대해 (누산된) 한 값으로 줄도록 함수를 적용
-var arr=[1,2,3,4,5,6,7,8,9,10];
+var deepCopyObject = function(target){
+    return JSON.parse(JSON.stringify(target));
+}
 
-var value = arr.reduce(function(accumulator, current, index){
-    return accumulator+current+index;
-});
-console.log(value); //55
+var han = deepCopyObject(user);
 
-//배열의 원소 순서를 거꾸로 바꾼다
+han.extra.job="asd";
+console.log(user.extra.job);
 
-var arr= [1,2,3,4];
-arr.reverse();
-console.log(arr);
+console.log(eval("1+3"));
 
-//배열의 원소를 알파벳순으로, 또는 지정된 함수에 따른 순서로 정렬한다. 모든 원소를 문자열로 취급해 사전적으로 정렬
-var arr=[4,3,2,1];
-arr.sort(function(a,b){
-    return a-b;
-});
-console.log(arr);
+var test={
+    a: addm,
+    b: addEventListe,
+
+};
+console.log(test);
