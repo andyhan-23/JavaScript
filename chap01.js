@@ -355,3 +355,68 @@ arr.forEach(function(value){
                           3
                           */         
 })
+
+
+//map 메서드는 파라미터로 콜백함수를 받는데, 그 콜백 함수의 파라미터는 요소, index, map메서드를 호출한 배열이디.
+var arr =  [1,2,3,4,5];
+
+var myArr= arr.map(function(current, index, array){
+
+    return current *2;
+});
+
+console.log(myArr);
+
+var arr=[1,2,3,4,5];
+
+var newArr= arr.map(function(current, index){
+    console.log(`요소${current}`);
+    console.log(`키${index}`);
+    
+    return current *2; // [2,4,6,8,10]
+})
+
+console.log(newArr);
+//결과적으로 map은 메서드를 호출한 배열의 길이 만큼의 새로운 배열을 만들어내는게 핵심인데, 콜백 함수의 return 값을 통해 새로운 배열들의 각 요소를 변형할수 있다는 특징
+
+
+//끝으로 만약 map메서드의 콜백 함수가 아무것도 리턴하지 않을 경우 호출한 배열의 길이 만큼 undefined가 채워진 배열이 리턴된다.
+var arr=["asd","aasd"];
+
+var newArr=arr.map(function(){
+ 
+});
+console.log(newArr); //[undefined undefined] 
+
+//filter
+
+//지정된 함수의 결과 값을 true로 만드는 원소들로만 구성된 별도의 배열을 반환한다.
+var arr= [1,2,3,4,5,6,7,8,9,10];
+var even = function(value){
+    return value % 2=== 0;
+};
+
+var newArr = arr.filter(even);
+console.log(newArr); [2,4,6,8,10] 
+
+//reduce
+//누산기(accumulator) 및 배열의 각 값(좌에서 우로)에 대해 (누산된) 한 값으로 줄도록 함수를 적용
+var arr=[1,2,3,4,5,6,7,8,9,10];
+
+var value = arr.reduce(function(accumulator, current, index){
+    return accumulator+current+index;
+});
+console.log(value); //55
+
+//배열의 원소 순서를 거꾸로 바꾼다
+
+var arr= [1,2,3,4];
+arr.reverse();
+console.log(arr);
+
+//배열의 원소를 알파벳순으로, 또는 지정된 함수에 따른 순서로 정렬한다. 모든 원소를 문자열로 취급해 사전적으로 정렬
+var arr=[4,3,2,1];
+arr.sort(function(a,b){
+    return a-b;
+});
+console.log(arr);
