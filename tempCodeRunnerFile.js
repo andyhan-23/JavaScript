@@ -1,4 +1,4 @@
-var func =function(a,b,c){
-//     console.log(this,a,b,c);
+function test(){
+//     console.log(this); //전역 객체를 가리킨다 
 // }
-// func(1,2,3); //window, 1,2,3
+// test();

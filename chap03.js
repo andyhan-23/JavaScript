@@ -139,11 +139,93 @@
 // var newArr= arr.slice(1,3);
 // console.log(newArr);
 
-function a(){
-    var argv= Array.prototype.slice.call(arguments);
-    argv.forEach(function(test){
-        console.log(test)
-    })
-}
-a(1,2,3);
+// function a(){
+//     var argv= Array.prototype.slice.call(arguments);
+//     argv.forEach(function(test){
+//         console.log(test)
+//     })
+// }
+// a(1,2,3);
 
+// var obj={
+//     0: 'a',
+//     1: 'b',
+//     length:2,
+// }
+
+// // Array.prototype.push.call(obj,'c');
+// // console.log(obj);
+
+// var array = Array.prototype.slice.call(obj);
+// console.log(array); 
+
+
+// function test(){
+//     console.log(this); //전역 객체를 가리킨다 
+// }
+// test();
+
+// var obj={
+//     test: function(){
+//         console.log(this);//obj 객체를 가리킨다.
+//     }
+// };
+// obj.test();
+
+// var obj={
+//     outer: function(){
+//         console.log(this); //obj 객체를 가리킨다
+//         var innerFunc=function(){
+//             console.log(this);// 전역 객체를 가리킨다, 그 후 obj2객체를 가리킨다.
+//         }
+// //         innerFunc();
+// //         var obj2={
+// //             outer: innerFunc
+// //         };
+// //         obj2.outer();
+// //     }
+// // }
+// // obj.outer();
+
+// //내부 함수에서의 this를 우회하는법
+// var obj={
+//     outer: function(){
+//         console.log(this); //obj객체를 가리킨다.
+//         var innerFunc = function(){
+//             console.log(this); //전역 객체를 가리킨다.
+//         }
+//         innerFunc();
+//         var self= this;
+//         var innerFunc2= function(){
+//             console.log(self); //전역 객체를 가리켜야 하지만 우회해서 obj객체를 가리킨다.
+//         }
+        
+//         innerFunc2();
+//     }
+// }
+// obj.outer();
+
+// var obj={
+//     outer: function(){
+//         console.log(this);
+//         var inner = function(){
+//             console.log(this);
+//         }
+//         inner();
+//     }
+// }
+// obj.outer();
+
+
+var obj= {
+    outer: function(){
+        console.log(this);
+        var inner=()=>{
+            console.log(this); //화살표 함수를 통해 this를 우회하여 전역객체를 가리킬수 있음
+        }
+        inner();
+    }
+};
+obj.outer();
+
+console.log
