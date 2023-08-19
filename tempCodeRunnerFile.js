@@ -1,12 +1,4 @@
-var obj ={a:'a', b:'b', c:'c'};
-
-// for(var i in obj){
-//     console.log(obj[i]);
+var func =function(a,b,c){
+//     console.log(this,a,b,c);
 // }
-
-// var set = new Set();
-
-// set.add(3);
-// set.add(2);
-// set.add(2);
-// console.log(set);
+// func(1,2,3); //window, 1,2,3

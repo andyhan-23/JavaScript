@@ -646,15 +646,20 @@ woody 멘토님, 질문이 하나 더 있어서 이렇게 밑에 남김니다. �
 // var getMax=curry5(Math.max);
 // console.log(getMax(1)(2)(3)(4)(5));
 
-var curry5 = function(func){
-    return function(a){
-        return function(b){
-            return func(a,b);
-        };
-    };
-};
+// var curry5 = function(func){
+//     return function(a){
+//         return function(b){
+//             return func(a,b);
+//         };
+//     };
+// };
 
-//var curry5 = func=>a=>b=>func(a,b);
+// //var curry5 = func=>a=>b=>func(a,b);
 
-var test =curry5(console.log);
-console.log(test(1)(2));
+// var test =curry5(console.log);
+// console.log(test(1)(2));
+
+document.body.innerHTML += '<button id="a">클릭</button>';
+document.body.querySelector('#a').addEventListener('click', function(value){
+    console.log(this, console.log(value));
+})
