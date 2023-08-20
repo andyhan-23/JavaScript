@@ -659,7 +659,17 @@ woody 멘토님, 질문이 하나 더 있어서 이렇게 밑에 남김니다. �
 // var test =curry5(console.log);
 // console.log(test(1)(2));
 
-document.body.innerHTML += '<button id="a">클릭</button>';
-document.body.querySelector('#a').addEventListener('click', function(value){
-    console.log(this, console.log(value));
-})
+// document.body.innerHTML += '<button id="a">클릭</button>';
+// document.body.querySelector('#a').addEventListener('click', function(value){
+//     console.log(this, console.log(value)); //자신의 this를 상속함
+// })
+// /* addEventListner는 지정한 HTML 엘리먼트에 'click' 이벤트가 발생할 때마다 그 이벤트 정보를 콜백 함수의
+// 첫 번째 인자로 삼아 함수를 실행하는 명령입니다. 버튼을 클릭하면 앞서 지정한 엘리먼트와 클릭 이벤트에 관한 정보가 담긴 객체가 출력됩니다.
+// */
+
+document.body.innerHTML='<div>a</div><div>b</div><div>c</div>';
+var nodeList= document.querySelectorAll('div');
+var arr= Array.prototype.slice.call(nodeList);
+arr.forEach(function(number){
+    console.log(number); //순차적으로 <div>태그 안에 a,b,c 출력
+}) 
