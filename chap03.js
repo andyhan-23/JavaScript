@@ -228,4 +228,3 @@ var obj= {
 };
 obj.outer();
 
-console.log
