@@ -256,45 +256,338 @@
 // })
 // console.log(arr);
 
-var user ={
-    name: 'andy',
-    extra: {
-        age: 25,
-        gender: 'male',
-    }
+// var user ={
+//     name: 'andy',
+//     extra: {
+//         age: 25,
+//         gender: 'male',
+//     }
+// };
+
+// //user.name='kim'; // 내부의 프로퍼티
+
+
+// var changeName= function(name, user){
+//     return{
+//         name: name,
+//         extra: user.extra,
+//     }
+// };
+
+// var result = changeName("kim", user);
+// console.log(user.name);
+
+// //toString
+
+// //배열을 문자열로 바꾸어 반환한다.
+// var arr=[1,2,3,4];
+// console.log(arr.toString());
+
+// //toString 과 비슷, 그러나 배열을 반환
+// var arr=[1,2,3,4,5];
+// console.log(arr.valueOf()); // [1,2,3,4];
+
+// //ValueOf
+// //toString과 비슷, 그러나 배열을 반환
+// var arr= [1,2,3,4];
+// console.log(arr.valueOf()); //[1,2,3,4]
+
+
+// //join
+// //배열 원소 전부를 하나의 문자열로 합친다.
+// var arr=[1,2,3,4];
+// console.log(arr.join("+"));
+
+// var count =0;
+// var timer = setInterval(function(){
+//     console.log(count);
+//     if(++count>4){
+//         clearInterval(timer);
+//     }
+// },1000);
+
+// //콜백 함수 예제-setInterval
+// var count=0;
+// var cbFunc = function(){
+//     console.log(count);
+//     if(++count>4) {
+//         clearInterval(timer);
+//     }
+// };
+// var timer= setInterval(cbFunc,1000);
+
+// //콜백 함수 예제-Array.prototype.map
+// var arr =[10,20,30].map(function(value, key, array){
+//     console.log(value, key, array);
+//     return value+5;
+// },this);
+// console.log(arr);
+
+// //콜백 함수 예제-Array.prototype.map
+// Array.prototype.map= function(callback, thisArg){
+//     var mappedArr=[1,2,3,4,5];
+//     for(var i=0; i<this.length; i++){
+//         var mappedValue=callback.call(thisArg || window, this[i],i,this);
+//         mappedArr[i] = mappedValue;
+//     }
+//     return mappedArr;
+// };
+ 
+// for(var i=0 ;i<5; i++){
+//     console.log("1");
+// }
+
+// var obj={
+//     vals:[1,2,3],
+//     logValues: function(v,k){
+//         var self=this;
+//         return function(){
+//             console.log(self,v,k);
+//         };
+//     }
+// };
+// //obj.logValues(1,2); //obj객체를 this로 명시함
+// [4,5,6].forEach(obj.logValues()); //전역 객체를 this로 명시함
+
+// var user={
+//     name: 'andy',
+//     func: function(){
+//         return function(){
+//             console.log("hello");
+//         }
+//     }
+// }
+// user.func(); //생략
+// var test= user.func(); //변수로써 할당
+// test(); //변수를 함수로써 호출
+
+// var user={
+//     name: 'andy',
+//     func: function(){
+//         console.log("hello");
+//     }
+// };
+// user.func(); //hello 출력
+
+// var obj={
+//     func: function(){
+//         var self=this;
+//         return function(){
+//         console.log(self); //obj객체를 this로 명시함
+//     }
+// }
+// };
+// var callback=obj.func();
+
+// setTimeout(callback,1000);
+
+// var obj={
+//     name: 'obj1',
+//     func2: function(){
+//         console.log(obj.name);
+//     },
+//     func3: function(){
+//         console.log(this);
+//     }
+// };
+
+// //func 함수 재활용
+// var obj={
+//     name: 'obj',
+//     func: function(){
+//         var self=this;
+//         return function(){
+//             console.log(self.time);
+//         };
+//     },
+//     time: '1000',
+// };
+
+// var callback=obj.func();
+// setTimeout(callback, 1000);
+
+// var obj2 ={
+//     name: 'obj2',
+//     func: obj.func,
+//     time: '1500'
+// };
+
+// var callback2=obj2.func(); 
+// setTimeout(callback2,1500);
+
+// var obj3={
+//     name: 'obj3',
+//     time:'2000',
+// }
+
+//var callback3 = obj.func.bind(obj3);
+//setTimeout(obj.func.bind(obj3),2000);
+
+//bind 메서드 활용
+// var obj={
+//     name: 'obj',
+//     func: function(){
+//         console.log(this.time);
+//     },
+//     time: '1000',
+// }
+
+// setTimeout(obj.func.bind(obj),1000);
+
+// var obj2={
+//     name: 'obj2',
+//     time: '2000',
+// }
+// setTimeout(obj.func.bind(obj2),2000);
+
+// setTimeout(function(name){
+//     console.log("andy")
+// },3000);
+
+// //콜백 지옥 예시
+// setTimeout(function(name){
+//     var coffeeList= name;
+//     console.log(coffeeList);
+
+//     setTimeout(function(name){
+//         coffeeList+=name;
+//         console.log(coffeeList);
+        
+//         setTimeout(function(name){
+//             coffeeList+=name;
+//             console.log(coffeeList);
+
+// //             setTimeout(function(name){
+// //                 coffeeList+=name;
+// //                 console.log(coffeeList);
+// //             },1000,'카페라떼')
+// //         },1000,'카페 모카')
+// //     },1000, '아메리카노')
+// // },1000,'에스프레소')
+
+// // // setTimeout(function(name){
+// // //     var coffeeList =name;
+// // //     console.log(coffeeList);
+// // // },1000,'에스프레소');
+
+// // //기명  함수로 변환
+// var coffeeList = '';
+
+// var espresso= function(name){
+//     coffeeList = name;
+//     console.log(coffeeList);
+//     setTimeout(americano,1000,'아메리카노');
+// }
+
+// var americano =function(name){
+//     coffeeList +=name;
+//     console.log(coffeeList);
+//     setTimeout(caffeLatte,1000, '카페라떼');
+// }
+
+// var caffeLatte = function(name){
+//     coffeeList+= name;
+//     console.log(coffeeList);
+//     setTimeout(caffeMocha,1000,'카페모카')
+// }
+
+// var caffeMocha = function(name){
+//     coffeeList+=name;
+//     console.log(coffeeList);
+// };
+
+// setTimeout(espresso,1000,'에스프레소');
+
+// //비동기 작업의 동기적 표현(1)-promise문
+// new Promise(function(resolve){
+//     setTimeout(function(){
+//         var name='에스프레소';
+//         console.log(name);
+//         resolve(name);
+//     },1000);
+// }).then(function(prevName){
+//     return new Promise(function(resolve){
+//         setTimeout(function(){
+//             var name= prevName+'아메리카노';
+//             console.log(name);
+//             resolve(name);
+//         },1000);
+//     });
+// }).then(function(prevName){
+//     return new Promise(function(resolve){
+//         setTimeout(function(){
+//             var name=prevName+'카페 라떼';
+//             console.log(name);
+//             resolve(name);
+//         },1000);        
+//     });
+// }).then(function(prevName){
+//     return new Promise(function(resolve){
+//         setTimeout(function(){
+//             var name= prevName+'카페 모카';
+//             console.log(name);
+//             resolve(name);
+//         },1000);
+//     });
+// });
+
+// //비동기 작업의 동기적 표현(2)-promise
+// var addCoffee = function(name){
+//     return function(prevName){
+//         return new Promise(function(resolve){
+//             setTimeout(function(){
+//                 var newName=prevName ? (prevName+','+name): name;
+//                 console.log(newName);
+//                 resolve(newName);
+//             },1000);
+//         });
+//     };
+// };
+// addCoffee('에스프레소')()
+//     .then(addCoffee('아메리카노'))
+//     .then(addCoffee('카페모카'))
+//     .then(addCoffee('카페라떼'));
+
+// 비동기 작업의 동기적 표현(3)-Generator
+var addCoffee = function(prevName, name){
+    setTimeout(function(){
+        coffeeTester.next(prevName? prevName+','+name:name);
+    },1000);
+}; 
+var coffeeGeneraotr= function* (){
+    var espresso = yield addCoffee('', '에스프레소');
+    console.log(espresso);
+    var americano = yield addCoffee(espresso, '아메리카노');
+    console.log(americano);
+    var mocha = yield addCoffee(americano, '카페 모카');
+    console.log(mocha)
+    var latte = yield addCoffee(mocha, '카페 라떼');
+    console.log(latte);
 };
+var coffeeTester = coffeeGeneraotr();
+coffeeTester.next();
 
-//user.name='kim'; // 내부의 프로퍼티
-
-
-var changeName= function(name, user){
-    return{
-        name: name,
-        extra: user.extra,
-    }
+//비동기 작업의 동기적 표현(4)-Promise+Async/await;
+var addCoffee = function(name){
+    return new Promise(function(resolve){
+        setTimeout(function(){
+            resolve(name);
+        },1000);
+    });
 };
-
-var result = changeName("kim", user);
-console.log(user.name);
-
-//toString
-
-//배열을 문자열로 바꾸어 반환한다.
-var arr=[1,2,3,4];
-console.log(arr.toString());
-
-//toString 과 비슷, 그러나 배열을 반환
-var arr=[1,2,3,4,5];
-console.log(arr.valueOf()); // [1,2,3,4];
-
-//ValueOf
-//toString과 비슷, 그러나 배열을 반환
-var arr= [1,2,3,4];
-console.log(arr.valueOf()); //[1,2,3,4]
-
-
-//join
-//배열 원소 전부를 하나의 문자열로 합친다.
-var arr=[1,2,3,4];
-console.log(arr.join("+"));
+var coffeeMaker = async function(){
+    var coffeeList ='';
+    var _addCoffee = async function(name){
+        coffeeList+=(coffeeList?',': '')+await addCoffee(name);
+    };
+    await _addCoffee('에스프레소');
+    console.log(coffeeList);
+    await _addCoffee('아메리카노');
+    console.log(coffeeList);
+    await _addCoffee('카페 라떼');
+    console.log(coffeeList);nn
+    await _addCoffee('카페 모카');
+    console.log(coffeeList);
+}
+coffeeMaker();
 
