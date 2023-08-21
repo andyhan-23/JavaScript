@@ -515,25 +515,130 @@ producer or consumer;
 // test=arr.shift();
 // console.log(arr);
 
-var debounce = function(eventName, func, wait){
-    var timerId=null;
-    return function(event){
-        var self = this;
-        console.log(eventName, 'event 발생');
-        clearTimeout(timeoutId);
-        timeoutId= setTimeout(func.bind(self, event), wait);
-    };
-};
+// var debounce = function(eventName, func, wait){
+//     var timerId=null;
+//     return function(event){
+//         var self = this;
+//         console.log(eventName, 'event 발생');
+//         clearTimeout(timeoutId);
+//         timeoutId= setTimeout(func.bind(self, event), wait);
+//     };
+// };
 
-var moveHandler = function(e){
-    console.log('move event 처리');
-};
+// var moveHandler = function(e){
+//     console.log('move event 처리');
+// };
 
-var wheelHandler = function(e){
-    console.log('wheel event 처리')
+// var wheelHandler = function(e){
+//     console.log('wheel event 처리')
+// }
+
+// document.body.addEventListener('mouseover', debounce('move', moveHandler,
+// 500));
+// document.body.addEventListener('mousewheel', debounce('wheel', wheelHandler,
+// 700)); 
+
+// function solution(num1, num2){
+//     var answer;
+//     if(num1 ===num2){
+//         answer=1;
+//     }
+//     else answer=-1;
+//     return answer;
+// }
+// console.log(2022-40+1);
+
+// function solution(age){
+//     var answer = 2022-age+1;
+//     return answer;
+// }
+
+// function solution(num1, num2){
+//     var answer = num1+num2;
+//     return answer;
+// }
+
+// function solution(num1, num2){
+//     var answer = parseInt((num1/num2) *1000);
+//     return answer;
+// }
+// console.log(solution(7,3))
+
+// function solution(angle){
+//     var answer;
+//     if(angle>0&&angle<90){
+//         answer=1
+//     }
+//     else if(angle===90){
+//         answer=2;
+//     }
+//     else if(angle>90&&ansgle<180){
+//         answer=3;
+//     }
+//     else if(angle===180){
+//         answer=4;
+//     }
+//     return answer;
+// }
+// console.log(solution(1));
+
+// function solution(n){
+//     var answer=0;
+//     var arr=[];
+//     for(var i=0; i<=n; i++){
+//         if(i%2===0){
+//             arr.push(i);
+//         }
+//     }
+//     for(var i=0; i<arr.length; i++){
+//         answer+=arr[i]
+//     }
+//     return answer;
+// }
+// console.log(solution(10));
+
+// var arr=[];
+// for(var i=0; i<5; i++){
+//     arr[i]=i;
+// }
+// console.log(arr);
+
+// function test(n){
+//     var arr=[];
+//     for(var i=0; i<=n; i++){
+//         if(i%2===0){
+//             arr.push(i);
+//         }
+//     }
+//     for(var i=0; i<arr.length; i++){
+//         console.log(arr[i]);
+//     }
+// }
+// console.log(test(10));
+
+// function solution(numbers){
+//     var sum=0;
+//     for(var i=0; i<numbers.length; i++){
+//         sum+=numbers[i];
+//     }
+//     var answer = parseFloat(sum/numbers.length);
+//     return answer;
+// }
+
+// var numbers=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// console.log(solution(numbers));
+
+function solution(n,k){
+    var answer=0;
+    var obj={
+        food:12000,
+        drink:2000,
+    }
+    answer=(obj.food*n)+(obj.drink*k);
+    var temp=parseInt(n/10);
+    answer-=(obj.drink*temp);
+    
+    return answer;
 }
-
-document.body.addEventListener('mouseover', debounce('move', moveHandler,
-500));
-document.body.addEventListener('mousewheel', debounce('wheel', wheelHandler,
-700)); 
+console.log(solution(10,3));

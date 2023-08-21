@@ -528,66 +528,99 @@
 //             console.log(name);
 //             resolve(name);
 //         },1000);
-//     });
-// });
+// //     });
+// // });
 
-// //비동기 작업의 동기적 표현(2)-promise
-// var addCoffee = function(name){
-//     return function(prevName){
-//         return new Promise(function(resolve){
-//             setTimeout(function(){
-//                 var newName=prevName ? (prevName+','+name): name;
-//                 console.log(newName);
-//                 resolve(newName);
-//             },1000);
-//         });
-//     };
+// // //비동기 작업의 동기적 표현(2)-promise
+// // var addCoffee = function(name){
+// //     return function(prevName){
+// //         return new Promise(function(resolve){
+// //             setTimeout(function(){
+// //                 var newName=prevName ? (prevName+','+name): name;
+// //                 console.log(newName);
+// //                 resolve(newName);
+// //             },1000);
+// //         });
+// //     };
+// // };
+// // addCoffee('에스프레소')()
+// //     .then(addCoffee('아메리카노'))
+// //     .then(addCoffee('카페모카'))
+// //     .then(addCoffee('카페라떼'));
+
+// // 비동기 작업의 동기적 표현(3)-Generator
+// var addCoffee = function(prevName, name){
+//     setTimeout(function(){
+//         coffeeTester.next(prevName? prevName+','+name:name);
+//     },1000);
+// }; 
+// var coffeeGeneraotr= function* (){
+//     var espresso = yield addCoffee('', '에스프레소');
+//     console.log(espresso);
+//     var americano = yield addCoffee(espresso, '아메리카노');
+//     console.log(americano);
+//     var mocha = yield addCoffee(americano, '카페 모카');
+//     console.log(mocha)
+//     var latte = yield addCoffee(mocha, '카페 라떼');
+//     console.log(latte);
 // };
-// addCoffee('에스프레소')()
-//     .then(addCoffee('아메리카노'))
-//     .then(addCoffee('카페모카'))
-//     .then(addCoffee('카페라떼'));
+// var coffeeTester = coffeeGeneraotr();
+// coffeeTester.next();
 
-// 비동기 작업의 동기적 표현(3)-Generator
-var addCoffee = function(prevName, name){
-    setTimeout(function(){
-        coffeeTester.next(prevName? prevName+','+name:name);
-    },1000);
-}; 
-var coffeeGeneraotr= function* (){
-    var espresso = yield addCoffee('', '에스프레소');
-    console.log(espresso);
-    var americano = yield addCoffee(espresso, '아메리카노');
-    console.log(americano);
-    var mocha = yield addCoffee(americano, '카페 모카');
-    console.log(mocha)
-    var latte = yield addCoffee(mocha, '카페 라떼');
-    console.log(latte);
-};
-var coffeeTester = coffeeGeneraotr();
-coffeeTester.next();
+// //비동기 작업의 동기적 표현(4)-Promise+Async/await;
+// var addCoffee = function(name){
+//     return new Promise(function(resolve){
+//         setTimeout(function(){
+//             resolve(name);
+//         },1000);
+//     });
+// };
+// var coffeeMaker = async function(){
+//     var coffeeList ='';
+//     var _addCoffee = async function(name){
+//         coffeeList+=(coffeeList?',': '')+await addCoffee(name);
+//     };
+//     await _addCoffee('에스프레소');
+//     console.log(coffeeList);
+//     await _addCoffee('아메리카노');
+//     console.log(coffeeList);
+//     await _addCoffee('카페 라떼');
+//     console.log(coffeeList);nn
+//     await _addCoffee('카페 모카');
+//     console.log(coffeeList);
+// }
+// coffeeMaker();
 
-//비동기 작업의 동기적 표현(4)-Promise+Async/await;
-var addCoffee = function(name){
-    return new Promise(function(resolve){
-        setTimeout(function(){
-            resolve(name);
-        },1000);
-    });
-};
-var coffeeMaker = async function(){
-    var coffeeList ='';
-    var _addCoffee = async function(name){
-        coffeeList+=(coffeeList?',': '')+await addCoffee(name);
-    };
-    await _addCoffee('에스프레소');
-    console.log(coffeeList);
-    await _addCoffee('아메리카노');
-    console.log(coffeeList);
-    await _addCoffee('카페 라떼');
-    console.log(coffeeList);nn
-    await _addCoffee('카페 모카');
-    console.log(coffeeList);
-}
-coffeeMaker();
+// var user={
+//     name: 'andy'
+// }
+// var user2=user;
+// user=null;
+
+// console.log(user2);
+
+// var obj={
+//     a:123,
+//     b: {
+//         c: 'c',
+//         d: 'd',
+//     },
+// };
+
+// var copyobj =obj;
+
+// //copyobj.a=1;
+
+// var copyobj2 = obj;
+// copyobj2 ={
+//     a:1,
+//     b: {
+//         c: 'd',
+//         d: 'c',
+//     }
+// };
+
+
+// console.log(copyobj2.b);
+
 
