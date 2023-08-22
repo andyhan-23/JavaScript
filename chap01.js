@@ -423,36 +423,237 @@
 // var arr= ["1","2"];
 // console.log(arr.toString());
 
-var user ={
+// var user ={
+//     name: 'andy',
+//     age: 25,
+//     extra: {
+//         job: 'frontend-developer'
+//     }
+// };
+
+// var change = function(name,age,user){
+//     return{
+//         name: name,
+//         age: age,
+//         extra: user.extra,
+//     }
+// };
+
+// var deepCopyObject = function(target){
+//     return JSON.parse(JSON.stringify(target));
+// }
+
+// var han = deepCopyObject(user);
+
+// han.extra.job="asd";
+// console.log(user.extra.job);
+
+// console.log(eval("1+3"));
+
+// var test={
+//     a: addm,
+//     b: addEventListe,
+
+// };
+// console.log(test);
+
+// var obj={
+//     a:123,
+//     b:{
+//         c:1,
+//         d:2,
+//     }
+// };
+
+// //객체 프로퍼티만 변경
+// var copyObj=function(obj, newNumber){
+//     var newObj = obj;
+//     newObj.a= newNumber;
+//     return newObj;
+// }
+
+// //객체 자체를 변경
+// var copyObj2=function(obj,newNumber){
+//     return{
+//         a: newNumber,
+//         b: obj.b
+//     }
+// }
+
+// var copyObj3=function(target){
+//     return JSON.parse(JSON.stringify(target));
+// }
+
+// // var copyObj3 =function(obj,newNumber){
+// //     return{
+// //         a:newNumber,
+// //         b:
+// //     }
+// // }
+
+
+// //var test =copyObj(obj, 1);
+// //var test= copyObj2(obj,3);
+
+// var test = copyObj3(obj);
+
+// test.b.c=3;
+// console.log(test.b);
+
+// var user={
+//     name: 'andy',
+//     age: 25,
+// }
+// user=null;
+// console.log(user.age);
+// console.log(user.name);
+
+// var user = new Map();
+
+// var andy={
+//     name: 'andy'
+// }
+
+// var tom={
+//     name:'tom'
+// }
+
+// user.set(andy,1);
+// user.set(tom,2);
+
+// andy=null;
+// for(var obj of user.keys()){
+//     console.log(obj);
+// }
+
+// function solution(num_list){
+//     var arr=new Array();
+//     for(var i=num_list.length-1; i>=0; i--){
+//         arr.push(num_list[i]);
+//     }
+//     return arr;
+// }
+
+// var num_list=[1, 1, 1, 1, 1, 2];
+// console.log(solution(num_list));
+
+// var message="I love you~";
+
+// function solution(message){
+//     var count=0;
+//     var test=Array.prototype.map.call(message, function(char){
+//       return char;
+//     })
+//     return test.length*2;
+    
+// };
+
+// //solution(message);
+// console.log(solution(message));
+
+
+// var my_string='jaron';
+
+// function solution(my_string){
+//     var result= [];
+//     var array = Array.prototype.map.call(my_string, function(char){
+//         return char;
+//     })
+//     for(var i=array.length-1; i>=0; i--){
+//         result.push(array[i]);
+//     }
+//     return result.join("");
+// }
+// console.log(solution(my_string));
+
+// var strlist=["We", "are", "the", "world!"];
+
+// function solution(strlist){
+//     for(var i=0; i<strlist.length; i++){
+//         var arr= Array.prototype.map.call(strlist,function(value){
+//             arr[i]=value;
+//             return arr;
+//         })
+//     }
+// }
+// //solution(strlist);
+// console.log(solution(strlist));
+
+// // var test = strlist.map(function(v){
+// //     return v+'!';
+// // })
+// // console.log(test);
+
+// var a=10;
+// var b=a;
+
+// var obj={
+//     a:10
+// };
+
+// var obj2=obj;
+
+var user={
     name: 'andy',
     age: 25,
-    extra: {
-        job: 'frontend-developer'
-    }
 };
+// var copyUser =function(user,newName){
+//     return{
+//         name: newName,
+//         age: user.age,
+//     }
+// };
 
-var change = function(name,age,user){
-    return{
-        name: name,
-        age: age,
-        extra: user.extra,
-    }
+// //기존 정보를 복사해서 새로운 객체를 반환하는 함수(얕은 복사)
+// var copyObject =function(target){
+//     var result={};
+//     for(var prop in target){
+//         result[prop] = target[prop];
+//     }
+//     return result;
+// };
+
+// var tom= copyObject(user);
+// tom.name='tom';
+// tom.age=3;
+// console.log(user); //false 
+
+// //객체의 깊은 복사를 수행하는 범용 함수
+// var deepCopyObject=function(target){
+//     var result={};
+//     if(typeof target ==='object'&&target!==null){
+//         for(var prop in target){
+//             result[prop] = deepCopyObject(target[prop]);
+//         }
+//     }else{
+//         result=target;
+//     }
+//     return result;
+// };
+
+// s
+
+
+// var x={
+//     a: {
+//         b: 2
+//     }
+// };
+
+// var y =x;
+// x=1; //객체와의 연결 끊음
+
+// var z=y.a.b; //객체 b의 메모리 주소가 연결됨
+// y='bumsu' //변수 y에는 문자열을 할당하여 객체 a와의 연결을 끊은 상태
+
+// z=null// 객체 b와의 연결을 끊은 상태;
+
+function foo(s){
+    s="재할당합니다"
+    return s.substring(0,2);
 };
+var str = "hello world!";
+foo(str);
 
-var deepCopyObject = function(target){
-    return JSON.parse(JSON.stringify(target));
-}
-
-var han = deepCopyObject(user);
-
-han.extra.job="asd";
-console.log(user.extra.job);
-
-console.log(eval("1+3"));
-
-var test={
-    a: addm,
-    b: addEventListe,
-
-};
-console.log(test);
+console.log(foo(str));
+console.log(str);
