@@ -593,10 +593,10 @@
 
 // var obj2=obj;
 
-var user={
-    name: 'andy',
-    age: 25,
-};
+// var user={
+//     name: 'andy',
+//     age: 25,
+// };
 // var copyUser =function(user,newName){
 //     return{
 //         name: newName,
@@ -648,12 +648,238 @@ var user={
 
 // z=null// 객체 b와의 연결을 끊은 상태;
 
-function foo(s){
-    s="재할당합니다"
-    return s.substring(0,2);
-};
-var str = "hello world!";
-foo(str);
+// function foo(s){
+//     s="재할당합니다"
+//     return s.substring(0,2);
+// };
+// var str = "hello world!";
+// foo(str);
 
-console.log(foo(str));
-console.log(str);
+// console.log(foo(str));
+// console.log(str);
+
+// var obj={a:123};
+// var copyobj= obj;
+
+// var copyobj2= obj;
+// copyobj2={a:1};
+// copyobj.a=1;
+// console.log(obj===copyobj2);
+
+// let hello=1;
+// let hello=3;
+
+// console.log(b);
+// var b=10;
+
+// console.log(a);
+// let a=20;
+
+// const a={
+//     name: '1',
+//     a:'2',
+// };
+
+// const test=12;
+// // test=2;
+// // a.name='2';
+
+
+// var a=13;
+
+// function test(){
+//     console.log(a);
+// };
+// test();
+
+// let b=2;
+// function test2(){
+//     let b=3;
+//     console.log(b);
+//     function test(){
+//         b=1
+//         console.log(b);
+//     };
+//     test();
+// }
+// test2();
+
+// var times=4;
+// if(times>5){
+//     var hello="hi";
+//     console.log(hello);
+// }
+// console.log(hello);
+
+// function func(){
+//     var hello="hello";
+// }
+// console.log(hello); //error: hello is not defined.
+
+// var hello="hello";
+// var hello="hi";
+
+
+// function func(){
+//     var a=1;
+//     console.log(a);
+//     function innerFunc(){
+//         console.log(a);
+//         var a=1;
+//     };
+//     innerFunc();
+// };
+// func();
+
+// let times=4;
+// let hi ="hi";
+
+// if(times>2){
+//     let hi="bye";
+//     console.log(hi); //bye
+// }
+// console.log(hi); //hi
+
+// let a=10;
+// a=20;
+// console.log(a); //20
+
+// let b=10;
+// let b=10;
+
+// let hi="hi";
+// if(true){
+//     let hi="hello";
+//     console.log(hi); //hello
+// }
+// console.log(hi); //hi
+
+// console.log(a); //undefined;
+// var a=10;
+
+// console.log(a);
+// var a;
+
+// console.log(a);
+// let a=10;
+
+// const a=1;
+// a=3;
+// console.log(a); //error;
+// const b=2;
+// const b=3;
+// console.log(b);
+
+// const user={
+//     name: 'andy',
+//     age: 25,
+// };
+
+// // user={
+// //     test: 5,
+// // }
+// //console.log(user);
+
+// let user2={
+//     name:'name',
+//     age: 25,
+// };
+
+// user.gender="male";
+// console.log(user);
+
+
+// var a=10;
+// if(true){
+//     var a=20;
+//     console.log(a);
+// }
+// console.log(a);
+
+
+// function func(){
+//     let a=10;
+//     console.log(a);
+//     function innerFunc(){
+//         var a;
+//         console.log(a);
+        
+//         function innerFunc2(){
+//             console.log(a);
+//         }
+//         innerFunc2();
+//     }
+//     innerFunc();
+// };
+// func();
+
+// let times=0;
+
+// if(times>1){
+//     let a=1;
+//     console.log(a);
+//     console.log(times);
+// }else{
+//     let a=3;
+//     console.log(a);
+//     console.log(times);
+// }
+
+// let s1 =Symbol("andy");
+
+// var user={
+//     [s1]: 'andy',
+//     age: 25,
+// };
+// console.log(Object.getOwnPropertySymbols(user)); 
+
+// //Symbol을 이용한 enum 생성
+// const day = Object.freeze({
+//     SUNDAY: Symbol('sunday'),
+//     MONDAY: Symbol('monday'),
+//     TUESDAY: Symbol('thusday'),
+//     WEDNESDAY: Symbol('wednesday'),
+//     THURSDAY: Symbol('thursday'),()
+//     FRIDAY: Symbol('friday'),
+//     SATURDAY: Symbol('saturday'),
+// });
+// const TODAY = day.WEDNESDAY;
+// console.log(day);
+
+// let key = Symbol.for("hello");
+// let obj={
+//     [Symbol.for("hello")]:"hello"
+// };
+// console.log(obj);
+
+//  var arr = [1,2,3];
+// // for(let value of arr){
+// //     console.log(value);
+// // }
+
+// var iterator = arr[Symbol.iterator]();
+// while(true){
+//     const data = iterator.next();
+//     if(data.done) break;
+//     else console.log(data.value);
+// }
+
+// let arr=[2,4,6];
+
+// for(let value of arr){
+//     console.log(value);
+// }
+
+// let iterator = arr[Symbol.iterator]();
+// while(true){
+//     let data = iterator.next();
+//     if(data.done) break;
+//     else console.log(data.value);
+// }
+
+
+// var arr =['andy','tom','steve'];
+
+// var test= Array.from(arr, function(x){
+//     console.log(x[0]);
+// });
