@@ -621,6 +621,234 @@
 // };
 
 
-// console.log(copyobj2.b);
+// // console.log(copyobj2.b);
 
+// var outer = function(){
+//     var a=1;
+//     var inner = function(){
+//         return ++a;
+//     };
+//     return inner;
+// }
+// var outer2 = outer();
+// console.log(outer2()); //2
+// console.log(outer2()); //3
 
+//return 없이도 클로저가 발생하는 경우
+//(1) setInterval/setTimeout
+// (function (){
+//     var a=0;
+//     //var intervalId= null;
+//     var inner =function(){
+//         if(++a>=10){
+//             clearInterval(intervalId);
+//         }
+//         console.log(a);
+//     };
+//     intervalId =setInterval(inner,1000);
+// })();
+
+// var test=function(){
+//     var a=0;
+//     var intervalId =null;
+//     var inner=function(){
+//         if(++a>=5){
+//             clearInterval(intervalId);   
+//         }
+//         console.log(a);
+//     }
+//     intervalId=setInterval(inner, 1000);
+// }
+// test();
+
+//클로저의 메모리 관리
+// var outer = (function(){
+//     var a=1;
+//     var inner =function(){
+//         return ++a;
+//     };
+//     return inner;
+// })();
+// console.log(outer());//2
+// console.log(outer());//3
+// outer= undefined;
+// console.log(outer());//error
+
+// var func= function(){
+//     var a=0;
+//     var intervalId=null;
+//     var innerFunc=function(){
+//         if(++a>=10){
+//             clearInterval(intervalId);
+//             innerFunc=null; //innerFunc 식별자의 함수 참조를 끊음
+//         }
+//         console.log(a);
+//     };
+//     intervalId=setInterval(innerFunc,1000);
+// };
+// func();
+// //(3)eventListener에 의한 클로저의 메모리 해제
+// (function(){
+//     var count=0;
+//     var button= document.createElement('button');
+//     button.inner
+// })
+
+// /*
+// 자동차 게임
+// 1.) 각턴마다 주사위를 굴려 나온 숫자(km)만큼 이동한다.
+// 2.) 차량별로 연료량(fuel)과 연비(power)는 무작위로 생성된다.
+// 3.) 남은 연료가 이동할 거리에 필요한 연료보다 부족하면 이동하지 못한다.
+// 4.) 모든 유저가 이동할 수 없는 턴에 게임이 종료된다.
+// 5.) 게임 종료 시점에 가장 멀리 이동해 있는 사람이 승리
+// */
+
+// // let car={
+// //     fuel: Math.ceil(Math.random()*10+10),
+// //     power: Math.ceil(Math.random()*3+2),
+// //     moved:0,
+// //     run: function(){
+// //         var km= Math.ceil(Math.random()*6);
+// //         var wastedFuel = km / this.power;
+// //         if(this.fuel<wastedFuel){
+// //             console.log("이동 불가");
+// //             return;
+// //         }
+// //         this.fuel -=wastedFuel;
+// //         this.moved +=km;
+//         console.log(km+'km 이동( 총' + this.moved+'km) 남은 연료:'+this.fuel);
+// //     }
+// // };
+
+// // car.fuel=10; 
+// // car.power=10;
+// // //car.moved=3;
+// // car.run()
+
+// var createCar = function(){
+//     var fuel = Math.ceil(Math.random()*10+10)//연료(L)
+//     var power =Math.ceil(Math.random()*3+2)//연비(km/L)
+//     var moved = 0;
+//     return{
+//         get moved(){
+//             return moved;
+//         },
+//         run: function(){
+//             var km = Math.ceil(Math.random()*6);
+//             var wastedFuel = km/power;
+//             if(fuel <wastedFuel){
+//                 console.log('이동 불가');
+//                 return;
+//             }
+//             fuel -= wastedFuel;
+//             moved +=km;
+//             console.log(km+'km 이동( 총'+moved+'km) 남은 연료: '+fuel);
+//         }
+//     };
+// };
+// var car= createCar();
+// car.run();
+// console.log(car.moved);
+// console.log(car.fuel);
+// console.log(car.power);
+
+// car.fuel =1000;
+// console.log(car.fuel);
+// car.run();
+
+// car.power=100;
+// console.log(car.power);
+// car.run();
+
+// car.moved=1000;
+// console.log(car.moved);
+// car.run();
+
+// var createCar =function(){
+//     var fuel = 0;//연료(L)
+//     var power = Math.ceil(Math.random()*3+2)//연비(km/L);
+//     var moved = 0;
+//     var publicMembers={
+//         get moved(){
+//             return moved;
+//         },
+//         run: function(){
+//             var km = Math.ceil(Math.random()*6);
+//             var wastedFuel = km/power;
+//             if(fuel<wastedFuel){
+//                 console.log('이동 불가');
+//                 return;
+//             }
+//             fuel -= wastedFuel;
+//             moved +=km;
+//             console.log(km+'km 이동( 총'+moved+'km) 남은 연료:'+fuel);
+//         }
+//     };
+//     Object.freeze(publicMembers);
+//     return publicMembers;
+// }
+// var car= createCar();
+
+// var add= function(){
+//     var result=0;
+//     for(var i=0; i<arguments.length; i++){
+//         result +=arguments[i];
+//     };
+//     return result;
+// };
+// var addPartial= add.bind(null,1,2,3,4,5);
+
+// console.log(addPartial(6,7,8,9,10));
+
+var partial = function(){
+    var originalPartialArgs = arguments;
+    var func = originalPartialArgs[0];
+    if(typeof func !== 'function'){
+        throw new Error('첫 번째 인자가 함수가 아닙니다.');
+    }
+    return function(){
+        var partialArgs= Array.prototype.slice.call(originalPartialArgs,1);
+        var restArgs = Array.prototype.slice.call(arguments);
+        return func.apply(this, partialArgs.concat(restArgs));
+    };
+};
+
+var add= function(){
+    var result=0;
+    for(var i=0; i<arguments.length; i++){
+        result += arguments[i];
+    }
+    return result;
+};
+
+var addPartial = partial(add,1,2,3,4,5);
+console.log(addPartial(6,7,8,9,10));
+
+var dog= {
+    name: '강아지',
+    greet: partial(function(prefix,suffix){
+        return prefix +this.name+suffix;
+    }, '왈왈')
+};
+var test=dog.greet('입니다!');
+console.log(test); 
+
+Object.defineProperty(window,'_',{
+    value: 'EMPTY_SPACE',
+    writable: false,
+    configurable: false,
+    enumerable: false
+});
+
+var partial2 = function(){
+    var originalPartialArgs = arguments;
+    var func=originalPartialArgs[0];
+    if(typeof func !=='function'){
+        throw new Error('첫 번째 인자가 함수가 아닙니다.');
+    }
+    return function (){
+        var partialArgs = Array.prototype.slice.call(originalPartialArgs,1);
+        var restArgs = Array.prototype.slice.call(arguments);
+        return func.apply(this, partialArgs.concat(restArgs));
+    };
+};

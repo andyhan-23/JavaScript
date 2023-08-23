@@ -667,9 +667,79 @@ woody 멘토님, 질문이 하나 더 있어서 이렇게 밑에 남김니다. �
 // 첫 번째 인자로 삼아 함수를 실행하는 명령입니다. 버튼을 클릭하면 앞서 지정한 엘리먼트와 클릭 이벤트에 관한 정보가 담긴 객체가 출력됩니다.
 // */
 
-document.body.innerHTML='<div>a</div><div>b</div><div>c</div>';
-var nodeList= document.querySelectorAll('div');
-var arr= Array.prototype.slice.call(nodeList);
-arr.forEach(function(number){
-    console.log(number); //순차적으로 <div>태그 안에 a,b,c 출력
-}) 
+// document.body.innerHTML='<div>a</div><div>b</div><div>c</div>';
+// var nodeList= document.querySelectorAll('div');
+// var arr= Array.prototype.slice.call(nodeList);
+// arr.forEach(function(number){
+//     console.log(number); //순차적으로 <div>태그 안에 a,b,c 출력
+// }) 
+
+//(2)eventListener
+// (function(){
+//     var count=0;
+//     var button = document.createElement('button');
+//     button.innerText ='click';
+//     button.addEventListener('click',function(){
+//         console.log(++count, 'times clicked');
+//     });
+//     document.body.appendChild(button);
+// })();
+
+// //(3)eventListener에 의한 클로저의 메모리 해제
+// (function(){
+//     var count=0;
+//     var button= document.createElement('button');
+//     button.innerText='click';
+//     var clickHandler = function(){
+//         console.log(++count, 'time clicked');
+//         if(count>=10){
+//             button.removeEventListener('click', clickHandler);
+//             clickHandler=null; //clickHandler 식별자의 함수 참조를 끊음
+//         }
+//     };
+//     button.addEventListener('click', clickHandler);
+//     document.body.appendChild(button);
+// })();
+
+var fruits =['apple', 'banana', 'peach'];
+var $ul= document.createElement('ul');
+
+//첫 번째
+fruits.forEach(function(fruit){
+    var $li=document.createElement('li');
+    $li.innerText=fruit;
+    $li.addEventListener('click', function(){
+        alert('your choic is ' +fruit);
+    });
+    $ul.appendChild($li);
+});
+document.body.appendChild($ul);
+
+//두 번째
+var alertFruit = function(fruit){
+    alert('your choic is '+ fruit);
+};
+fruits.forEach(function(fruit){
+    var $li=document.createElement('li');
+    $li.innerText = fruit;
+    $li.addEventListener('click', alertFruit.bind(null, fruit));
+    $ul.appendChild($li);
+});
+document.body.appendChild($ul);
+alertFruit(fruits[1]);
+
+//세 번째
+var alertFruitBuilder =function(fruit){
+    return function(){
+        alert('your choice is' + fruit);
+    };
+};
+fruits.forEach(function(fruit){
+    var $li = document.createElement('li');
+    $li.innerText=fruit;
+    $li.addEventListener('click', alertFruitBuilder(fruit));
+    $ul.appendChild($li);
+});
+document.body.appendChild($ul);
+alertFruit(fruits[0]);
+
