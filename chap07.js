@@ -190,3 +190,188 @@ Person { name: '사람5' } true
 // arr.push(3);
 // console.log(arr);
 // console.log(arr.hasOwnProperty(7));
+
+// var arr=[1,2];
+// console.log(Array.prototype.toString.call(arr)); //1,2 출력
+// console.log(Object.prototype.toString.call(arr)); //[object Array] 출력
+
+// console.log(arr.toString()); //1,2 출력
+
+// arr.toString= function(){
+//     return this.join('_');
+// };
+// console.log(arr.toString());
+
+// var obj={a:1};
+// console.log(Object.prototype.toString.call(obj));
+// console.log(obj.toString());
+
+// obj.toString=function(){
+//     return v=9;
+// }
+// console.log(obj.toString());
+
+
+// test();
+// function test(){
+//     console.log(1);
+// }; 
+
+// var func=function(){
+//     console.log(2);
+// };
+// func();
+
+
+// function foo(){
+//     return
+//     {}
+// }; 
+
+// console.log(foo());
+// console.log(5/3);
+
+// var nan=12;
+// var x= nan;
+// console.log(x);
+
+// console.log('""');
+
+// let first= 'han';
+// let last = 'andy';
+
+// let template =`sada`;
+// console.log(template);
+// //console.log("my name is "+last +' '+first);
+// console.log(`my name is ${last} ${first}`)
+// console.log(`1+2=${1+2}`);
+// console.log('1+2=${1+2}');
+
+// var mySymbol = Symbol("a");
+// var mySymbol = Symbol("b");
+// console.log(typeof mySymbol);
+// console.log(mySymbol.description);
+// console.log(mySymbol.toString());
+// console.log(!!mySymbol);
+
+// if(!!mySymbol){
+//     console.log("hello ");
+// }
+
+// const direction={
+//     up:1,
+//     down: 2,
+//     left: 3,
+//     right: 4,
+// };
+
+// const mydirection= direction.up;
+
+// if(mydirection===direction.up){
+//     console.log("you're goung up");
+// };
+
+// const direction2={
+//     up: Symbol('up'),
+//     down: Symbol('down'),
+//     left: Symbol('left'),
+//     right: Symbol('right'),
+// };
+
+// const mydirection2= direction2.up;
+
+// direction2.up=
+// if(mydirection2===direction2.up){
+//     console.log('you are going up');
+// }
+
+// var arr= new Array();
+// arr=[1,2,3,13];
+// var result=arr.find(function(value){
+//     var answer= value>10;
+//     return answer;
+// })
+// console.log(result);
+
+// Array.prototype.sum= function(){
+//     return this.reduce(function(accumulator, currentValue){
+//         return accumulator+currentValue;
+//     })
+// };
+
+// // var array=[1,2,3];
+// // console.log(array.sum());
+
+// Array.prototype[Symbol.for('sum')]= function(){
+//     return this.reduce(function(accumulator,currentValue){
+//         return accumulator+currentValue;
+//     })
+// };
+
+// console.log([5,6,7].sum());
+// console.log([1,2,3][Symbol.for('sum')]());
+
+
+// var test=3;
+// console.log(typeof test);
+
+// for(var i=0; i<2; i++){
+//     console.log(i);
+// }
+
+// for(var i=0; i<3; i++){
+//     console.log(i);
+// }
+
+// for(var i=0; i<4; i++){
+//     console.log(i);
+// }
+
+// var number=10;
+// var string= number.toString();
+// console.log(typeof string, string);
+// console.log(typeof number, number);
+
+// var user={
+//     name:'andy',
+//     gedner: 'male',
+// };
+// user=null;
+// console.log(user&&user.name);
+
+// var obj={
+//     a:3,
+// };
+
+// var test={
+//     a:4,
+// }
+
+// console.log(test.b);
+
+// var user={
+//     1:'andu',
+//     '2':'ads',
+//     length: 2,
+// };
+// console.log(Object.keys(user));
+
+
+// var obj={};
+// var key= 1;
+// obj[key]='name;';
+
+// console.log(obj);
+
+// var person={
+//     name: 'andy', //프로퍼티
+//     age: 20, //프로퍼티 (age:키, 20:value)
+// }
+
+var counter={
+    num: 0,
+    func: function(){
+        this.num++;
+    }
+}
+counter.func();

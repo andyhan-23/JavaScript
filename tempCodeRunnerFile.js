@@ -1,11 +1,29 @@
-var Constructor = function(name){
-//     this.name= name;
-// }
-// Constructor.prototype.method1=function(){
+
+// var obj={
+//     a:3,
 // };
-// Constructor.prototype.property1='Constructor Prototype Property';
 
-// var instance = new Constructor('instance');
+// var test={
+//     a:4,
+// }
 
-// console.dir(Constructor);
-// console.dir(instance);
+// console.log(test.b);
+
+// var user={
+//     1:'andu',
+//     '2':'ads',
+//     length: 2,
+// };
+// console.log(Object.keys(user));
+
+
+// var obj={};
+// var key= 1;
+// obj[key]='name;';
+
+// console.log(obj);
+
+// var person={
+//     name: 'andy', //프로퍼티
+//     age: 20, //프로퍼티 (age:키, 20:value)
+// }
