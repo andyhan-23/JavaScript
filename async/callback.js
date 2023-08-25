@@ -701,45 +701,122 @@ woody 멘토님, 질문이 하나 더 있어서 이렇게 밑에 남김니다. �
 //     document.body.appendChild(button);
 // })();
 
-var fruits =['apple', 'banana', 'peach'];
-var $ul= document.createElement('ul');
+// var fruits =['apple', 'banana', 'peach'];
+// var $ul= document.createElement('ul');
 
-//첫 번째
-fruits.forEach(function(fruit){
-    var $li=document.createElement('li');
-    $li.innerText=fruit;
-    $li.addEventListener('click', function(){
-        alert('your choic is ' +fruit);
-    });
-    $ul.appendChild($li);
-});
-document.body.appendChild($ul);
+// //첫 번째
+// fruits.forEach(function(fruit){
+//     var $li=document.createElement('li');
+//     $li.innerText=fruit;
+//     $li.addEventListener('click', function(){
+//         alert('your choic is ' +fruit);
+//     });
+//     $ul.appendChild($li);
+// });
+// document.body.appendChild($ul);
 
-//두 번째
-var alertFruit = function(fruit){
-    alert('your choic is '+ fruit);
-};
-fruits.forEach(function(fruit){
-    var $li=document.createElement('li');
-    $li.innerText = fruit;
-    $li.addEventListener('click', alertFruit.bind(null, fruit));
-    $ul.appendChild($li);
-});
-document.body.appendChild($ul);
-alertFruit(fruits[1]);
+// //두 번째
+// var alertFruit = function(fruit){
+//     alert('your choic is '+ fruit);
+// };
+// fruits.forEach(function(fruit){
+//     var $li=document.createElement('li');
+//     $li.innerText = fruit;
+//     $li.addEventListener('click', alertFruit.bind(null, fruit));
+//     $ul.appendChild($li);
+// });
+// document.body.appendChild($ul);
+// alertFruit(fruits[1]);
 
-//세 번째
-var alertFruitBuilder =function(fruit){
-    return function(){
-        alert('your choice is' + fruit);
-    };
-};
-fruits.forEach(function(fruit){
-    var $li = document.createElement('li');
-    $li.innerText=fruit;
-    $li.addEventListener('click', alertFruitBuilder(fruit));
-    $ul.appendChild($li);
-});
-document.body.appendChild($ul);
-alertFruit(fruits[0]);
+// //세 번째
+// var alertFruitBuilder =function(fruit){
+//     return function(){
+//         alert('your choice is' + fruit);
+//     };
+// };
+// fruits.forEach(function(fruit){
+//     var $li = document.createElement('li');
+//     $li.innerText=fruit;
+//     $li.addEventListener('click', alertFruitBuilder(fruit));
+//     $ul.appendChild($li);
+// });
+// document.body.appendChild($ul);
+// alertFruit(fruits[0]);
 
+
+// Object.defineProperty(window,'_',{
+//     value: 'EMPTY_SPACE',
+//     writable: false,
+//     configurable: false,
+//     enumerable: false
+// });
+
+// var partial2 = function(){
+//     var originalPartialArgs = arguments;
+//     var func = originalPartialArgs[0];
+//     if(typeof func !== 'function'){
+//         throw new Error('첫 번째 인자가 함수가 아닙니다.');
+//     }
+// return function(){
+//     var partialArgs = Array.prototype.slice.call(originalPartialArgs,1);
+//     var restArgs = Array.prototype.slice.call(arguments);
+//     for(var i=0; i<partialArgs.length; i++){
+//         if(partialArgs[i] ===_){
+//             partialArgs[i]=restArgs.shift();
+//         }
+//     }
+//     return func.apply(this, partialArgs.concat(restArgs));
+// };
+// };
+
+// var add = function(){
+//     var result=0;
+//     for(var i=0; i<arguments.length; i++){
+//         result += arguments[i];
+//     }
+//     return result;
+// };
+// var addPartial = partial2(add,1,2,_,4,5,_,_,8,9);
+// console.log(addPartial(3,6,7,10));
+
+// var dog= {
+//     name: '강아지',
+//     greet: partial2(function(prefix,suffix){
+//         return prefix +this.name +suffix;
+//     }, '왈왈')
+// };
+// console.log(dog.greet('배고파요!'));
+
+// var debounce = function(eventName, func, wait){
+//     var timeoutId =null;
+//     return function(event){
+//         var self = this;
+//         console.log(eventName, 'event 발생');
+//         clearTimeout(timeoutId);
+//         timeoutId =setTimeout(func.bind(self, event),wait);
+//     };
+// };
+
+// var moveHandler = function(e){
+//     console.log("move event 처리");
+// };
+// var wheelHandler=function(e){
+//     console.log("wheel event 처리");
+// };
+// document.body.addEventListener('mousemove', debounce('move', moveHandler, 500));
+// document.body.addEventListener('mousewheel', debounce('wheel',wheelHandler,700));
+
+// function debounce(func, timeout = 300) {
+//     let timer;
+//     return (...args) => {
+//       clearTimeout(timer);
+//       timer = setTimeout(() => {
+//         func.apply(this, args);
+//       }, timeout);
+//     };
+//   }
+//   function saveInput() {
+//     console.log('Saving data');
+//   }
+//   const processChange = debounce(() => saveInput());
+//   window.addEventListener('scroll', processChange);

@@ -1,10 +1,11 @@
-var add= function(){
-    var result=0;
-    for(var i=0; i<arguments.length; i++){
-        result +=arguments[i];
-    };
-    return result;
-};
-var addPartial= add.bind(null,1,2,3,4,5);
+var Constructor = function(name){
+//     this.name= name;
+// }
+// Constructor.prototype.method1=function(){
+// };
+// Constructor.prototype.property1='Constructor Prototype Property';
 
-console.log(addPartial(6,7,8,9,10));
+// var instance = new Constructor('instance');
+
+// console.dir(Constructor);
+// console.dir(instance);

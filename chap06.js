@@ -382,3 +382,24 @@ new 연산자로 constructor을 호출하면 instance가 만들어지는데 이 
 //     return this.join('_');
 // };
 // console.log(arr.toString());
+
+
+//가독성이 떨어지는 커링 함수
+var curry5 = function(func){
+    return function(a){
+        return function(b){
+            return function(c){
+                return function(d){
+                    return function(e){
+                        return func(a,b,c,d,e);
+                    };
+                };
+            };
+        };
+    };
+};
+
+var curry5 =func=>a=>b=>c=>d=>e=>f=>func(a,b,c,d,e,f);
+var getMaxWith10 = curry5(Math.max);
+console.log(getMaxWith10(1)(2)(3)(4)(5)(2)); //5출력
+
