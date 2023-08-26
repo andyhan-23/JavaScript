@@ -368,10 +368,226 @@ Person { name: '사람5' } true
 //     age: 20, //프로퍼티 (age:키, 20:value)
 // }
 
-var counter={
-    num: 0,
-    func: function(){
-        this.num++;
-    }
-}
-counter.func();
+// var counter={
+//     num: 0, //프로퍼티
+//     func: function(){
+//         return this.num++; //메서드
+//     }
+// }
+
+// var person = {
+//     name: 'lee',
+//     sayHello: function(){
+//         console.log(`hello! my name is${this.name}`)
+//     }
+// };
+
+// // var func=function(){
+// //     console.log("a"); 
+// // };
+
+// //객체 리터럴에 의한 객체 생성
+// var person ={
+//     name:'andy',
+//     func: function(){
+//         console.log(`hello my name is ${this.name}`);
+//     }
+// }
+// console.log(typeof person); //object
+// person.func()//hello my name is andy
+
+// var empty={};
+// console.log(empty); //{}출력
+
+// var person={
+//     name: 'andy',//프로퍼티 키는 name, 값은 문자열 andy
+//     age: 25, //프로퍼티 키는 age, 값은 숫자 25
+// }
+
+// var person={
+//     a: 'andy',
+//     'nam' : '1',
+// }
+// var key='asd';
+// person[key]=2;
+// // //var test= person[a];
+// // console.log(person.asd);
+
+// var obj={};
+// var key='key';
+// obj[key]= 1;
+// console.log(obj); // {key:1} 출력
+
+// var obj={
+//     '':'' //빈 문자열도 프로퍼티 키로 사용할 수 있다
+// }
+// console.log(obj);
+
+// var name={
+//     name: 'andy',
+//     name: 'han'
+// }
+// console.log(name); //{name: han}출력
+
+// var circle ={
+//     radius: 5, //프로퍼티
+//     diameter: function(){
+//         return this.radius*2; //메서드
+//     }
+// }
+// let result=circle.diameter(); //10
+
+// var person={
+//     'first-name':'han',
+//     1:32
+// }
+
+// //console.log(person.'first-name'); //error 출력
+// //console.log(person.first-name); //error 출력
+
+// //console.log(person[first-name]); //error 출력
+// //console.log(person['first-name']); //han 출력
+
+// //console.log(person.1) //error출력
+// //console.log(person.'1') //error출력
+// console.log(person['1']); //32 출력
+// console.log(person[1]); //32 출력
+
+
+// var person={
+//     name: 'andy',
+// }
+// person.name='han';
+// console.log(person);
+// person.age=25;
+// console.log(person); //{name: 'han', age:25}출력
+// delete person.age;
+// console.log(person);
+
+
+// //ES5
+// var x=1,y=2;
+
+// var obj={
+//     x:x,
+//     y:y,
+// }
+// console.log(obj); // {x:1 ,y:2} 출력
+
+// //ES6
+// var obj={
+//     x,y
+// }
+// console.log(obj);//{x:1, y:2} 출력
+
+// function add(x,y){ //x, y를 매개변수
+//     return x+y; //반환값
+// }
+// add(2,5); //2,5를 인수
+
+// //함수 선언문
+// function add(x,y){
+//     return x+y;
+// }
+// //console.log(add(3,4)); //함수 호출
+
+// add(2,3);
+// //함수 표현식
+// var plus=function(x,y){
+//     return x+y;
+// }
+// plus(3,4);
+
+// console.log(add(3,4)); //7;
+// console.log(minus(3,4)); //error
+
+// function add(x, y){
+//     return x+y;
+// };
+
+// var minus=function(x,y){
+//     return x-y;
+// };
+
+// var add=new Function('x','y','return x+y');
+// console.log(add(4,5));
+
+// var add1=(function(){
+//     var a=10;
+//     return function(x,y){
+//         return x+y+a;
+//     };
+// }());
+// console.log(add1(2,4))
+
+// var add2=(function(){
+//     var a=10;
+//     return new Function('x','y','return x+y+a'); //error: a is not defiend
+// }());
+// console.log(add2(3,4));
+
+// var func=function(x,y){
+//     return x+y;
+// }
+
+// var add=function(a,b){
+//     return a+b;
+// }
+// console.log(add(3)); // error: NaN 출력 
+
+
+// function add(x,y){
+//     return x+y;
+    
+// }
+// function add(x,y){
+//     if(typeof x!=='number' && typeof y!=='number'){
+//         throw new TypeError("비정상")
+//     }else{
+//         console.log("정상입니다.")
+//     };
+//     return x+y;
+    
+// }
+// console.log(add('ㅁ','ㅁ')); //error 출력
+
+// function func(x,y){
+//     var innerFunc=function(x,y){
+//         return x-y;
+//     }
+//     innerFunc();
+//     return x+y;
+// }
+// console.log(func(3,4)); //7
+
+// function func(x,y){
+//     return;
+// }
+// console.log(func()); //undefined 출력
+
+// function func(x,y){
+//     return
+//     x+y; //무시된다.
+// }
+// console.log(func(3,4))//undefined 출력
+
+//매개변수는 primitive 원시 값을 전달받고, 매개변수 obj는 객체를 전달받는다.
+function changeVal(primitive, obj){
+    primitive=primitive+100;
+    obj.name='kim';
+};
+
+//외부 상태
+var num=10;
+var person ={name: 'lee'};
+
+console.log(num); //100
+console.log(person); //{name:lee}
+//원시 값은 값 자체가 복사되어 전달되고 객체는 참조 값이 복사되어 전달된다.
+changeVal(num, person); 
+
+//원시 값은 원본이 훼손되지 않는다
+console.log(num); //100
+console.log(person); //{name:kim} 
+
+//
