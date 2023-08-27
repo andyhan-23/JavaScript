@@ -572,22 +572,423 @@ Person { name: '사람5' } true
 // console.log(func(3,4))//undefined 출력
 
 //매개변수는 primitive 원시 값을 전달받고, 매개변수 obj는 객체를 전달받는다.
-function changeVal(primitive, obj){
-    primitive=primitive+100;
-    obj.name='kim';
+// function changeVal(primitive, obj){
+//     primitive=primitive+100;
+//     obj.name='kim';
+// };
+
+// //외부 상태
+// var num=10;
+// var person ={name: 'lee'};
+
+// console.log(num); //100
+// console.log(person); //{name:lee}
+// //원시 값은 값 자체가 복사되어 전달되고 객체는 참조 값이 복사되어 전달된다.
+// changeVal(num, person); 
+
+// //원시 값은 원본이 훼손되지 않는다
+// console.log(num); //100
+// console.log(person); //{name:kim} 
+
+//즉시 실행함수
+// var plus=(function(){
+//     var a=3;
+//     var b=5;
+//     return a+b;
+// }());
+// console.log(plus);
+
+// function countdown(n){
+//     for(var i=n; i>=0; i--){
+//         console.log(i)
+//     }
+// };
+// countdown(10);
+
+// //재귀함수 예시
+// function recursive_func(n){
+//     if(n<0){
+//         return;
+//     }
+//     console.log(n);
+//     recursive_func(n-1);
+// }
+// recursive_func(10);
+//팩토리얼
+// function factorial(n){
+//     if(n<=1) return 1;
+//     return n*factorial(n-1);
+// }
+// console.log(factorial(-3));
+
+// function outer(){
+//     console.log(1);
+//     function inner(){
+//         console.log(2);
+//     }
+//     inner();
+// }
+// outer();
+
+// function outer(){
+//     var x=1;
+    
+//     //중첩 함수
+//     function inner(){
+//         var y=2;
+//         //외부 함수의 변수를 참조할 수 있다.
+//         console.log(x+y); //3;
+//     }
+//     inner();
+// }
+// outer();
+
+// //n만큼 반복하여 i를 출력한다
+// function repeat(n){
+//     for(var i=0;i<=n; i++){
+//         console.log(i);
+//     }
+// };
+// repeat(5);//0,1,2,3,4,5
+
+// //n만큼 반복하여 i가 짝수일때만 출력
+// function oddRepeat(n){
+//     for(var i=0 ;i<n; i++){
+//         if(i%2==0){
+//             console.log(i)
+//         }
+//     }
+// };
+// oddRepeat(5);//0,2,4
+
+// //외부로 전달받은 f를 n만큼 반복 호출한다.
+function repeat(n,f){
+    for(var i=0;i<=n; i++){
+        f(i);
+    }
 };
 
-//외부 상태
-var num=10;
-var person ={name: 'lee'};
+// function logAll(n){
+//     return n;
+// };
 
-console.log(num); //100
-console.log(person); //{name:lee}
-//원시 값은 값 자체가 복사되어 전달되고 객체는 참조 값이 복사되어 전달된다.
-changeVal(num, person); 
+// function logOdd(n){
+//     if(n%2==1){
+//         console.log(n);
+//     }
+// };
 
-//원시 값은 원본이 훼손되지 않는다
-console.log(num); //100
-console.log(person); //{name:kim} 
+// //반복 호출할 함수를 인수로 전달
+// repeat(5,logAll); //0,1,2,3,4,5
+// repeat(5,logOdd); //1,3,5
 
-//
+//익명 함수 리터럴을 콜백 함수로 고차 함수에 전달한다.
+//익명 함수 리터럴은 repeat 함수를 호출할 때마다 평가되어 함수 객체를 생성한다.
+// repeat(5, function(i){
+//     if(i%2==1){
+//         console.log(i)
+//     }
+// });
+
+// //oddRepeat 함수는 단 한번만 생성된다.
+// var oddRepeat=function(n){
+//     if(n%2==1){
+//         console.log(n)
+//     }
+// };
+// //고차 함수에 함수 참조를 전달한다.
+// repeat(7,oddRepeat);
+
+// var count=0; // 현재 카운트를 나타내는 상태;
+// //순수 함수 increase는 동일한 인수가 전달되면 언제나 동일한 값을 반환한다.
+// function increase(n){
+//     return ++n;
+// };
+
+// //순수 함수가 반환환 결과값을 변수에 재할당해서 상태를 변경
+// count=increase(count);
+// console.log(count); //1
+
+// count=increase(count);
+// console.log(count); //2
+
+// var count=0; //현재 카운트를 나타내는 상태: increase함수에 의해 변화한다.
+
+// //비순수 함수
+// function increase(){
+//     return ++count; //외부 상태에 의존하며 외부 상태를 변경한다.
+// }
+
+// //비순수 함수는 외부 상태(count)를 변경하므로 상태 변화를 추적하기 어려워진다.
+// increase();
+// console.log(count); //1
+
+// increase();
+// console.log(count); //2
+
+// function add(x,y){
+//     //매개변수의 함수 몸체 내부에서만 참조할수 있다. 즉, 매개변수의 스코프(유효범위)는 함수 몸체 내부다.
+//     console.log(x,y);
+//     return x+y;
+// }
+// console.log(add(4,5));
+// console.log(x,y); //error
+
+// var var1= 1; //코드의 가장 바깥 영역에서 선언한 변수
+
+// if(true){
+//     var var2=2; //코드 블록 내에서 선언한 변수
+//     if(true){
+//         var var3=3; //중첩한 코드 블록 내에서 선언한 변수
+//     }
+// }
+
+// function foo(){
+//     var var4=4; //함수 내에서 선언한 변수
+//     function innerFoo(){
+//         var var5=5; // 중첩된 함수 내에서 선언한 변수
+//     }
+// }
+
+// console.log(var1);  //1 출력
+// console.log(var2);  //2 출력
+// console.log(var3);  //3 출력
+// console.log(var4); //error
+// console.log(var5); //error;
+
+
+
+// function foo(){
+//     let x='global'
+//     console.log(x);
+//     function innerFoo(){
+//         let x='x'
+//         console.log(x);
+        
+//     };
+//     innerFoo();
+// };
+// foo();
+
+// function outer(){
+//     const a=10;
+//     console.log(a);
+//     //console.log(b);
+//     function inner(){
+//         var b=30;
+//         console.log(a)
+//     }
+//     inner();
+// }
+// outer();
+
+// var x="global x";
+// var y="global y";
+
+// function outer(){
+//     var z="outer's local z";
+
+//     console.log(x); //1 global x
+//     console.log(y); //2 global y
+//     console.log(z); //3 outer's local z
+
+//     function inner(){
+//         var x="inner's local x";
+        
+//         console.log(x) //4 inner's local x;
+//         console.log(y) //5 global y
+//         console.log(z) //6 outer's local z
+//     }
+//     inner();
+// }
+// outer();
+
+// console.log(x); // 7global x
+// console.log(z); // 8error
+
+// function foo(){
+//     console.log("전역 함수");
+// }
+
+// function bar(){
+//     function innerBar(){
+//         console.log("지역 함수");
+//     }
+//     innerBar();
+// };
+
+// bar(); //지역 함수 출력
+
+// var i=10;
+
+// //for 문에서 선언한 i는 전역변수다. 이미 선언된 전역 변수 i가 있으므로 중복 선언된다.
+// for(var i=0; i<5; i++){
+//     console.log(i); //0,1,2,3,4 출력
+// }
+
+// //의도치 않게 변수의 값이 변경되었다.
+// // console.log(i);//5
+
+// function foo(){
+//     var x= 'local';
+//     console.log(x); //local
+//     return x;
+// }
+// //foo();
+// console.log(x); //error
+
+// function foo(){
+//     var x='local'; //변수 x
+//     console.log(x);
+//     return x;
+// }
+
+// var x='global';
+
+// function foo(){
+//     console.log(x);
+//     var x='local';
+// }; 
+// foo();
+
+// function foo(){
+//     var x="hello"
+//     console.log(x);
+// };
+
+// (function (){
+//     var foo=10;
+// }());
+// console.log(foo); //error
+
+// var MYMAP ={};//전역 네임스페이스 객체
+
+// MYMAP.person ="andy";
+// console.log(MYMAP.person); //andy 출력
+
+// var obj={};
+// obj.user={
+//     name: 'andy',
+//     gender: 'male',
+//     age: 23,
+// }
+// console.log(obj.user);
+
+// var counter=(function(){
+//     //private 변수
+//     var num=0;
+
+//     //외부로 공개할 데이터나 메서드를 프로퍼티로 추가한 객체를 반환한다.
+//     return{
+//         increase(){
+//             return ++num;
+//         },
+//         decrease(){
+//             return --num;
+//         },
+//     }
+// }());
+
+// //private 변수는 외부로 노출하지 않는다.
+// console.log(counter.num);
+
+// console.log(counter.increase());//1
+// console.log(counter.increase());//2
+// console.log(counter.decrease());//1
+// console.log(counter.decrease());//0
+// console.log(counter.decrease());//-1
+
+// var x=1;
+// var y=1;
+
+// //var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언을 허용한다.
+// //초기화문이 있는 변수 선언문은 자바스크립트 엔진에 의해 var키워드가 없는 것처럼 동작한다.
+// var x=100;
+// //초기화문이 없는 변수 선언문을 무시됀다.
+// var y;
+
+// console.log(x); //100
+// console.log(y); //1
+
+
+// var x=1;
+// if(1){
+//     //x는 전역 변수다. 이미 선언된 전역 변수 x가 있으므로 x변수는 중복 선언된다.
+//     //이는 의도치 않게 변수값이 변경되는 부작용을 발생시킨다.
+//     var x=10;
+// }
+// console.log(x); //10
+
+// var i=3;
+
+// //for문에서 선언한 i는 전역 변수다. 이미 선언된 전역 변수 i가 있으므로 중복 선언된다.
+// for(var i=0; i<5; i++){
+//     console.log(i); //0,1,2,3,4
+// };
+
+// //의도치 않게 i 변수의 값이 변경되었다.
+// console.log(i); //5
+
+// function foo(){
+//     let i=10;
+//     if(true){
+//         let i=30;
+//         if(true){
+//             console.log(i);
+//         }
+//     }
+// }
+// foo();
+
+// let i=1;
+
+// {
+//     let i=3;
+// }
+// console.log(i);
+
+// let x=10;
+// function test(){
+//     console.log(x);
+// }
+// test();
+
+// //이 시점에서는 변수 호이스팅에 의해 이미 foo변수가 선언되었다.(1. 선언단계)
+// // 변수 foo는 undefined로 초기화 된다.(2. 초기화 단계)
+// console.log(foo);//undefined
+
+// //변수에 값을 할다(3. 할당 단계)
+// foo=123;
+
+// console.log(foo); //123
+
+// var foo;
+
+// var foo=123;
+// //var키워드로 선언된 변수는 같은 스코프 내에서 중복 선언을 허용한다.
+// //아래 변수 선언문은 자바스크립트 엔진에 의해 var키워드가 없는 것처럼 동작한다.
+// var foo=565;
+
+// let fo=12;
+// //let이나 const키워드로 선언한 변수는 같은 스코프 내에서 중복 선언을 허용하지 않는다.
+// let fo=45;
+
+// let foo=10;
+// {
+//     let foo=45; //지역 변수
+//     let bar=4; 
+//     console.log(foo); //45출력
+// }
+// console.log(foo); //10 출력
+// console.log(bar);//error
+
+let i=10;
+function foo(){
+    let i=100;
+    for(let i=1; i<3; i++){
+        console.log(i); //1,2 출력
+    }
+    console.log(i); //100출력
+}
+foo(); 
+console.log(i); //10출력
