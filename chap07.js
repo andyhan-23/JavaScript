@@ -1800,12 +1800,86 @@ function repeat(n,f){
 // [Symbol.iterator](){...};
 // //순회 가능한 자료구조
 
-//iterator
-{
-    next(){
-        return {value: any, done: boolean} //이터레이터 리절트 객체
-    }
-}
-//이터러블의 요소를 탐색하기 위한 포인터
+// //iterator
+// {
+//     next(){
+//         return {value: any, done: boolean} //이터레이터 리절트 객체
+//     }
+// }
+// //이터러블의 요소를 탐색하기 위한 포인터
 
-//이터러블 인지 확인하는 함수
+// //이터러블 인지 확인하는 함수
+// const isIterable = v => v !==null && typeof v[Symbol.iterator] === 'function';
+
+// //배열, 문자열, Map, Set 등은 이터러블이다. 
+// console.log(isIterable([])); //true,
+// console.log(isIterable('')); //true,
+// console.log(isIterable(new Map())); //true
+// console.log(isIterable(new Set())); //true
+// console.log(isIterable({}));
+
+// const array=[1,2,3];
+
+// //배열은 Array.prototype의 Symbol.iterator 메서드를 상속받는 이터러블 이다.
+// console.log(Symbol.iterator in array); //true;
+
+// //이터러블인 배열은 for...of 문으로 순회 가능하다.
+// for(const value of array){
+//     console.log(value);
+// }
+
+// //이터러블인 배열은 스프레드 문법의 대상으로 사용할 수 있다.
+// console.log([...array]); //[1, 2 ,3 ];
+
+// //이터러블인 배열은 배열 디스트럭처링 할당의 대상으로 사용할 수 있다.
+// const [a,...rest] = array;
+// console.log(a, rest); // 1 [2,3];
+
+// const obj={a:1, b:2};
+
+// //일반 객체는 Symbol.iterator 메서드를 구현하거나 상속받지 않는다.
+// //따라서 일반 객체는 이터러블 프로토콜을 준수한 이터러블이 아니다.
+// console.log(Symbol.iterator in obj); //false
+
+// //이터러블이 아닌 일반 객체는 for...of 문으로 순횔할 수 없다.
+// for(const item of obj){
+//     console.log(item); //TypeError: obj is not iterable
+// }
+
+// //이터러블이 아닌 일반 객체는 배열 디스트럭처링 할당의 대상으로 사용할 수 없다.
+// const [a,b] =obj; //TypeError: obj is not iterable
+
+// //배열은 이터러블 프로토콜을 준수한 이터러블이다.
+// const arr=[1,2,3];
+
+// //Symbol.iterator 메서드는 이터레이터를 반환한다.
+// const iterator = arr[Symbol.iterator]();
+
+// //next 메서드를 호출하면 이터러블을 순회하며 순회 결과를 나타내는 이터레이터 리절트 객체를 반환한다.
+// //이터레이터 리절트 객체는 value와 done 프로퍼티를 갖는 객체다.
+// console.log(iterator.next()); //{ value: 1, done: false }
+// console.log(iterator.next()); //{ value: 2, done: false }
+// console.log(iterator.next()); //{ value: 3, done: false }
+// console.log(iterator.next()); //{ value: undefined, done: true }
+
+//var i=10;
+
+// //for 문에서 선언한 i는 전역변수다. 이미 선언된 전역 변수 i가 있으므로 중복 선언된다.
+// for(let i=0; i<5; i++){
+//     console.log(i); //0,1,2,3,4 출력
+// }
+
+// //의도치 않게 변수의 값이 변경되었다.
+// console.log(i);//5
+
+let i=3;
+{
+    let i=4;
+    console.log(i);
+    for(let i=0; i<3; i++){
+        console.log(i);
+    };
+
+
+}
+console.log(i);
