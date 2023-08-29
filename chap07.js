@@ -1752,5 +1752,60 @@ function repeat(n,f){
 //     console.log("your going up");
 // }
 
+// const obj={
+//     //심벌 값으로 프로퍼티 키를 생성
+//     [Symbol.for('mySymbol')]: 1,
 
+// };
 
+// //getOwnPropertySymbols 메서드는 인수로 전달한 객체의 심벌 프로퍼티 키를 배열로 반환한다.
+// console.log(Object.getOwnPropertySymbols(obj)); //[ Symbol(mySymbol) ]
+
+// //getOwnPropertySymbols 메서드로 심벌 값도 찾을 수 있다.
+// const symbolKey1 = Object.getOwnPropertySymbols(obj)[0];
+// console.log(obj[symbolKey1]); //1
+
+// //표준 빌트인 객체를 확장하는 것은 권장하지 않는다.
+// Array.prototype.sum=function(){
+//     return this.reduce((acc, cur)=>acc+cur,0);
+// };
+// console.log([1,2].sum());
+
+// //심벌 값으로 프로퍼티 키를 동적 생성하면 다른 프로퍼티 키와 절대 충돌하지 않아 안전하다.
+// Array.prototype[Symbol.for('sum')]=function(){
+//     return this.reduce((acc, cur)=>acc+cur,0);
+// };
+// console.log([1,2][Symbol.for('sum')]()); //3
+
+// //1~5 범위의 정수로 이루어진 이터러블
+// const iterable={
+//     //Symbol.iterator 메서드를 구현하여 이터러블 프로토콜을 준수
+//     [Symbol.iterator](){
+//         let cur=1;
+//         const max=5;
+//         //Symbol.iterator 메서드는 next 메서드를 소유한 이터레이터를 반환
+//     return{
+//         next(){
+//             return{value: cur++, done: cur>max+1};
+//             }
+//         };
+//     }
+// };
+
+// for(const num of iterable){
+//     console.log(num); //1 2 3 4 5
+// }
+
+// //iterable
+// [Symbol.iterator](){...};
+// //순회 가능한 자료구조
+
+//iterator
+{
+    next(){
+        return {value: any, done: boolean} //이터레이터 리절트 객체
+    }
+}
+//이터러블의 요소를 탐색하기 위한 포인터
+
+//이터러블 인지 확인하는 함수
