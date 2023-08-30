@@ -2159,3 +2159,145 @@ function repeat(n,f){
 //   //return x*y;
 // }
 // console.log(multiply(3,4,5)); //12
+
+// function sum(){
+//   let res=0;
+//   for(let i=0;i<arguments.length; i++){
+//      res += arguments[i];
+//   }
+//   return res;
+// }
+// console.log(sum()); //0
+// console.log(sum(4,5)); //9
+// console.log(sum(4,5,6)); //15
+
+// function sum(){
+//   //arguments 객체를 배열로 변환
+//   const arr=Array.prototype.slice.call(arguments);
+//   return arr.reduce(function(pre, cur){
+//     return pre+cur;
+//   },0);
+// }
+
+// console.log(sum(1,2)); //3
+// console.log(sum(5,6,7)); //18
+
+// //ES6 Rest parameter
+// function sum(...args){
+//   return args.reduce((pre, cur)=>pre+cur,0);
+// }
+// console.log(sum(1,2)); //3
+// console.log(sum(12,3,34));//49
+
+// function foo(){}
+// console.log(foo.length); //0
+
+// function bar(x){
+//   return x;
+// }
+// console.log(bar.length); //1
+
+// function baz(x,y){
+//   return x * y;
+// }
+
+// console.log(baz.length); //2
+
+// //기명 함수 표현식
+// var namedFunc = function foo(){};
+// console.log(namedFunc.name); //foo
+
+// //익명 함수 표현식
+// var anonymousFunc = function() {};
+// // ES5: name 프로퍼티는 빈 문자열을 값으로 갖는다.
+// // ES6: name 프로퍼티는 함수 객체를 가리키는 변수 이름을 값으로 갖는다.
+// console.log(anonymousFunc.name);
+
+// //함수 선언문(Function declaration)
+// function bar(){}
+// console.log(bar.name); //bar
+
+// const obj ={a: 1};
+
+// //객체 리터럴 방식으로 생성한 객체의 프로토타입 객체는 Object.prototype이다.
+// console.log(obj.__proto__ ===Object.prototype); //true
+
+// //객체 리터럴 방식으로 생성한 객체는 프로토타입 객체인 Object.prototype의 프로퍼티를 상속받는다.
+// //hasOwnProperty 메서드는 Object.prototype의 메서드다.
+// console.log(obj.hasOwnProperty('a')); //true
+// console.log(obj.hasOwnProperty('__proto__')); //false
+
+// //함수 객체는 prototype 프로퍼티를 소유한다.
+// let result=(function(){}).hasOwnProperty('prototype');
+// console.log(result); //true
+
+// result=({}).hasOwnProperty('prototype');
+// console.log(result); //false;
+
+// let func=function(){};
+// result=func.hasOwnProperty('prototype');
+// console.log(result); //true
+
+// let array= [];
+// result=array.hasOwnProperty('prototype');
+// console.log(result);//false
+
+// //이름과 속성을 갖는 객체
+// const person={
+//   name: 'andy',
+//   address: 'goyang'
+// };
+// console.log(person);
+
+// //객체 원 만들기
+// const circle ={
+//   radius: 5, //반지름
+
+//   //원의 지름
+//   getDiameter: function(){
+//     return 2* this.radius;
+//   },
+
+//   //원의 둘레
+//   getPerimeter(){
+//     return 2*Math.PI*this.radius;
+//   },
+
+//   //원의 넓이
+//   getArea(){
+//     return this.radius*this.radius*Math.PI;
+//   }
+// };
+// console.log(circle);
+// /*{
+//   radius: 5,
+//   getDiameter: [Function: getDiameter],
+//   getPerimeter: [Function: getPerimeter],
+//   getArea: [Function: getArea]
+// }*/
+
+// console.log(circle.getDiameter()); //10
+// console.log(circle.getPerimeter()); //31.41592653589793
+// console.log(circle.getArea()); //78.53981633974483
+
+// //생성자 함수
+// function Circle(radius){
+//   this.radius=radius;
+//   this.getArea=function(){
+//     return Math.PI*this.radius**2;
+//   };
+// }
+
+// //반지름이 1인 인스턴스 생성
+// const circle1 = new Circle(1);
+// //반지름이 2인 인스턴스 생성
+// const circle2 = new Circle(2);
+
+// //Circle 생성자 함수는 인스턴스를 생성할 때마다 동일한 동작을 하는
+// //getArea 메서드를 중복 생성하고 모든 인스턴스가 중복 소유한다.
+// //getArea 메서드는 하나만 생성하여 모든 인스턴스가 공유해서 사용하는 것이 바람직하다.
+// console.log(circle1.getArea()===circle2.getArea()); //false
+
+// console.log(circle1.getArea()); //3.141592653589793
+// console.log(circle2.getArea()); //12.566370614359172
+
