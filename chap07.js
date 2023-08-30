@@ -1872,14 +1872,290 @@ function repeat(n,f){
 // //의도치 않게 변수의 값이 변경되었다.
 // console.log(i);//5
 
-let i=3;
-{
-    let i=4;
-    console.log(i);
-    for(let i=0; i<3; i++){
-        console.log(i);
-    };
+// let i=3;
+// {
+//     let i=4;
+//     console.log(i);
+//     for(let i=0; i<3; i++){
+//         console.log(i);
+//     };
 
 
-}
-console.log(i);
+// }
+// console.log(i);
+
+// function example() {
+//     var x = 10;
+//     let y = 20;
+  
+//     if (true) {
+//       var x = 30;
+//       let y = 40;
+//       console.log(x) 
+//       console.log(y) 
+//     }
+  
+//     console.log(x); 
+//     console.log(y); 
+//   }
+  
+//   example();
+
+// function foo(){};
+
+// //일반적인 함수로서 호출: [[Call]]이 호출된다
+// foo();
+
+// //생성자 함수로서 호출: [[Construct]]가 호출된다.
+// new foo();
+
+// new foo();
+
+// //일반 함수 정의: 함수 선언문, 함수 표현식
+// function foo(){}
+// const bar = function(){};
+// //프로퍼티 x의 값으로 할당된 것은 일반 함수로 전의된 함수다. 이는 메서드로 인정하지 않는다.
+// const baz={
+//   x:function(){}
+// };
+
+// //일반 함수로 전의된 함수만이 constructor다.
+// console.log(new foo()); //foo{}
+// console.log(new bar()); //bar{}
+
+// console.log(new baz.x()); //x{}
+
+// //화살표 함수 정의 
+// const arrow =()=>{};
+
+// //console.log(new arrow()); //TypeError: arrow is not a constructor
+
+// //메서드 정의: ES6의 메서드 축약 표현만 메서드로 인정한다.
+// const obj={
+//   x() {}
+// };
+
+// new obj.x(); //obj.x is not a constructor
+
+// function foo(){}
+
+// //일반 함수로서 호출
+// //[[Call]]이 호출된다. 모든 함수 객체는 [[Call]]이 구현되어 있다.
+// console.log(foo());
+
+// //생성자 함수로서 호출
+// //[[Construct]]가 호출된다. 이때 [[Construct]]를 갖지 않는다면 에러가 발생한다.
+// console.log(new foo());
+
+// //생성자 함수로서 정의하지 않은 일반 함수
+// function add(x,y){
+//   return x+y;
+// }
+
+// //생성자 함수로서 정의하지 않은 일반 함수를 new 연산자와 함께 호출
+// var plus = new add();
+
+// //함수가 객체를 반환하지 않았으므로 반환이 무시된다. 따라서 빈 객체가 생성되어 반환된다.
+// console.log(plus); //add{};
+
+// //객체를 반환하는 일반 함수
+// function createUser(name, role){
+//   return {name, role};
+// }
+
+// //일반 함수를 new 연산자와 함께 호출
+// var user= new createUser('andy', 'developer');
+// //함수가 생성한 객체를 반환한다.
+// console.log(user); //{ name: 'andy', role: 'developer' }
+
+// //생성자 함수
+// function Circle(radius){
+//   this.radius = radius;
+//   this.getDiameter=function(){
+//     return 2*this.radius
+//   };
+// }
+
+// //new 연산자 없이 생성자 함수 호출하면 일반 함수로서 호출된다.
+// const circle = Circle(5);
+// console.log(circle); //undefined
+
+// //일반 함수 내부의 this는 전역 객체 window를 가리킨다.
+// console.log(radius);
+// console.log(getDiameter()); //10
+
+// console.log(circle.getDiameter()); //TypeError: Cannot read properties of undefined (reading 'getDiameter')
+
+// 생성자 함수
+// function Circle(radius){
+//   이 함수가 new연산자와 함께 호출되지 않았다면 new.target은 undefined다.
+//   if(!new.target){
+//     return new Circle(radius);
+//   }
+//   this.radius =radius;
+//   this.getDiameter=function(){
+//     return 2* this.radius;
+//   };
+// }
+
+//   new 연산자 없이 생성자 함수를 호출하여도 new.target을 통해 생성자 함수로서 호출된다.
+//   const circle= Circle(5);
+//   console.log(circle.getDiameter());//10
+  
+
+// Scope safe Constuctor Pattern
+// function Circle(radius){
+//   생성자 함수가 new연산자와 함께 호출되면 함수의 선두에서 빈 객체를 생성하고
+//   this에 바인딩한다. 이때 this와 Circle은 프로토타입에 의해 연결된다.
+
+//   이 함수가 new 연산자와 함께 호출되지 않았다면 이 시점의 this는 전역 객체 window를 가리킨다.
+//   즉, this와 Circle은 프로토타입에 의해 연결되지 않는다.
+//   if(!(!this instanceof Circle)){
+//     return new Circle(radius);
+//   }
+
+//   this.radius= radius;
+//   this.getDiameter= function(){
+//     return 2 * this.radius;
+//   };
+// }
+
+// new 연산자 없이 생성자 함수를 호출하여도 생성자 함수로서 호출된다.
+// const circle = Circle(5);
+// console.log(circle.getDiameter()); //10
+
+// if(!(!true)){
+//   console.log(1);
+// }
+// console.log(2);
+
+// function hi(){
+// 	console.log(1);
+// 	return hi();
+// }
+// hi();
+
+// let obj= new Object();
+// console.log(obj); //{}
+// obj= Object();
+// console.log(obj); //{}
+
+// let func = new Function('x', 'return x');
+// console.log(func); //[Function: anonymous]
+
+// func= Function('x', 'return x');
+// console.log(func); //[Function: anonymous]
+
+// let str = String(123);
+// console.log(str); // 문자열 123
+// str = new String(123); 
+// console.log(str); //[String: '123']
+
+// let num = Number('123')
+// console.log(num); // 숫자 123
+// num = new Number('123');
+// console.log(num); //[Number: 123]
+
+// let boolean = Boolean(1);
+// console.log(boolean); //true
+// boolean = new Boolean(0);
+// console.log(boolean); //[Boolean: false]
+
+//1. 함수는 무명의 리터럴로 생성할 수 있다.
+//2. 함수는 변수에 저장할 수 있다.
+//런타임(할당 단계)에 함수 리터럴이 평가되어 함수 객체가 생성되고 변수에 할당된다.
+// const increase = function(num){
+//   return ++num;
+// };
+
+// const decrease = function(num){
+//   return --num;
+// };
+
+// //2. 함수는 객체에 저장할 수 있다.
+// const predicates = {increase, decrease};
+
+// //3. 함수의 매개변수에 전달할 수 있다.
+// //4. 함수의 반환값으로 사용할 수 있다.
+// function makeCounter(predicate){
+//   let num=0;
+
+//   return function(){
+//     num=predicate(num);
+//     return num;
+//   };
+// }
+
+// //3. 함수는 매개변수에게 함수를 전달할 수 있다.
+// const increaser = makeCounter(predicates.increase);
+// console.log(increaser()); //1
+// console.log(increaser()); //2
+
+// //3. 함수는 매개변수에게 함수를 전달할 수 있다.
+// const decreaser = makeCounter(predicates.decrease);
+// console.log(decreaser()); //-1
+// console.log(decreaser()); //-2
+
+// function square(num){
+//   return num*num;
+// }
+// console.log(Object.getOwnPropertyDescriptors(square));
+// /*{
+//   length: { value: 1, writable: false, enumerable: false, configurable: true },
+//   name: {
+//     value: 'square',
+//     writable: false,
+//     enumerable: false,
+//     configurable: true
+//   },
+//   arguments: {
+//     value: null,
+//     writable: false,
+//     enumerable: false,
+//     configurable: false
+//   },
+//   caller: {
+//     value: null,
+//     writable: false,
+//     enumerable: false,
+//     configurable: false
+//   },
+//   prototype: { value: {}, writable: true, enumerable: false, configurable: false }
+// }*/
+
+// //__proto__는 square 함수의 프로퍼티가 아니다
+// console.log(Object.getOwnPropertyDescriptor(square,'__proto__')); //undefined
+
+// //__proto__는 Object.prototype 객체의 접근자 프로퍼티다.
+// //square 함수는 Object.prototype 객체로부터 __proto__ 접근자 프로퍼티를 상속받는다.
+// console.log(Object.getOwnPropertyDescriptor(Object.prototype,'__proto__'));
+// /*{
+//   get: [Function: get __proto__],
+//   set: [Function: set __proto__],
+//   enumerable: false,
+//   configurable: true
+// }*/
+
+// function multiply(num1,num2){
+//   console.log(arguments);
+//   return num1*num2;
+// }
+
+// // console.log(multiply(3,4)); //[Arguments] { '0': 3, '1': 4 } , 12
+// // console.log(multiply()); //[Arguments] {}, NaN
+// // console.log(multiply(3)); //[Arguments] { '0': 3 }, NaN
+// // console.log(multiply(3,4,5)); //[Arguments] { '0': 3, '1': 4, '2': 5 } ,12
+
+// //console.log(undefined+undefined);
+
+// function multiply(){
+//   //이터레이터
+//   const iterator = arguments[Symbol.iterator]();
+//   console.log(iterator.next()); //{ value: 3, done: false }
+//   console.log(iterator.next()); //{ value: 4, done: false }
+//   console.log(iterator.next()); //{ value: 5, done: false }
+//   console.log(iterator.next()); //{ value: undefined, done: true }
+
+//   //return x*y;
+// }
+// console.log(multiply(3,4,5)); //12
