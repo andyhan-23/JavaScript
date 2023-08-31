@@ -2503,4 +2503,63 @@
 // obj = new Object('123');
 // console.log(obj); //[String: '123']
 
-//함수 정의(constructor)
+// //함수 정의(constructor)가 평가되어 함수 객체를 생성하는 시점에 프로토타입도 더불어 생성된다.
+// console.log(Person.prototype); //{}
+
+// function Person(name){
+//   this.name=name;
+// }
+
+// //화살표 함수는 non-constructor다.
+// const Person=name=>{
+//   this.name=name;
+// };
+
+// //non-construcotr는 프로토타입이 생성되지 않는다.
+// console.log(Person.prototype);//undefined
+
+// //전역 객체 window는 브라우저에 종속적이므로 아래 코드는 브라우저 환경에서 실행해야 한다.
+// //빌트인 객체인 Object는 전역 객체 window의 프로퍼티다.
+// console.log(global.Object===Object);
+
+// const obj={x:1};
+
+// //객체 리터럴에 의해 생성된 obj객체는 Object.prototype을 상속받는다.
+// console.log(obj.constructor===Object); //true
+// console.log(obj.hasOwnProperty('x')); //true
+
+// const obj = new Object();
+// obj.x=1;
+
+// const obj = new Object();
+// obj.x=1;
+
+// //Object생성자 함수에 의해 생성된 obj 객체는 Object.prototype을 상속받는다.
+// console.log(obj.constructor===Object); //true
+// console.log(obj.hasOwnProperty('x')); //true
+
+// function Person(name){
+//   this.name=name;
+// }
+
+// const me = new Person('Han');
+
+// function Person(name){
+//   this.name=name;
+// };
+// const me = new Person
+
+function Person(name){
+  this.name=name;
+}
+
+Person.prototype.sayHello=function(){
+  console.log(`hi my name is ${this.name}`);
+};
+
+const me = new Person('andy');
+const you = new Person('han');
+
+me.sayHello(); //hi my name is andy
+you.sayHello(); //hi my name is han
+
