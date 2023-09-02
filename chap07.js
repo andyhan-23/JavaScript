@@ -2969,22 +2969,204 @@
 // a : a
 // */
 
-const arr=[1,2,3];
-arr.x=10; //배열도 객체이므로 프로퍼티를 가질수 있다.
+// const arr=[1,2,3];
+// arr.x=10; //배열도 객체이므로 프로퍼티를 가질수 있다.
 
-for(const i in arr){
-    console.log(arr[i]) //1,2,3,10
-};
+// for(const i in arr){
+//     console.log(arr[i]) //1,2,3,10
+// };
 
-//arr.length는 3이다.
-for(let i=0; i<arr.length; i++){
-    console.log(arr[i]); //1,2,3
-}
+// //arr.length는 3이다.
+// for(let i=0; i<arr.length; i++){
+//     console.log(arr[i]); //1,2,3
+// }
 
-//forEach 메서드는 요소가 아닌 프로퍼티는 제외한다.
-arr.forEach(v=>console.log("1:",v)); //1,2,3
+// //forEach 메서드는 요소가 아닌 프로퍼티는 제외한다.
+// arr.forEach(v=>console.log("1:",v)); //1,2,3
 
-//for...of 변수 선언문에서 선언한 변수에 키가 아닌 값을 할당한다.
-for(const value of arr){
-    console.log(value); //1,2,3
-}
+// //for...of 변수 선언문에서 선언한 변수에 키가 아닌 값을 할당한다.
+// for(const value of arr){
+//     console.log(value); //1,2,3
+// }
+
+// const person ={
+//     name: 'han',
+//     address: 'seoul',
+//     __proto__ : {age :20}
+// };
+
+// console.log(Object.keys(person)); //[ 'name', 'address' ]
+// console.log(Object.values(person)); //[ 'han', 'seoul' ]
+// console.log(Object.entries(person)); //[ [ 'name', 'han' ], [ 'address', 'seoul' ] ]
+
+// 'use strict'
+// function foo(){
+//     x=10;
+// }
+// foo();
+//  //ReferenceError: x is not defined
+
+// function foo(){
+//     x=10;
+//     'use-strict'
+// }
+// foo(); //에러를 발생시키지 않는다.
+
+
+// //즉시 실행 함수의 선두에 strict-mode 적용
+// (function(){
+//      'use strict';
+
+//     y=1;
+//     console.log(y); //ReferenceError: y is not defined
+// }());
+
+// (function (){
+//     //non-strict mode
+//     var let=10; //에러가 발생하지 않는다.
+//     function foo(){
+//         'use strict'
+        
+//         let=20; //SyntaxError: Unexpected strict mode reserved word
+//     }
+//     foo();
+// }());
+
+// (function(){
+//     'use strict'
+//     x=10;
+//     console.log(x); //ReferenceError: x is not defined
+// }());
+
+// (function (){
+//     'use strict'; 
+    
+//     var x=1;
+//     delete  x; //SyntaxError: Delete of an unqualified identifier in strict mode.
+    
+//     function foo(a){
+//         delete a; //SyntaxError: Delete of an unqualified identifier in strict mode.
+//     }
+//     delete foo; //SyntaxError: Delete of an unqualified identifier in strict mode.
+// }());
+
+// (function(){
+//     'use strict'
+
+//     function foo(x,x){
+//         return x+x; //SyntaxError: Duplicate parameter name not allowed in this context
+//     }
+//     console.log(foo(1,2,));
+// }());
+
+// (function (){
+//     'use strict';
+
+//     with({x: 1}){
+//         console.log(x); //SyntaxError: Strict mode code may not include a with statement
+//     }
+// }());
+
+// (function(){
+//     'use strict'
+//     function foo(){
+//         console.log(this); //undefined
+//     }
+//     foo();
+//     function Foo(){
+//         console.log(this); //Foo {}
+//     };
+//     new Foo();
+// }());
+
+// (function(a){
+//     //non-strict
+//     a=2;
+//     console.log(arguments); //[Arguments] { '0': 2 }
+// }(3));
+
+// (function (a){
+//     'use strict'
+//     a=2;
+//     console.log(arguments); //[Arguments] { '0': 4 }
+// }(4));
+
+// //String 생성자 함수에 의한 String 객체 생성
+// const strObj= new String('andy');
+// console.log(strObj); //[String: 'andy']
+// console.log(typeof strObj); //object
+
+// //Number 생성자 함수에 의한 Number 객체 생성
+// const numObj= new Number(123);
+// console.log(numObj); //[Number: 123]
+// console.log(typeof numObj); //object
+
+// //Boolean 생성자 함수에 의한 Boolean 객체 생성
+// const boolObj = new Boolean(true);
+// console.log(boolObj); //[Boolean: true]
+// console.log(typeof boolObj); //object
+
+// //Function 생성자 함수에 의한 Function 객체 생성
+// const funcObj = new Function('x' ,'y', 'return x+y' );
+// console.log(funcObj); //[Function: anonymous]
+// console.log(typeof funcObj); //function
+
+// //Array 생성자 함수에 의한 Array 객체(배열) 생성
+// const arr= new Array(1,2,3); //[ 1, 2, 3 ]
+// console.log(arr);
+// console.log(typeof arr); //object
+
+// //RegExp 생성자 함수에 의한 RegExp 겍체(정규 표현식)생성
+// const regExp = new RegExp(/ab+c/i); 
+// console.log(regExp); ///ab+c/i
+// console.log(typeof regExp); //object
+
+// //Date 생성자 함수에 의한 Date 객체 생성
+// const date = new Date();
+// console.log(date); //2023-09-02T07:27:26.960Z
+// console.log(typeof date); //object
+
+// //String 생성자 함수에 의한 String 객체 생성
+// const strObj= new String('han');
+
+// //String 생성자 함수를 통해 생성한 strObj 객체의 프로토타입은 String.prototype이다.
+// console.log(Object.getPrototypeOf(strObj)===String.prototype); //true
+
+// //Number 생성자 함수애 의한 Number 객체 생성
+// const numObj = new Number(1);
+// console.log(numObj); //[Number: 1.5]
+
+// //toFixed는 Number.prototype의 프로토타입 메서드다.
+// //Number.prototype.toFixed는 소수점 자리를 반올림하여 문자열로 반환한다.
+// console.log(numObj.toFixed()); //2
+
+// //isInteger는 Number의 정적 메서드다.
+// //Number.isInteger는 인수가 정수 (integer)인지 검사하여 그 결과를 Boolean으로 반환한다.
+// console.log(Number.isInteger(0.5));
+
+// const str= 'hello';
+// console.log(str.length); //5; 
+// console.log(str.toUpperCase()); //HELLO
+
+// const str='hi';
+
+// //원시 타입인 문자열이 래퍼 객체인 String 인스턴스로 반환된다.
+// console.log(str.length); //2
+// console.log(str.toUpperCase()); //HI
+
+// //래퍼 객체로 프로퍼티에 접근하거나 메서드를 호출한 후, 다시 원시값으로 되돌린다.
+// console.log(typeof str); //string
+
+//1. 식별자 str은 문자열을 값으로 가지고 있다.
+const str="andy";
+
+//2. 식별자 str은 암묵적으로 생성된 래퍼 객체를 가리킨다.
+//식별자 str값 'andy'는 래퍼객체의 [[StringData]] 내부 슬롯에 할당된다. 
+str.name="han";
+
+//3. 식별자 str은 다시 원래의 문자열, 즉 래퍼 객체의 [[StringData]] 내부 슬롯에 할당된 원시값을 갖는다.
+//이때 2에서 생성된 래퍼 객체는 아무도 참조하지 않는 상태이므로 가비지 컬렉션의 대상이 된다.
+
+//4. 식별자 str은 새롭게 암묵적으로 생성된 (2에서 생성된 래퍼 객체와는 다른)래퍼 객체를 가리킨다.
+//새롭게 생성된 래퍼 객체에는 name프로퍼티가 존재하지 않는다.
+console.log(str.name); //undefined; 
