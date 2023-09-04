@@ -3157,16 +3157,313 @@
 // //래퍼 객체로 프로퍼티에 접근하거나 메서드를 호출한 후, 다시 원시값으로 되돌린다.
 // console.log(typeof str); //string
 
-//1. 식별자 str은 문자열을 값으로 가지고 있다.
-const str="andy";
+// //1. 식별자 str은 문자열을 값으로 가지고 있다.
+// const str="andy";
 
-//2. 식별자 str은 암묵적으로 생성된 래퍼 객체를 가리킨다.
-//식별자 str값 'andy'는 래퍼객체의 [[StringData]] 내부 슬롯에 할당된다. 
-str.name="han";
+// //2. 식별자 str은 암묵적으로 생성된 래퍼 객체를 가리킨다.
+// //식별자 str값 'andy'는 래퍼객체의 [[StringData]] 내부 슬롯에 할당된다. 
+// str.name="han";
 
-//3. 식별자 str은 다시 원래의 문자열, 즉 래퍼 객체의 [[StringData]] 내부 슬롯에 할당된 원시값을 갖는다.
-//이때 2에서 생성된 래퍼 객체는 아무도 참조하지 않는 상태이므로 가비지 컬렉션의 대상이 된다.
+// //3. 식별자 str은 다시 원래의 문자열, 즉 래퍼 객체의 [[StringData]] 내부 슬롯에 할당된 원시값을 갖는다.
+// //이때 2에서 생성된 래퍼 객체는 아무도 참조하지 않는 상태이므로 가비지 컬렉션의 대상이 된다.
 
-//4. 식별자 str은 새롭게 암묵적으로 생성된 (2에서 생성된 래퍼 객체와는 다른)래퍼 객체를 가리킨다.
-//새롭게 생성된 래퍼 객체에는 name프로퍼티가 존재하지 않는다.
-console.log(str.name); //undefined; 
+// //4. 식별자 str은 새롭게 암묵적으로 생성된 (2에서 생성된 래퍼 객체와는 다른)래퍼 객체를 가리킨다.
+// //새롭게 생성된 래퍼 객체에는 name프로퍼티가 존재하지 않는다.
+// console.log(str.name); //undefined; 
+
+// //5. 식별자 str은 다시 원래의 문자열,즉 래퍼 객체의 [[StringData]] 내부 슬롯에 할당된 원시값을 갖는다.
+// //이때 4에서 생성된 래퍼 객체는 아무도 참조하지 않은 상태이므로 가비지 컬렉션의 대상이 된다.
+// console.log(typeof str, str); //string andy
+
+// const num=1.5;
+
+// //원시 타입인 숫자가 래퍼 객체인 String 객체로 변환된다.
+// console.log(num.toFixed());//2
+
+// //래퍼 객체로 프로퍼티에 접근하거나 메서드를 호출한 후, 다시 원시값으로 되돌린다.
+// console.log(typeof num, num); number 1.5
+
+// //브라우저 환경
+// globalThis ===this; //true
+// globalThis ===window; //true
+// globalThis === self; //true
+// globalThis === frames; //true
+
+// //Node.js 환경(12.0.0 이상)
+// globalThis === this; //true
+// globalThis === global; //true
+
+// //문자열 'F'를 16진수로 해석하여 10진수로 변환하여 반환한다.
+// window.parseInt('F', 16); //15
+// //window.parseInt는 parseInt로 호출할 수 있다.
+// parseInt('F', 16); //15
+// window.parseInt===parseInt; //true
+
+// //var키워드로 선언한 전역 변수
+// var foo=1;
+// console.log(window.foo)//1;
+
+// //선언하지 않은 변수에 값을 암묵적 전역. bar는 전역 변수가 아니라 전역 객체의 프로퍼티다.
+// bar=2;
+// console.log(window.bar); //2
+
+// //전역 함수
+// function baz(){
+//     return 3;
+// };
+// console.log(window.baz()); 3
+
+// let foo=123;
+// console.log(window.foo); //undefined
+
+// //전역 프로퍼티는 window를 생략하고 참조할 수 있다.
+// console.log(window.Infinity===Infinity); //true
+
+// //양의 무한대
+// console.log(3/0); //Infinity
+
+// //음의 무한대
+// console.log(-3/0); //-Infinity
+// //Infinity 숫자값이다.
+// console.log(typeof Infinity); //number
+
+// console.log(window.NaN); //NaN
+
+// console.log(Number('xyz')); //NaN
+// console.log(1 * 'string'); //NaN
+// console.log(typeof NaN); //number
+
+
+// console.log(window.undefined); //undefined
+
+// var foo;
+// console.log(foo); //undefined
+// console.log(typeof undefined); //undefined
+
+// //표현식인 문
+// const a=eval('1+2;'); 
+// console.log(a); //3
+// //표현식이 아닌 문
+// const b=eval('var x=5;') 
+// console.log(b); //undefined
+
+// //eval 함수에 의해 런타임에 변수 선언문이 실행되어 x변수가 선언되었다.
+// console.log(x); //5
+
+// //객체 리터럴은 반드시 괄호로 둘러싼다.
+// const o = eval('({a:1})');
+// console.log(o); //{ a: 1 }
+
+// //함수 리터럴은 반드시 괄호로 둘러싼다.
+// const f= eval('(function(){return 1;})')
+// console.log(f()); //1
+
+// const g= eval('1+2; 3+4;');
+// console.log(g); //7
+
+// const x=1;
+
+// function foo(){
+//     //eval 함수는 런타임에 foo함수의 스코프를 동적으로 수정한다.
+//     eval('var x=2; console.log(x)');
+//     console.log(x); //2
+// };
+
+// foo();
+// console.log(x);//1
+
+// const y=1;
+
+// function foo2(){
+//     'use strict'
+
+//     //strict mode에서 eval 함수는 기존의 스코프를 수정하지 않고 eval 함수 자신의 자체적인 스코프를 생성한다.
+//     eval('var x=3; console.log(x);') //3
+//     console.log(y); //1
+// }
+// foo2();
+// console.log(y); //1
+
+// const x=1;
+
+// function foo(){
+//     eval('var x=2; console.log(x);'); //2
+//     //let, const, 키워드를 사용한 변수 선언문은 strict mode가 적용된다.
+//     eval('const x=3; console.log(x)'); //3
+//     console.log(x); //2
+// }
+// foo();
+// console.log(x) //1
+
+//isFinite
+
+// //인수가 유한수이면 true를 반환한다.
+// console.log(isFinite(0)); //true
+// console.log(isFinite(2e64)); //true
+// console.log(isFinite('10')); //true: '10'-> 10
+// console.log(isFinite(null)); //true: null-> 0
+
+// //인수가 무한수 또는 NaN으로 평가되는 값이라면 false를 반환한다.
+// console.log(isFinite(Infinity)); //false
+// console.log(isFinite(-Infinity)); //false
+
+// //인수가 NaN으로 평가되는 값이라면 false를 반환한다
+// console.log(isFinite(NaN)); //false
+// console.log(isFinite('hello')); //false
+// console.log(isFinite('2005/12/12')); //false
+
+// //숫자
+// console.log(isNaN(NaN));//true
+// console.log(isNaN(10)); //false
+
+// //문자열
+// console.log(isNaN('blabla')); //true: 'blabla'-> nan
+// console.log(isNaN('10')); //false: '10'->10
+// console.log(isNaN('10.12')); //false: '10.12' -> 10.12
+// console.log(isNaN('')); //false: '' -> 0
+// console.log(isNaN(' ')); //false ' '-> 0
+
+// //불리언
+// console.log(isNaN(true)); //false: true->1
+// console.log(isNaN(false)); //false: false->0
+// console.log(isNaN(null)); //false: null->0
+
+// //undefined
+// console.log(isNaN(undefined)); //true: undefined->NaN
+
+// //객체
+// console.log(isNaN({})); //true: {} ->NaN
+
+// //date
+// console.log(isNaN(new Date())); //false: newDate() -> Number
+// console.log(isNaN(toString())); //true: String ->NaN
+
+// //문자열을 실수로 해석하여 반환한다.
+// console.log(parseFloat('3.14')); //3.14
+// console.log(parseFloat('10.00')); //10
+
+// //공백으로 구분된 문자열은 첫 번째 문자열만 변환한다.
+// console.log(parseFloat('34 45 66')); //34
+// console.log(parseFloat('40 years')); //40
+
+// //첫 번째 문자열을 숫자로 변환할 수 없다면 NaN으로 반환한다.
+// console.log(parseFloat('He was 40')); //NaN
+
+// //앞뒤 공백은 무시된다.
+// console.log(parseFloat(' 60 ')); //60
+
+// console.log(parseInt(10)); //10
+// console.log(parseInt(10.123)); //10
+
+// // '10'을 10진수로 해석하고 그 결과를 10진수 정수로 반환한다.
+// console.log(parseInt('10')); //10
+// // '10'을 2진수로 해석하고 그 결과를 10진수 정수로 반환한다.
+// console.log(parseInt('10', 2)); //2
+// // '10'을 8진수로 해석하고 그 결과를 10진수 정수로 반환한다.
+// console.log(parseInt('10', 8)); //8
+// // '10'을 16진수로 해석하고 그 결과를 10진수 정수로 반환한다.
+// console.log(parseInt('10' ,16));  //16 
+
+// const x=15;
+
+// //10진수 15를 2진수로 변환하여 그 결과를 문자열로 반환한다.
+// console.log(x.toString(2)); //'1111'
+// //문자열 '1111'을 2진수로 해석하고 그 결과를 10진수 정수로 반환한다.
+// console.log(parseInt(x.toString(2),2)); //15
+
+// //10진수 15를 8진수로 변환하여 그 결과를 문자열로 반환한다.
+// console.log(x.toString(8)); //'17'
+// //문자열'17'을 8진수로 해석하고 그 결과를 10진수 정수로 반환한다.
+// console.log(parseInt(x.toString(8),8)); //15
+
+// //10진수 15를 16진수로 변환하여 그 결과를 문자열로 반환한다.
+// console.log(x.toString(16)); //f
+// //문자열 'f'를 16진수로 해석하고 그 결과를 16진수 정수로 변환한다 
+// console.log(parseInt(x.toString(16),16)); //15
+
+// //숫자값을 문자열로 반환한다.
+// console.log(x.toString()); //'15'
+// //문자열 '15'를 10진수로 해석하고 그 결과를 10진수 정수로 반환한다.
+// console.log(parseInt(x.toString())); //15
+
+// //16진수 리터럴 '0xf'를 16진수로 해석하고 10진수 정수로 그 결과를 반환한다.
+// console.log(parseInt('0xf')); //15
+// //위 코드와 같다
+// console.log(parseInt('f',16)); //15 
+
+// //2진수 리터럴(0b로 시작)은 제대로 해석하지 못한다. 0이후가 무시된다.
+// console.log(parseInt('0b10')); //0
+// //8진수 리터럴(ES6에서 도입, 0o로 시작)은 제대로 해석하지 못한다. 0 이후가 무시된다.
+// console.log(parseInt('0o10')); //0
+
+// //문자열 '10'을 2진수로 해석한다.
+// console.log(parseInt('10', 2)); //2
+// //문자열 '10'을 8진수로 해석한다.
+// console.log(parseInt('10',8)); //8
+
+// //'A'는 10진수로 해석할 수 없다.
+// console.log(parseInt('A0')); //NaN
+// //'2'는 2진수로 해석할 수 없다.
+// console.log(parseInt('20',2)); //NaN
+
+// //10진수로 해석할 수 없는 'A' 이후의 문자는 모두 무시된다.
+// console.log(parseInt('1A0')); 1
+// //2진수로 해석할 수 없는 '2' 이후의 문자는 모두 무시된다.
+// console.log(parseInt('102',2)); //2
+// //8진수로 해석할 수 없는 '8' 이후의 문자는 모두 무시된다.
+// console.log(parseInt('58' ,8)); //5
+// //16진수로 해석할 수 없는 'G' 이후의 문자는 모두 무시된다.
+// console.log(parseInt('FG' ,16)); //15
+
+// //공백으로 구분된 문다열은 첫 번째 문자열만 변환한다.
+// console.log(parseInt('10 45 66')); //10
+// console.log(parseInt('40 years')); //40
+// //첫 번째 문자열을 숫자로 변환할 수 없다면 NaN을 반환한다.
+// console.log(parseInt('he was 25')); //NaN
+// //앞 뒤 공백은 무시된다.
+// console.log(parseInt('   60'));  //60
+
+// var x=10; //전역 변수
+
+// function foo(){
+//     //선언하지 않은 식별자에 값을 할당
+//     y=20; //window.y=20;
+// };
+// foo();
+
+// //선언하지 않은 식별자 y를 전역해서 참조할 수 있다.
+// console.log(x+y); //30
+
+// //전역 변수 x는 호이스팅이 발생한다.
+// console.log(x) //undefined;
+// //전역 변수가 아니라 단지 전역 객체의 프로퍼티인 y는 호이스팅이 발생하지 않는다.
+// console.log(y); //ReferenceError: y is not defined
+
+// var x=10;
+
+// function foo(){
+//     //선언하지 않은 식별자에 값을 할당
+//     y=20; //window.y=20;
+// }
+// foo();
+
+// //선언하지 않은 식별자 y를 전역에서 참조할 수 있다.
+// console.log(x+y); //30
+
+var x=10; //전역 변수
+
+function foo(){
+    //선언하지 않은 식별자에 값을 할당
+    y=20; //window.y =20;
+    console.log(x+y); //30
+}
+foo();
+
+console.log(window.x); //10
+console.log(window.y); //20
+
+delete x; //전역 변수는 삭제되지 않는다.
+delete y; //프로퍼티는 삭제된다.
+
+console.log(window.x); //10
+console.log(window.y); //undefined
