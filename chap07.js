@@ -3450,20 +3450,164 @@
 // //선언하지 않은 식별자 y를 전역에서 참조할 수 있다.
 // console.log(x+y); //30
 
-var x=10; //전역 변수
+// var x=10; //전역 변수
 
-function foo(){
-    //선언하지 않은 식별자에 값을 할당
-    y=20; //window.y =20;
-    console.log(x+y); //30
-}
-foo();
+// function foo(){
+//     //선언하지 않은 식별자에 값을 할당
+//     y=20; //window.y =20;
+//     console.log(x+y); //30
+// }
+// foo();
 
-console.log(window.x); //10
-console.log(window.y); //20
+// console.log(window.x); //10
+// console.log(window.y); //20
 
-delete x; //전역 변수는 삭제되지 않는다.
-delete y; //프로퍼티는 삭제된다.
+// delete x; //전역 변수는 삭제되지 않는다.
+// delete y; //프로퍼티는 삭제된다.
 
-console.log(window.x); //10
-console.log(window.y); //undefined
+// console.log(window.x); //10
+// console.log(window.y); //undefined
+
+// let user={
+//     name: 'andy',
+//     sayHello: function(){
+//         return `hello my name is ${this.name}`;
+//     }
+// }
+// console.log(user.sayHello());
+// console.log(typeof user);  //object
+
+// let x=3;
+// let test={
+//     a: x,
+//     b: function(){
+//         return x;
+//     } 
+// };
+// console.log(test.b());
+
+// var test={
+//     1: 32,
+// }
+// console.log(test['1']);
+
+// let x=3;
+// let y=6;
+
+// let obj={
+//     x,
+//     y,
+// }
+// console.log(obj);
+
+// //ES5
+// var prefix = 'prop';
+// var i=0;
+
+// var obj={};
+
+// //계산된 프로퍼티 이름으로 프로퍼티 키 동적 생성
+// obj[prefix + '-' + ++i] =i;
+// obj[prefix + '-' + ++i] =i;
+// obj[prefix + '-' + ++i] =i;
+// console.log (obj); //{ 'prop-1': 1, 'prop-2': 2, 'prop-3': 3 }
+
+// //ES6 
+// const prefix = 'prop';
+// let i=0;
+
+// //객체 리터럴 내부에서도 계산된 프로퍼티 이름으로 프로퍼티 키를 동적 생성할 수 있다.
+// const obj={
+//     [`${prefix}-${++i}`]:i,
+//     [`${prefix}-${++i}`]:i,
+//     [`${prefix}-${++i}`]:i,
+// };
+// console.log(obj); //{ 'prop-1': 1, 'prop-2': 2, 'prop-3': 3 }
+
+// //ES5
+// let obj={
+//     name: 'andy',
+//     hello: function(){
+//         return 'hi my name is '+this.name;
+//     }
+// };
+// console.log(obj.hello());
+
+// obj={
+//     name: 'han',
+//     hello(){
+//         return 'hello';
+//     }
+// };
+// console.log(obj.hello()); //hello
+
+// //함수 정의
+// function add(x,y){
+//     return x+y;
+// };
+
+// //함수 호출
+// var result = add(2,5);
+
+// //함수 add에 인수 2,5 를 전달하면서 호출하면 반환값 7을 반환한다.
+// console.log(result); //7
+
+// //함수 선언문은 함수 이름을 생략할 수 없다.
+// function(x,y){ //SyntaxError: Function statements require a function name
+//     return x+y;
+// }
+
+// function foo(){
+//     console.log('foo');
+// }
+// foo();
+
+// {function bar(){
+//     console.log(bar);
+// }};
+// bar();
+
+
+// func();
+// function func(){
+//     console.log(1);
+// }
+
+// (function(){
+//     console.log(1);
+// }());
+
+// if(true){
+//     let i=4;
+// }
+// console.log(i);
+
+// var x=1;
+
+// function foo(){
+//     var x=10;
+//     bar();
+// }
+
+// function bar(){
+//     console.log(x);
+// }; 
+
+// foo(); //1
+
+// bar(); //1
+
+// function example() {
+//     var x = 10;
+//     let y = 20;
+  
+//     if (true) {
+//       var x = 30;
+//       let y = 40;
+//       console.log(x) // ?? 30
+//       console.log(y) // ?? 40
+//     }
+    
+//     console.log(x); //?? 30
+//     console.log(y); //?? 20
+//   }
