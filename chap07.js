@@ -3880,4 +3880,149 @@
 // }
 // func();
 
+// var value=1;
+// const obj ={
+//     value: 100,
+//     foo(){
+//         console.log("foo's this:" , this); //foo's this: { value: 100, foo: [Function: foo] }
+//         //콜백 함수 내부의 this는 전역 객체가 바인딩된다.
+//         setTimeout(function(){
+//             console.log("callback's this:", this); //window
+//             console.log("callback's this.value:", this.value); //callback's this.value: 1
+//     },100); 
+//   }
+// };
 
+// obj.foo();
+
+// //헬퍼 함수의 예시
+// function weekend(){
+//     return 7;
+// }
+
+// function month(){
+//     return weekend() *5;
+// }
+
+// console.log(month());
+
+// var value=1;
+
+// const obj={
+//     value: 100,
+//     func(){
+//         //this 바인딩(obj)을 변수 skip에 할당한다.
+//         var skip= this;
+//         setTimeout(function(){
+//             console.log(skip.value); //100
+//         },100)
+//     }
+// };
+// obj.func();
+
+// var value=1;
+
+// const obj={
+//     value:100,
+//     func(){
+//         setTimeout(function(){
+//             console.log(this.value); //100;
+//         }.bind(this),100)
+//     }
+// };
+// obj.func();
+
+// var value=1;
+// const obj={
+//     value:100,
+//     func(){
+//         setTimeout(()=>{
+//             console.log(this.value); //100
+//         },100);
+//     }
+// }
+// obj.func();
+
+// function func(){
+//     console.log(this);
+// };
+// func();
+
+
+// var test=()=>{
+//     console.log(this);
+// };
+// test();
+
+// const person ={
+//     name: 'andy',
+//     getName: function(){
+//         //메서드 내부의 this는 메서드를 호출한 객체에 바인딩된다.
+//         return 'hi my name is ' + this.name;
+//     }
+// };
+// //메서드 getName을 호출한 객체는 person이다.
+// let result=person.getName();
+// console.log(result); //hi my name is andy
+
+// const anotherPerson={
+//     name: 'han',
+// };
+// //getName 메서드를 anotherPerson 객체의 메서드로 할당
+// anotherPerson.getName=person.getName;
+
+// //getName 메서드를 호출한 객체는 anotherPerson 이다.
+// console.log(anotherPerson.getName()); //hi my name is han
+
+// //getName 메서드를 변수에 할당
+// const getName= person.getName;
+
+// //getName 메서드를 일반 함수로 호출
+// console.log(getName()); //hi my name is undefined
+// // 일반 함수로 호출된 getName 함수 내부의 this.name은 브라우저 환경에서 window.name과 같다.
+// //브라우저 환경에서 window.name은 브라우저 창의 이름을 나타내는 빌트인 프로퍼티이며 기본값은 ''이다.
+// //Node.js 환경에서 this.name은 undefined다.
+
+// function Person(name){
+//     this.name=name;
+// };
+
+// Person.prototype.getName=function(){
+//     return this.name;
+// };
+
+// const me = new Person('han');
+
+// //getName 메서드를 호출한 객체는 me다.
+// console.log(me.getName()); //1. han
+
+// Person.prototype.name='andy';
+
+// //getName 메서드를 호출한 객체는 Person.prototype이다.
+// console.log(Person.prototype.getName()); //2. andy
+
+// //생성자 함수
+// function Circle(radius){
+//     //생성자 함수 내부의 this는 생성자 함수가 생성할 인스턴스를 가리킨다.
+//     this.radius=radius;
+//     this.getDiameter=function(){
+//         return 2*radius;
+//     };
+// };
+
+// //바지름이 5인 Circle 객체를 생성
+// const circle1 = new Circle(5); 
+// //반지름이 10인 Circle 객체를 생성
+// const circle2 = new Circle(10); 
+
+// console.log(circle1.getDiameter()); //10
+// console.log(circle2.getDiameter()); //20
+
+// //new 연산자와 함께 호출하지 않으면 생성자 함수로 동작하지 않는다. 즉, 일반적인 함수의 호출이다.
+// const circle3 = Circle(15);
+
+// //일반 함수로 호출된 Circle에는 반환문이 없으므로 암묵적으로 undefined를 반환한다.
+// console.log(circle3);//undefined
+
+// //일반 함수로 호출된 Circle 내부의 this는 전역 객체를 가리킨다.
+// console.log(radius); //15
