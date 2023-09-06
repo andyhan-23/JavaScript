@@ -5,30 +5,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+      p.color-red{
+      color:red;
+    }
+    p{
+      color: green;
+    }
+    .list li:hover{
+      color: yellow;
+    }
+    .list li{
+      color: green;
+    }
+    .list{
+      color:red
+    }
+  </style>
 </head>
 <body>
-  <div id ="counter">0</div>
-  <div id="increase">+</div>
-  <div id="decrease">-</div>
-  <script>
-    const $counter=document.getElementById("counter");
-    const $decrease=document.getElementById("decrease");
-    const $increase=document.getElementById("increase");
-
-    let num=0;
-    const render= function(){
-      $counter.innerHTML=num;
-    }
-    $increase.onclick=function(){
-      num++;
-      console.log(`increase 버튼 클릭:${num}`)
-      render();
-    };
-    $decrease.onclick=function(){
-      num--;
-      console.log(`decreade 버튼 클릭:${num}`);
-      render();
-    };
-  </script>
+  <p class="color-red" style="color: blue">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, doloremque consectetur in ex officia eaque tenetur corrupti necessitatibus, cumque aliquid quis corporis fuga beatae maiores nulla minus inventore veritatis nobis.
+  </p>
+  <div class="list">
+    <ul>
+      <li>a</li>
+      <li>b</li>
+    </ul>
+  </div>
 </body>
 </html>
