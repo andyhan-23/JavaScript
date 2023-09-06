@@ -4026,3 +4026,174 @@
 
 // //일반 함수로 호출된 Circle 내부의 this는 전역 객체를 가리킨다.
 // console.log(radius); //15
+
+
+// function getThisBinding(){
+//     return this;
+// }
+
+// //this로 사용할 객체
+// const thisArg={a:1};
+
+// console.log(getThisBinding()); //window
+
+// //getThisBinding 함수를 호출하면서 인수로 전달한 객체를 getThisBinding 함수의 this에 바인딩한다.
+// console.log(getThisBinding.apply(thisArg)); //{ a: 1 }
+// console.log(getThisBinding.call(thisArg)); //{ a: 1 }
+
+// function getThisBinding(){
+//     console.log(arguments);
+//     return this;
+// };
+
+// //this로 사용할 객체
+// const thisArg={a:1};
+
+// //getThisBinding 함수를 호출하면서 인수로 전달한 객체를 getThisBinding 함수의 this에 바인딩한다.
+// //apply 메서드는 호출한 함수의 인수를 배열로 묶어 전달한다.
+// console.log(getThisBinding.apply(thisArg,[1,2,3])); //[Arguments] { '0': 1, '1': 2, '2': 3 } , { a: 1 }
+
+// //call 메서드는 호출할 함수의 인수를 쉼표로 구분한 리스트 형식으로 전달한다.
+// console.log(getThisBinding.call(thisArg,1,2,3)); //[Arguments] { '0': 1, '1': 2, '2': 3 } , { a: 1 }
+
+// function convertArgsToArray(){
+//     console.log(arguments); //[Arguments] { '0': 1, '1': 2, '2': 3, '3': 4 }
+
+//     //arguments객체를 배열로 변환
+//     //Array.prototype.slice를 인수 없이 호출하면 배열의 복사본을 생성한다.
+//     let arr= Array.prototype.slice.call(arguments);
+//     //let arr=Array.prototype.slice.apply(arguments);
+//     return arr;
+// }
+
+// console.log(convertArgsToArray(1,2,3,4)); //[ 1, 2, 3, 4 ]
+
+// let func=function(){
+//     console.log(this);
+// };
+
+// let test={
+//     a:1
+// };
+// let result=func.call(test,1,2);
+
+// function getThisBinding(){
+//     console.log(arguments);
+//     return this;
+// };
+
+// //this로 사용할 객체
+// const thisArg={a:1};
+
+// //getThisBinding 함수를 호출하면서 인수로 전달한 객체를 getThisBinding 함수의 this에 바인딩한다.
+// //apply 메서드는 호출한 함수의 인수를 배열로 묶어 전달한다.
+// getThisBinding.apply(thisArg,[1,2,3]); //[Arguments] { '0': 1, '1': 2, '2': 3 } , { a: 1 }
+
+// //call 메서드는 호출할 함수의 인수를 쉼표로 구분한 리스트 형식으로 전달한다.
+// getThisBinding.call(thisArg,1,2,3); 
+
+// function getThisBinding(){
+//     return this;
+// }
+
+// //this로 사용할 객체
+// const thisArg={a:1};
+
+// //bind메서드는 함수에 this로 사용할 객체를 전달한다.
+// //bind메서드는 함수를 호출하지는 않는다.
+// console.log(getThisBinding.bind(thisArg)); //[Function: bound getThisBinding]
+// //bind메서드는 함수를 호출하지는 않으므로 명시적으로 호출해야 한다.
+// console.log(getThisBinding.bind(thisArg)()); //{ a: 1 }
+
+// const person={
+//     name: 'andy',
+//     foo(callback){
+//         //1
+//         setTimeout(callback,100);
+//     }
+// };
+
+// person.foo(function(){
+//     console.log(`hi my name is ${this.name}.`); //2. hi my name is undefined.
+//     //일반 함수로 호출된 콜백 함수 내부의 this.name은 브라우저 환경에서 window.name과 같다.
+//     //브라우저 환경에서 window.name은 브라우저 창의 이름을 나타내는 빌트인 프로퍼티이며 기본값은 ''이다.
+//     //Node.js 환경에서 this.name은 undefined다.
+// });
+
+// const person2={
+//     name:'andy',
+//     foo(callback){
+//         //bind 메서드로 callback 함수 내부의 this 바인딩을 전달
+//         setTimeout(callback.bind(this),100);
+//     }
+// };
+
+// person2.foo(function(){
+//     console.log(`hi my name is ${this.name}`); //hi my name is andy
+// })
+
+// //전역 변수 선언
+// const x=1;
+// const y=2;
+
+// //함수 정의
+// function foo(a){
+//     //지역 변수 선언
+//     const x=10;
+//     const y=20;
+
+//     //메서드 호출
+//     console.log(a+x+y);
+// }
+
+// //함수 호출
+// foo(100); //130
+
+// //메서드 호출
+// console.log(x+y); //3
+
+// const x=1;
+// function foo(){
+//     const y=2;
+//     function bar(){
+//         const z=3;
+//         console.log(x+y+z);
+//     };
+//     bar();
+// }
+// foo(); //6
+
+// var x=1;
+// const y=2;
+
+// function foo(a){
+//     var x=3;
+//     const y=4;
+
+//     function bar(b){
+//         const z=5;
+//         console.log(a+b+x+y+z); //42
+//     }
+//     bar(10);
+// }
+// foo(20);
+
+//Object.prototype.toString
+// window.toString(); //-> "[object Window]"
+
+// window.__proto__.__proto__.__proto__.__proto__===Object.prototype; //true
+
+// let x=1;
+
+// if(true){
+//     let x=10;
+//     console.log(x); //10
+// }
+// console.log(x); //1
+
+for(let i=0; i<5; i++){
+    let fuc= function(){
+        console.log(i);
+    }
+    fuc();
+};
