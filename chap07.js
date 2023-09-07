@@ -4214,16 +4214,313 @@
 // }
 // outerFunc();
 
-const x=1;
+// const x=1;
 
-function foo(){
-    const x=10;
-    bar();
+// function foo(){
+//     const x=10;
+//     bar();
+// }
+
+// function bar(){
+//     console.log(x);
+// };
+
+// foo(); //1
+// bar(); //1
+
+// const x=1;
+
+// function foo(){
+//     const x=10; 
+
+//     //상위 스코프는 함수 정의 환경(위치)에 따라 결정된다.
+//     //함수 호출 위치와 상위 스코프는 아무런 관계가 없다.
+//     bar();
+// }
+// function bar(){
+//     console.log(x);
+// }
+
+// foo(); //1
+// bar(); //1
+
+// const x=1;
+
+// //1번
+// function outer(){
+//     const x=10;
+//     const inner= function(){
+//         console.log(x); //2번
+//     };
+//     return inner;
+// }
+
+// //outer 함수를 호출하면 중첩 합수 inner를 반환한다.
+// //그리고 outer함수의 실행 컨텍스트는 실행 컨텍스트 스택에서 팝되어 제거된다.
+// const innerFunc = outer(); //3번
+// innerFunc(); //4번 ->10 출력
+
+// //카운트 상태 변수
+// let count=0; 
+
+// //카운트 상태 변경 함수
+// function func(){
+//     //카운트 상태를 1만큼 증가시킨다.
+//     return ++count;
+// }
+// console.log(func()); //1 
+// console.log(func()); //2
+// console.log(func()); //3
+
+// //카운트 상태 변경 함수
+// function increase(){
+//     // 카운트 상태 변수
+//     let count=0;
+
+//     //카운트 상대를 1만큼 증가시킨다.
+//     return ++count;
+// }
+
+// //이전 상태를 유지하지 못한다.
+// console.log(increase());
+// console.log(increase());
+
+// function func(){
+//     let num=0;
+//     function increase(){
+//         return ++num;
+//     };
+//     return increase;
+// }
+
+// const up=func();
+// console.log(up()); 
+// console.log(up());
+
+
+// //카운트 상태 변경 함수
+// const increase = (function(){
+//     //카운트 상태 변수
+//     let num=0;
+    
+//     //클로저
+//     return function(){
+//         //카운트 상태를 1만큼 증가시킨다.
+//         return ++num;
+//     }
+// }());
+ 
+// console.log(increase()); //1
+// console.log(increase()); //2
+// console.log(increase()); //3
+
+// const counter = (function(){
+//     //카운트 상태 변수
+//     let num=0;
+
+//     //클로저인 메서드를 갖는 객체를 반환한다.
+//     //객체 리터럴은 스코프를 만들지 않는다.
+//     //따라서 아래 메서드들의 상위 스코프는 즉시 실행 함수의 렉시컬 환경이다.
+//     return{
+//         //num: 0, //프로퍼티는 public하므로 은닉되지 않는다.
+//         increase(){
+//             return ++num;
+//         },
+//         decrease(){
+//             return num > 0 ? --num : 0;
+            
+//         }
+//     };
+// }());
+
+// console.log(counter.increase()); //1
+// console.log(counter.increase()); //2
+
+// console.log(counter.decrease()); //1
+// console.log(counter.decrease()); //0
+
+// const Counter=(function(){
+//     //1. 카운트 상태 변수
+//     let num=0;
+
+//     function Counter(){
+//         //this.num=0 // 2. 프로퍼티는 public하므로 은닉되지 않는다.
+//     }
+
+//     Counter.prototype.increase=function(){
+//         return ++num;
+//     };
+//     Counter.prototype.decrease=function(){
+//         return num >0 ? --num:0;
+//     };
+//     return Counter;
+// }());
+// const counter= new Counter();
+
+// console.log(counter.increase()); //1
+// console.log(counter.increase()); //2
+
+// console.log(counter.decrease()); //1
+// console.log(counter.decrease()); //0
+
+//함수를 인수로 전달받고 함수를 반환하는 고차 함수
+//이 함수는 카운트 상태를 유지하기 위한 자유 변수 counter를 기억하는 클로저를 반환한다.
+// function makeCounter(predicate){
+//     //counter 상태를 유지하기 위한 자유 변수
+//     let counter=0;
+
+//     //클로저를 반환
+//     return function(){
+//         //인수로 전달받은 보조 함수에 상태 변경을 위임한다.
+//         counter=predicate(counter);
+//         return counter;
+//     };
+// }
+
+// //보조 함수
+// function increase(n){
+//     return ++n;
+// }
+
+// //보조 함수
+// function decrease(n){
+//     return --n;
+// }
+
+// //함수로 함수를 생성한다
+// //make counter 함수는 보조 함수을 인수로 전달받아 함수를 반환한다.
+// const increaser = makeCounter(increase);
+// console.log(increaser()); //1
+// console.log(increaser()); //2
+
+// //increaser  함수와는 별개의 독리된 렉시컬 환경을 갖기 때문에 카운터 상태가 연동하지 않는다.
+// const decreaser = makeCounter(decrease);
+// console.log(decreaser()); //-1
+// console.log(decreaser()); //-2
+
+// //함수를 반환하는 고차 함수
+// //이 함수는 카운트 상태를 유지하기 위한 자유 변수 counter를 기억하는 클로저를 반환한다.
+// const counter =(function(){
+//     //카운트 상태를 유지하기 위한 자유 변수
+//     let counter=0;
+
+//     //함수를 인수로 전달받는 클로저를 반환
+//     return function(predicate){
+//         //인수로 전달받은 보조 함수에 상태 변경을 위임한다.
+//         counter=predicate(counter);
+//         return counter;
+//     };
+// }());
+
+// //보조 함수
+// function increase(n){
+//     return ++n;
+// }
+
+// //보조 함수
+// function decrease(n){
+//     return --n;
+// }
+
+// //보조 함수를 전달하여 호출
+// console.log(counter(increase)); //1
+// console.log(counter(increase)); //2
+
+// //자유 변수를 공유한다.
+// console.log(counter(decrease)); //1
+// console.log(counter(decrease)); //0
+
+// function Person(name, age){
+//     this.name= name; //public;
+//     let _age = age; //private;
+
+//     //인스턴스 메서드
+//     this.sayHi= function(){
+//         console.log(`hi! my name is ${this.name}. i am${_age}`);
+//     };
+// }
+
+// const me = new Person('han',25);
+// me.sayHi(); //hi! my name is han. i am25
+// console.log(me.name); //han
+// console.log(me._age); //undefiend
+
+// const you = new Person('andy', 23);
+// you.sayHi(); //hi! my name is andy. i am23
+// console.log(you.name); //andy
+// console.log(you._age); //undefined  
+
+
+// function People(name, age){
+//     this.name=name; //public
+//     let _age=age; //private
+// };
+
+// //프로토타입 메서드
+// Person.prototype.sayHi=function(){
+//     //Person 생성자 함수의 지역 변수 _age를 참조할 수 없다.
+//     console.log(`hi my name is ${this.name}. i am${_age}`);
+// }
+
+// const Person=(function(){
+//     let _age=0;
+
+//     //생성자 함수
+//     function Person(name, age){
+//         this.name=name;
+//         _age=age;
+//     };
+
+//     //프로토타입 메서드
+//     Person.prototype.sayHi=function(){
+//         console.log(`hi my name is ${this.name}. i am ${_age}`);
+//     };
+
+//     //생성자 함수를 반환
+//     return Person;
+// }());
+
+// const me = new Person('han', 25);
+// me.sayHi(); //hi my name is han. i am 25
+// console.log(me.name); //han
+// console.log(me._age); //undefined
+
+// const you = new Person('andy', 23);
+// you.sayHi(); //hi my name is andy. i am 23
+// console.log(you.name); //andy
+// console.log(you._age); //undefined
+
+// var func=[];
+
+// for(var i=0 ; i<3; i++){
+//     func[i]= function(){
+//         return i;
+//     }
+// };
+
+// for(var j=0; j<func.length; j++){
+//     console.log(func[j]());
+// }
+
+// var arr=[];
+
+// for(var i=0; i<3; i++){
+//     arr[i]=function(){
+//         return i;
+//     }
+// };
+
+// for(var j=0; j<arr.length; j++){
+//     console.log(arr[j]);
+// }
+
+var funcs=[]; 
+
+for(var i=0;  i<3; i++){
+    funcs[i] =(function(id){ //1
+        return function(){
+            return id;
+        };
+
+    }(i));
 }
-
-function bar(){
-    console.log(x);
-};
-
-foo(); //1
-bar(); //1
