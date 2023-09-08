@@ -4514,13 +4514,141 @@
 //     console.log(arr[j]);
 // }
 
-var funcs=[]; 
+// var funcs=[]; 
 
-for(var i=0;  i<3; i++){
-    funcs[i] =(function(id){ //1
-        return function(){
-            return id;
-        };
+// for(var i=0;  i<3; i++){
+//     funcs[i] =(function(id){ //1
+//         return function(){
+//             return id;
+//         };
 
-    }(i));
+//     }(i));
+// }
+
+
+// let count=0;
+// function increase(n){
+//     return ++n;
+// };
+
+// count=increase(count);
+// console.log(count);
+
+// count=increase(count);
+// console.log(count);
+
+// let count=0;
+
+// function increase(){
+//     let count=1;
+//     return ++count;
+// }
+
+// increase();
+// console.log(count);
+
+// function multiply(x,y){
+//     console.log(this); //global
+//     return x*y;
+// }
+// function plus(x,y){
+//     console.log(this);
+//     return x+y;
+// }
+// console.log(multiply(3,4));
+
+// const multiply2 = (x,y)=>{  
+//     return x*y;
+// }
+// console.log(multiply2(4,5));
+
+// const multiply3 =(x,y)=>x*y;
+// console.log(multiply3(2,5));
+
+// function create(key, value){
+//     return {key, value}
+// }
+
+// const obj=(key, obj)=>({key, obj});
+// console.log(obj(3,4));
+
+// const sum =(a,b) =>{
+//     const result=a+b;
+//     return result;
+// }
+
+//const plus=(x,y)=>x+y;
+
+// (function test(){
+//     console.log(1);
+// }())
+
+// var func=(function(){
+//     console.log(2);
+// }());
+
+// const person =(name=>({
+//     sayHi(){
+//         return `Hi? My name is ${name}`;
+//     }
+// }))('han');
+// let test=person.sayHi();
+// console.log(test);
+
+// var test=[1,2,3].map(function(v){
+//     return v*2;
+// })
+
+// var test2= [1,2,3].map(v=>v*2);
+// console.log(test2);
+
+
+// function test(a,a){
+//     return a+a+a;
+// }
+// console.log(test(1,4,4));
+
+// //es5 생성자 함수
+// var Person=(function(){
+//     //생성자 함수
+//     function Person(name){
+//         this.name=name;
+//     };
+//     //프로토타입 메서드
+//     Person.prototype.sayHi=function(){
+//         console.log(`hi my name is ${this.name}`);
+//     };
+//     //생성자 함수 반환
+//     return Person;
+// }());
+
+// //인스턴스 생성
+// var me = new Person('andy');
+// me.sayHi();
+
+// class person{};
+
+// console.log(Object.getOwnPropertyDescriptors(person));
+
+// let a=1;
+// var obj={
+//     name: 'andy',
+//     sayHello: function(){
+//         //console.log('hello my name is '+ this.name);
+//         return `hello my name is ${this.name}`;
+//     },
+//     age: 13,
+// }
+
+// delete obj.name;
+// console.log(obj);
+
+
+var x=1, y=2;
+const obj={
+    a:x,
+    b:y,
 }
+console.log(obj);
+
+

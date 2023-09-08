@@ -5,24 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        div ul{
+            color:blue;
+        }
+        div{
+            color:red;
+        }
+        div ul .first, .second{
+            color: gray;
+        }
+        div ul .first{
+            color:green;
+        }
+        div ul #real_first #first{
+            color: yellow;
+        }
+    </style>
+
+   
 </head>
 <body>
-    <script>
-        function foo(){
-            const x=1;
-            const y=2;
-
-            //클로저
-            //중첩 함수 bar는 외부 함수보다 더 오래 유지되며 상위 스코프의 식별자를 참조한다
-            function bar(){
-                debugger;
-                console.log(x);
-            }
-            return bar;
-        }
-        const bar= foo();
-        bar();
-    </script>
+    <div>
+        <ul>
+            <div id="real_first">
+            <li id="first" class="first">first</li>
+            </div>
+            <li id="second" class="second">second</li>
+            <li id="third" class="third">third</li>
+        </ul>
+    </div>
 </body>
 </html>
-
