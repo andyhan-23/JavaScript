@@ -1811,7 +1811,7 @@
 // // //이터러블 인지 확인하는 함수
 // // const isIterable = v => v !==null && typeof v[Symbol.iterator] === 'function';
 
-// // //배열, 문자열, Map, Set 등은 이터러블이다. 
+// // //배열, 문자열, Map, Set 등은 이터러블이다.
 // // console.log(isIterable([])); //true,
 // // console.log(isIterable('')); //true,
 // // console.log(isIterable(new Map())); //true
@@ -1887,18 +1887,18 @@
 // // function example() {
 // //     var x = 10;
 // //     let y = 20;
-  
+
 // //     if (true) {
 // //       var x = 30;
 // //       let y = 40;
-// //       console.log(x) 
-// //       console.log(y) 
+// //       console.log(x)
+// //       console.log(y)
 // //     }
-  
-// //     console.log(x); 
-// //     console.log(y); 
+
+// //     console.log(x);
+// //     console.log(y);
 // //   }
-  
+
 // //   example();
 
 // // function foo(){};
@@ -1925,7 +1925,7 @@
 
 // // console.log(new baz.x()); //x{}
 
-// // //화살표 함수 정의 
+// // //화살표 함수 정의
 // // const arrow =()=>{};
 
 // // //console.log(new arrow()); //TypeError: arrow is not a constructor
@@ -2001,7 +2001,7 @@
 // //   new 연산자 없이 생성자 함수를 호출하여도 new.target을 통해 생성자 함수로서 호출된다.
 // //   const circle= Circle(5);
 // //   console.log(circle.getDiameter());//10
-  
+
 
 // // Scope safe Constuctor Pattern
 // // function Circle(radius){
@@ -2048,7 +2048,7 @@
 
 // // let str = String(123);
 // // console.log(str); // 문자열 123
-// // str = new String(123); 
+// // str = new String(123);
 // // console.log(str); //[String: '123']
 
 // // let num = Number('123')
@@ -2306,7 +2306,7 @@
 // //   this.radius=radius;
 // // };
 
-// // // Circle 생성자 함수가 생성한 모든 인스턴스가 getArea 메서드를 
+// // // Circle 생성자 함수가 생성한 모든 인스턴스가 getArea 메서드를
 // // // 공유해서 사용할 수 있도록 프로토타입에 추가한다.
 // // // 프로토타입은 Circle 생성자 함수의 prototype 프로퍼티에 바인딩되어 있다.
 // // Circle.prototype.getArea=function(){
@@ -2320,7 +2320,7 @@
 // // //Circle 생성자 함수가 생성한 모든 인스턴스는 부모 객체의 역할을 하는
 // // //프로토타입 Circle.prototype으로부터 getArea 메서드를 상속받는다.
 // // //즉, Circle 생성자 함수가 생성하는 모든 인스턴스는 하나의 getArea 메서드를 공유한다.
-// // console.log(circle1.getArea===circle2.getArea)//true 
+// // console.log(circle1.getArea===circle2.getArea)//true
 
 // // console.log(circle1.getArea()); //3.141592653589793
 // // console.log(circle2.getArea()); //12.566370614359172
@@ -2421,7 +2421,7 @@
 // // console.log(obj.foo.prototype);//undefined
 
 // // const obj2={
-// //   foo: function(){ 
+// //   foo: function(){
 // //   }
 // // };
 
@@ -2430,7 +2430,7 @@
 
 // // //생성자 함수
 // // function Person(name){
-// //   this.name=name; 
+// //   this.name=name;
 // // }
 
 // // const me = new Person('Lee');
@@ -2452,7 +2452,7 @@
 // // const obj = new Object();
 // // console.log(obj.constructor===Object)// true
 
-// // //add 함수 객체를 생성한 생성자 함수는 Function이다 
+// // //add 함수 객체를 생성한 생성자 함수는 Function이다
 // // const add= new Function('a','b','return a+b');
 // // console.log(add.constructor===Function); //true
 
@@ -2598,7 +2598,7 @@
 //   function Person(name){
 //     this.name=name;
 //   }
-  
+
 //   //프로토타입 메서드
 //   Person.prototype.sayHello = function(){
 //     console.log(`Hi! My name is ${this.name}`);
@@ -2639,7 +2639,7 @@
 //   function Person(name){
 //     this.name=name;
 //   }
-  
+
 //   //1. 생성자 함수의 prototype 프로퍼티를 통해 프로토타입을 교체
 //   Person.prototype={
 //     sayHello(){
@@ -2656,7 +2656,7 @@
 // console.log(me.constructor===Object); //true
 
 // function Person(name){
-//   this.name= name; 
+//   this.name= name;
 // }
 
 // const me= new Person('andy');
@@ -2731,7 +2731,7 @@
 //   //재귀 탈출 조건
 //   //prototype이 null이면 프로토타입 체인의 종점에 다다른 것이다.
 //   if(prototype===null) return false;
-  
+
 //   //프로토타입이 생성자 함수의 prototype 프로퍼티에 바인딩
 // }
 
@@ -2742,7 +2742,7 @@
 //   //재귀 탈출 조건
 //   //prototype이 null이면 프로토타입 체인의 종점에 다다른 것이다.
 //   if(prototype === null) return false;
-  
+
 //   //프로토타입 생성자 함수의 prototype 프로퍼티에 바인딩된 객체라면 true를 반환한다.
 //   //그렇지 않으면 재귀 호출로 프로토타입 체인 상의 상위 프로토타입으로 이동하여 확인한다.
 //   return prototype ===constructor.prototype||isInstanceOf(prototype, constructor);
@@ -2959,7 +2959,7 @@
 // }
 // for(const key in obj){
 //     if(!obj.hasOwnProperty(key)) continue;
-//     console.log(key+' : '+obj[key]); 
+//     console.log(key+' : '+obj[key]);
 // }
 // /*
 // 1 : 1
@@ -3026,7 +3026,7 @@
 //     var let=10; //에러가 발생하지 않는다.
 //     function foo(){
 //         'use strict'
-        
+
 //         let=20; //SyntaxError: Unexpected strict mode reserved word
 //     }
 //     foo();
@@ -3039,11 +3039,11 @@
 // }());
 
 // (function (){
-//     'use strict'; 
-    
+//     'use strict';
+
 //     var x=1;
 //     delete  x; //SyntaxError: Delete of an unqualified identifier in strict mode.
-    
+
 //     function foo(a){
 //         delete a; //SyntaxError: Delete of an unqualified identifier in strict mode.
 //     }
@@ -3117,7 +3117,7 @@
 // console.log(typeof arr); //object
 
 // //RegExp 생성자 함수에 의한 RegExp 겍체(정규 표현식)생성
-// const regExp = new RegExp(/ab+c/i); 
+// const regExp = new RegExp(/ab+c/i);
 // console.log(regExp); ///ab+c/i
 // console.log(typeof regExp); //object
 
@@ -3145,7 +3145,7 @@
 // console.log(Number.isInteger(0.5));
 
 // const str= 'hello';
-// console.log(str.length); //5; 
+// console.log(str.length); //5;
 // console.log(str.toUpperCase()); //HELLO
 
 // const str='hi';
@@ -3161,7 +3161,7 @@
 // const str="andy";
 
 // //2. 식별자 str은 암묵적으로 생성된 래퍼 객체를 가리킨다.
-// //식별자 str값 'andy'는 래퍼객체의 [[StringData]] 내부 슬롯에 할당된다. 
+// //식별자 str값 'andy'는 래퍼객체의 [[StringData]] 내부 슬롯에 할당된다.
 // str.name="han";
 
 // //3. 식별자 str은 다시 원래의 문자열, 즉 래퍼 객체의 [[StringData]] 내부 슬롯에 할당된 원시값을 갖는다.
@@ -3169,7 +3169,7 @@
 
 // //4. 식별자 str은 새롭게 암묵적으로 생성된 (2에서 생성된 래퍼 객체와는 다른)래퍼 객체를 가리킨다.
 // //새롭게 생성된 래퍼 객체에는 name프로퍼티가 존재하지 않는다.
-// console.log(str.name); //undefined; 
+// console.log(str.name); //undefined;
 
 // //5. 식별자 str은 다시 원래의 문자열,즉 래퍼 객체의 [[StringData]] 내부 슬롯에 할당된 원시값을 갖는다.
 // //이때 4에서 생성된 래퍼 객체는 아무도 참조하지 않은 상태이므로 가비지 컬렉션의 대상이 된다.
@@ -3241,10 +3241,10 @@
 // console.log(typeof undefined); //undefined
 
 // //표현식인 문
-// const a=eval('1+2;'); 
+// const a=eval('1+2;');
 // console.log(a); //3
 // //표현식이 아닌 문
-// const b=eval('var x=5;') 
+// const b=eval('var x=5;')
 // console.log(b); //undefined
 
 // //eval 함수에 의해 런타임에 변수 선언문이 실행되어 x변수가 선언되었다.
@@ -3362,7 +3362,7 @@
 // // '10'을 8진수로 해석하고 그 결과를 10진수 정수로 반환한다.
 // console.log(parseInt('10', 8)); //8
 // // '10'을 16진수로 해석하고 그 결과를 10진수 정수로 반환한다.
-// console.log(parseInt('10' ,16));  //16 
+// console.log(parseInt('10' ,16));  //16
 
 // const x=15;
 
@@ -3378,7 +3378,7 @@
 
 // //10진수 15를 16진수로 변환하여 그 결과를 문자열로 반환한다.
 // console.log(x.toString(16)); //f
-// //문자열 'f'를 16진수로 해석하고 그 결과를 16진수 정수로 변환한다 
+// //문자열 'f'를 16진수로 해석하고 그 결과를 16진수 정수로 변환한다
 // console.log(parseInt(x.toString(16),16)); //15
 
 // //숫자값을 문자열로 반환한다.
@@ -3389,7 +3389,7 @@
 // //16진수 리터럴 '0xf'를 16진수로 해석하고 10진수 정수로 그 결과를 반환한다.
 // console.log(parseInt('0xf')); //15
 // //위 코드와 같다
-// console.log(parseInt('f',16)); //15 
+// console.log(parseInt('f',16)); //15
 
 // //2진수 리터럴(0b로 시작)은 제대로 해석하지 못한다. 0이후가 무시된다.
 // console.log(parseInt('0b10')); //0
@@ -3482,7 +3482,7 @@
 //     a: x,
 //     b: function(){
 //         return x;
-//     } 
+//     }
 // };
 // console.log(test.b());
 
@@ -3512,7 +3512,7 @@
 // obj[prefix + '-' + ++i] =i;
 // console.log (obj); //{ 'prop-1': 1, 'prop-2': 2, 'prop-3': 3 }
 
-// //ES6 
+// //ES6
 // const prefix = 'prop';
 // let i=0;
 
@@ -3591,7 +3591,7 @@
 
 // function bar(){
 //     console.log(x);
-// }; 
+// };
 
 // foo(); //1
 
@@ -3600,14 +3600,14 @@
 // function example() {
 //     var x = 10;
 //     let y = 20;
-  
+
 //     if (true) {
 //       var x = 30;
 //       let y = 40;
 //       console.log(x) // ?? 30
 //       console.log(y) // ?? 40
 //     }
-    
+
 //     console.log(x); //?? 30
 //     console.log(y); //?? 20
 //   }
@@ -3643,7 +3643,7 @@
 
 // Circle.prototype.getArea=function(){
 //     return Math.PI *this.radius;
-    
+
 // }
 
 // const circle1= new Circle(5);
@@ -3709,7 +3709,7 @@
 // }
 
 // Circle.prototype.getDiameter=function(){
-//     //this는 생성자 함수가 
+//     //this는 생성자 함수가
 //     return 2*this.radius;
 // };
 
@@ -3779,14 +3779,14 @@
 // function example() {
 //     var x = 10;
 //     let y = 20;
-  
+
 //     if (true) {
 //       var x = 30;
 //       let y = 40;
 //       console.log(x) // ?? 30
 //       console.log(y) // ?? 40
 //     }
-  
+
 //     console.log(x); //?? 30
 //     console.log(y); //?? 20
 //   }
@@ -3798,7 +3798,7 @@
 //     function bar(){
 //         console.log("bar's this", this); //window
 //     }
-//     bar(); 
+//     bar();
 // };
 // foo();
 
@@ -3848,7 +3848,7 @@
 //         setTimeout(function(){
 //             console.log("callback's this: ", this) //window
 //             console.log("callback's this.value: ", this.value); //callback's this.value:  undefined
-//         },100); 
+//         },100);
 //     }
 // };
 // obj.foo();
@@ -3889,7 +3889,7 @@
 //         setTimeout(function(){
 //             console.log("callback's this:", this); //window
 //             console.log("callback's this.value:", this.value); //callback's this.value: 1
-//     },100); 
+//     },100);
 //   }
 // };
 
@@ -4011,9 +4011,9 @@
 // };
 
 // //바지름이 5인 Circle 객체를 생성
-// const circle1 = new Circle(5); 
+// const circle1 = new Circle(5);
 // //반지름이 10인 Circle 객체를 생성
-// const circle2 = new Circle(10); 
+// const circle2 = new Circle(10);
 
 // console.log(circle1.getDiameter()); //10
 // console.log(circle2.getDiameter()); //20
@@ -4090,7 +4090,7 @@
 // getThisBinding.apply(thisArg,[1,2,3]); //[Arguments] { '0': 1, '1': 2, '2': 3 } , { a: 1 }
 
 // //call 메서드는 호출할 함수의 인수를 쉼표로 구분한 리스트 형식으로 전달한다.
-// getThisBinding.call(thisArg,1,2,3); 
+// getThisBinding.call(thisArg,1,2,3);
 
 // function getThisBinding(){
 //     return this;
@@ -4231,7 +4231,7 @@
 // const x=1;
 
 // function foo(){
-//     const x=10; 
+//     const x=10;
 
 //     //상위 스코프는 함수 정의 환경(위치)에 따라 결정된다.
 //     //함수 호출 위치와 상위 스코프는 아무런 관계가 없다.
@@ -4261,14 +4261,14 @@
 // innerFunc(); //4번 ->10 출력
 
 // //카운트 상태 변수
-// let count=0; 
+// let count=0;
 
 // //카운트 상태 변경 함수
 // function func(){
 //     //카운트 상태를 1만큼 증가시킨다.
 //     return ++count;
 // }
-// console.log(func()); //1 
+// console.log(func()); //1
 // console.log(func()); //2
 // console.log(func()); //3
 
@@ -4294,7 +4294,7 @@
 // }
 
 // const up=func();
-// console.log(up()); 
+// console.log(up());
 // console.log(up());
 
 
@@ -4302,14 +4302,14 @@
 // const increase = (function(){
 //     //카운트 상태 변수
 //     let num=0;
-    
+
 //     //클로저
 //     return function(){
 //         //카운트 상태를 1만큼 증가시킨다.
 //         return ++num;
 //     }
 // }());
- 
+
 // console.log(increase()); //1
 // console.log(increase()); //2
 // console.log(increase()); //3
@@ -4328,7 +4328,7 @@
 //         },
 //         decrease(){
 //             return num > 0 ? --num : 0;
-            
+
 //         }
 //     };
 // }());
@@ -4448,7 +4448,7 @@
 // const you = new Person('andy', 23);
 // you.sayHi(); //hi! my name is andy. i am23
 // console.log(you.name); //andy
-// console.log(you._age); //undefined  
+// console.log(you._age); //undefined
 
 
 // function People(name, age){
@@ -4514,7 +4514,7 @@
 //     console.log(arr[j]);
 // }
 
-// var funcs=[]; 
+// var funcs=[];
 
 // for(var i=0;  i<3; i++){
 //     funcs[i] =(function(id){ //1
@@ -4557,7 +4557,7 @@
 // }
 // console.log(multiply(3,4));
 
-// const multiply2 = (x,y)=>{  
+// const multiply2 = (x,y)=>{
 //     return x*y;
 // }
 // console.log(multiply2(4,5));
@@ -4644,11 +4644,565 @@
 // console.log(obj);
 
 
-var x=1, y=2;
-const obj={
-    a:x,
-    b:y,
-}
-console.log(obj);
+// var x=1, y=2;
+// const obj={
+//     a,
+//     b,
+// }
+// console.log(obj);
+
+// let key='key';
+
+// let obj={};
+// let i=0;
+// obj[key+'-'+ ++i]=i;
+// obj[key+'-'+ ++i]=i;
+// console.log(obj);
+
+
+// let key='key';
+// let i=0;
+// let obj2={
+//     [key+ '-'+ ++i]: 'fisrt',
+//     [key+ '-'+ ++i]: 'second'
+// }
+// console.log(obj2);
+
+
+// let obj={
+//     test: function(){
+//         console.log(1);
+//     }
+// };
+
+// obj.test();
+
+// let obj3={
+//     test(){
+//         console.log(1);
+//     }
+// }
+// obj3.test();
+
+// let obj={};
+// obj['1']=4;
+// console.log(obj['1']);
+
+
+// function add(x,y){
+//     if(typeof x==='number' || typeof y==='number'){
+//         console.log(x+y);
+//     }
+//     else{
+//         console.log('error');
+//     }
+// }
+// add(1,3);
+
+// function func(x,y){
+//     function innerFunc(x,y){
+//         return x+y;
+//     }
+//     innerFunc();
+//     return x-y;
+// }
+// console.log(func(3,4));
+
+// var plus=(function(){
+//     var a=3;
+//     var b=5;
+//     console.log(a+b);
+// }());
+// console.log(plus);
+
+// function recursive(n){
+//     if(n===0){
+//         return;
+//     }
+//     console.log(n);
+//     recursive(n-1);
+// }
+// recursive(10);
+
+// function repeat(n){
+//     for(let i=0; i<=n; i++){
+//         console.log(i);
+//     }
+// }
+
+// function oddRepeat(n){
+//     for(let i=0; i<=n; i++ ){
+//         if(i %2===1){
+//             console.log(i)
+//         }
+//     }
+// };
+// repeat(10);
+// oddRepeat(10);
+
+// function main(n,func){
+//     for(let i=0; i<=n; i++){
+//         func(i);
+//     }
+// }
+
+// function oddRepeat(n){
+//     if(n%2===1){
+//         console.log(n);
+//     }
+// }
+
+// function evenRepeat(n){
+//     if(n%2===0){
+//         console.log(n);
+//     }
+
+// }
+
+// main(10,evenRepeat);
+
+// let count=0;
+
+// function increase(n){
+//     return ++n;
+// }
+
+// count=increase(count);
+// console.log(count);
+// count=increase(count);
+// console.log(count);
+
+// let count2=0;
+
+// function increase2(){
+//     return ++count2;
+// }
+
+// increase2();
+// console.log(count2);
+// increase2();
+// console.log(count2);
+
+// let obj={
+//     1: 1,
+//     func: function(){
+//         console.log(1);
+//     },
+//     func(){
+//         console.log(2)
+//     },
+// };
+
+// obj.func();
+
+// function all(n , func){
+//     for(var i=0; i<n; i++){
+//         func(i);
+//     }
+// }
+
+// function even(n){
+//     if(n%2===0){
+//         console.log(n)
+//     }
+
+// };
+
+// var callBack= function(n){
+//     if(n%2===0){
+//         console.log(n);
+//     }
+// };
+
+// all(10,callBack);
+
+// //익명 함수 리터럴을 콜백 함수로 고차 함수에 전달한다.
+// //익명 함수 리터럴은 repeat 함수를 호출할 때마다 평가되어 함수 객체를 생성한다.
+// all(5, function(i){
+//     if(i%2==1){
+//         console.log(i)
+//     }
+// });
+
+
+// all(6, function(i){
+//     if(i%2===0){
+//         console.log(i);
+//     }
+// });
+
+// //oddRepeat 함수는 단 한번만 생성된다.
+// var oddRepeat=function(n){
+//     if(n%2===1){
+//         console.log(n)
+//     }
+// };
+// //고차 함수에 함수 참조를 전달한다.
+// all(7,oddRepeat);
+
+// let num=0;
+
+// let num1=0;
+// function increase(n){
+//     return ++n;
+// }
+
+// result= increase();
+// console.log(result);
+
+// result = increase(result);
+// console.log(result);
+
+// function increase2(){
+//     return ++num1;
+// };
+
+// increase2();
+// console.log(num1);
+
+// increase2();
+
+// console.log(num1)
+
+// a=2;
+// console.log(a);
+
+// const obj={
+//     //심벌 값으로 프로퍼티 키를 생성
+//     [Symbol.for('mySymbol')]: 1,
+// };
+// console.log(obj);
+// console.log(Object.getOwnPropertyDescriptor(obj,['Symbol']));
+
+// const person={
+//     firstName: 'andy',
+//     lastName: 'han',
+
+//     get fullName(){
+//         return `FirstName:${this.firstName} LastName:${this.lastName}`;
+//     },
+
+//     set fullName(name){
+//         [this.firstName, this.lastName]=name.split(' ');
+//     },
+// }
+
+// console.log(person);
+// person.fullName='han jaehyeok';
+// console.log(person.fullName);
+
+// console.log(person);
+// console.log(Object.getOwnPropertyDescriptor(person, 'firstName'));
+// console.log(Object.getOwnPropertyDescriptor(person,'fullName'));
+// console.log(Object.getOwnPropertyDescriptor(Object.prototype,'__proto__'));
+// console.log(Object.getOwnPropertyDescriptor(person,'__proto__'));
+
+// const obj={
+//     a:1
+// }
+
+// Object.preventExtensions(obj);
+// obj.b=3;
+// console.log(obj.b);
+// function Circle(radius){
+//     //1. 암묵적으로 빈 객체가 생성되고 this에 바인딩된다.
+
+//     //2. this에 바인딩되어 있는 인스턴스를 초기화한다.
+//     this.radius=radius;
+//     this.getDiameter= function(){
+//         return 2*this.radius;
+//     };
+
+//     //3.암묵적으로 this를 반환한다.
+//     //명시적으로 객체를 반환하면 암묵적인 this 반환이 무시된다.
+//     return {};
+// }
+
+// //인스턴스 생성. Circle 생성자 함수는 명시적으로 반환한 객체를 반환한다.
+// const circle= new Circle(1);
+
+// function func(){
+
+// };
+// func.a=4;
+// func.method=function(){
+//     console.log(1);
+// }
+// console.log(func.method());
+
+// function func(){
+
+// };
+// console.log(new func());
+
+// var Test=function(r){
+//     this.r=r;
+// };
+
+// var result = new Test(3);
+// console.log(result);
+
+// function Test(){
+//     console.log(this instanceof Test);
+// }
+// const res= Test(3);
+
+//console.log(this instanceof Test);
+//console.log(res.r);
+
+// //생성자 함수
+// function Circle(radius){
+//     this.radius = radius;
+//     this.getDiameter=function(){
+//       return 2*this.radius
+//     };
+//   }
+
+//   //new 연산자 없이 생성자 함수 호출하면 일반 함수로서 호출된다.
+//   const circle = Circle(5);
+//   console.log(circle); //undefined
+
+//   //일반 함수 내부의 this는 전역 객체 window를 가리킨다.
+//   console.log(circle.radius);
+//   console.log(getDiameter()); //10
+
+//   //console.log(circle.getDiameter()); //TypeError: Cannot read properties of undefined (reading 'getDiameter')
+
+// var test=()=>{
+//     console.log(this);
+// }
+// test();
+
+// var func=function(){
+//     console.log(this);
+// }
+// func();
+
+// const multiply=(x,y)=>x*y;
+// console.log(multiply(3,4)); //12
+
+// const one=x=>x*3;
+// console.log(one(3)); //9
+
+// const none=()=>1;
+// console.log(none()); //1
+
+// const plus=(x,y)=>x+y;
+// console.log(plus(3,4)); //7
+
+// const plus_return=(x,y)=>{
+//     return x+y;
+// }
+// console.log(plus_return(3,4)); //7
+
+//const statement=()=>const x=1 //SyntaxError: Unexpected token 'const'
+//위 표현은 아래와 같이 표혀된다.
+// const statement=()=>{const x=1;}
+
+// const obj=(x,y)=>({
+//     x,y
+// })
+// console.log(obj(1,2)); //{ x: 1, y: 2 }
+// //위 표현은 아래와 동일하다
+// const obj2=(x,y)=>{ //{ x: 1, y: 2 }
+//     return{
+//         x,y
+//     };
+// };
+// console.log(obj2(1,2));
+
+// let obj={
+
+// }
+
+// function func(){
+
+// }
+
+// var a, b, c;
+
+// a = b = 3, c = 4; // 콘솔에는 4를 반환
+// console.log(a); // 3
+
+// const show=()=>{
+//     const x=1;
+//     return x;
+// }
+// console.log(show()); //1
+
+// const now=((name)=>({
+
+//     sayhi(){
+//         //console.log(this);
+//         return this;
+//     }
+// }))('lee');
+// console.log(now.sayhi());
+
+//now.sayhi();
+
+// var test=(function(name){
+//     sayhi=function(){
+//         console.log(name);
+//     }
+//     sayhi();
+// }('han'));
+
+//console.log(test.sayhi());
+
+// var func=function(){
+//     sayhi=function(){
+//         console.log(this);
+//     }
+//     sayhi();
+// };
+// func();
+
+//func.sayhi();
+
+// let obj={
+//     func:function(){
+//         console.log(1);
+//     }
+// }
+//obj.func();
+
+// var test=((name)=>({
+//     sayhi(){
+//         return `${name}`;
+//     }
+// }))('han');
+// console.log(test.sayhi()); //han
+
+// var test2=((name)=>({
+//     sayhi:function(){
+//         console.log(name);
+//     }
+// }))('andy');
+// test2.sayhi();
+
+
+// var test3=()=>{
+//     var fun=function(){
+//         console.log(1);
+//     }
+//     fun();
+// }
+// test3();
+
+// var plus=(function(){
+//     var test=function(){
+//         console.log(1);
+//     }
+//     test()
+// }());
+
+// var now=((name)=>({
+//     sayHi:function(){
+//         return `hi my name is ${name}` //hi my name is andy
+//     }
+// }))('andy');
+// console.log(now.sayHi());
+
+// var test=[1,2,3].map(function(x){
+//     return x*4;
+// })
+// console.log(test); //[ 4, 8, 12 ]
+// //위의 표현식은 아래의 표현식과 동일하다
+// var test2=[1,2,3].map(x=> x*5);
+// console.log(test2); //[ 5, 10, 15 ]
+
+// const Func=function(){
+// }
+// const inst= new Func();
+// console.log(Func.hasOwnProperty('prototype')); //true
+
+// //화살표 함수는 프로토타입 프로터티가 없다.
+// const Func2=()=>{
+
+// };
+// //const inst2 = new Func2(); //TypeError: Func2 is not a constructor
+
+// console.log(Func2.hasOwnProperty('prototype')); //false
+
+// //일반 함수는 중복된 매개변수 이름을 선언해도 에러가 발생하지 않는다.
+// const func=function(a,a){
+//     return a+a;
+// }
+// console.log(func(3,4)); //8
+
+// //단 strict mode(엄격모드)를 사용하면 에러가 발생한다.
+// const strict_func=function(a,a){
+//     'use strict';
+//     return a+a;
+// }
+// console.log(strict_func(3,4)); //SyntaxError: Duplicate parameter name not allowed in this context
+
+// //화살표 함수는 중복된 매개변수를 사용하면 에러가 발생한다.
+// const arrow_func=(a,a)=>{
+//     return a+a;
+// }
+// console.log(arrow_func(3,4)); //SyntaxError: Duplicate parameter name not allowed in this context
+
+// function func(){
+//     let a=4;
+//     var arrow_func=()=>{
+//         console.log(this);
+//     }
+//     arrow_func();
+// }
+// //func();
+
+// var obj={
+//     this:function(){
+//         console.log(this);
+//     },
+//     method(){
+//         var arrow_func=()=>{
+//             console.log(this);
+//         }
+//         arrow_func();
+//     },
+// }
+// obj.method();
+
+// class Prefixer{
+//  constructor(prefix){
+//     this.prefix=prefix;
+//  }
+
+//  add(arr){
+//     //add 메서드는 인수로 전달된 배열 arr를 순회하며 배열의 모든 요소에 prefix를 추가한다.
+//     //1번
+//     var that=this;
+//     return arr.map(function(item){
+//         return that.prefix +item //2번 //TypeError: Cannot read properties of undefined (reading 'prefix')
+//     });
+//  }
+// }
+
+// const prefixer = new Prefixer('hello');
+// console.log(prefixer.add(['andy', 'han']));
+
+// var obj={
+//     name:'andy',
+//     method1 :function(name){
+//         let that=this;
+//         return [name].map((item)=>{
+//             return `${this.name}+${item}`; //[ 'andy+han' ]
+//         });
+//     }
+// }
+
+//console.log(obj.method1('han'));
+
+
+// var test=[1,2,4].map(function(x){
+//     console.log(x*3);
+// })
+
+// var test=[1,2,3].map((x)=>{
+//     console.log(x*3);
+// })
 
 
