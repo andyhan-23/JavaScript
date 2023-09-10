@@ -5206,3 +5206,117 @@
 // })
 
 
+// var test=()=>{
+//     console.log(this);
+// }
+// //test(); 
+
+// function test(func){
+//     this.a;
+// }
+
+
+// (function(){
+//     const func=()=>{
+//         console.log(this);
+//     }
+//     func();
+// }).call({x:'a'});
+
+// var test=(function(){
+//     console.log(this);
+// }).call({x:'4'});
+
+//console.log(test);
+
+// var test=(function(){
+//     console.log(this);
+// }).bind(this);
+// console.log(test);
+
+//중첩 함수 foo의 상위 함수는 즉시 실행 함수다. 그래
+//따라서 화살표 함수 foo의 this는 즉시 실행 함수의 this를 가리킨다.
+// (function(){
+//     const foo=()=>{
+//     console.log(this); //{ a: 'a' }
+//     };
+//     foo();
+// }).call({a:'a'});
+
+//bar함수는 화살표 함수를 반환한다.
+//bar함수가 반환한 화살표 함수의 상위 스코프는 화살표 함수 bar다.
+//하지만 화살표 함수는 함수 자체의 this 바인딩을 갖지 않으므로 bar함수가 반환한
+//화살표 함수 내부에서 참조하는 this는 화살표 함수가 아닌 즉시 실행 함수 함수의 this를 가리킨다.
+// (function(){
+//     const bar=()=>()=>{
+//         console.log(this);
+//     }
+//     bar()();
+// }).call({a:'a'});//{ a: 'a' }
+
+
+// function func(){
+//     return this;
+// }
+
+// var test=func.bind({a:'b'});
+// console.log(test);
+
+
+// function func(){
+//     return this;
+// }
+// console.log(func.call({a:1}));
+
+// function func2(){
+//     return this;
+// }
+// var test=func2.bind({a:4});
+// console.log(test());
+
+
+// //method 프로퍼티에 할당한 화살표 함수의 상위 스코프는 전역이다.
+// //따라서 method 프로퍼티에 할당된 화살표 함수의 this는 전역 객체를 가리킨다.
+// const obj={
+//     a:1,
+//     method:()=>{
+//         console.log(this.a);//undefined
+//     }
+// }
+// obj.method();
+
+// window.x=1;
+
+// const normal = function(){return this.x;};
+// const arrow= () => this.x
+
+// console.log(normal.call({x:4}));  //4
+// console.log(arrow.call({x:4})); //1
+
+// function Person(name){
+//     this.name=name;
+// }
+
+// Person.prototype.sayHi=()=>{
+//     console.log(this);
+// }
+
+// const me=new Person('andy');
+// me.sayHi();
+
+// let obj={
+//     name: 1
+// }
+// console.log(Object.getOwnPropertyDescriptors(obj));
+
+// function person(name){
+//     console.log(arguments);
+// };
+// person('123');
+// person.age=34;
+// console.log(Object.getOwnPropertyDescriptors(person));
+
+
+function func(number){
+
+}
