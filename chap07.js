@@ -5590,3 +5590,13 @@
 // const me = new Person();
 // console.log(me);//Person {};
 // const 
+
+class Person{
+    constructor(name,age){
+        this.name=name;
+        this.age=age;
+    }
+};
+
+const me = new Person('andy',25);
+console.log(me);
