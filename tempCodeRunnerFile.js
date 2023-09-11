@@ -1,7 +1,14 @@
- 함수 foo의 this는 즉시 실행 함수의 this를 가리킨다.
-// (function(){
-//     const foo=()=>{
-//     console.log(this); //{ a: 'a' }
-//     };
-//     foo();
-// }).call({a:'a'},1);
+const Person = (function(){
+//     function Person(name){
+//       this.name=name;
+//     }
+    
+//     //1. 생성자 함수의 prototype 프로퍼티를 통해 프로토타입을 교체
+//     Person.prototype={
+//       sayHello(){
+//         console.log(`hi my name is ${this.name}`);
+//       }
+//     }
+//     return Person;
+//   }());
+//   const me = new Person('andy');

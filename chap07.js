@@ -5317,6 +5317,276 @@
 // console.log(Object.getOwnPropertyDescriptors(person));
 
 
-function func(number){
+// function func(number){
+//     const iterator=arguments[Symbol.iterator]();
+//     console.log(iterator.next());
+//     console.log(iterator.next());
+//     console.log(iterator.next());
+//     console.log(iterator.next());
+//     return number;
+// }
+// const result=func(1,2,3)
+// console.log(result);
 
-}
+//es5
+// function arr(argument){
+//     const arr=Array.prototype.slice.call(arguments); 
+//     arr.map(function(x){
+//         console.log(x+3);
+//     });
+//     return argument;
+// };
+
+// const result=arr(1,2,3,4,5,6);
+// console.log(result);
+
+//es6
+// function arr2(...args){
+//     const arr=[]=args;
+//     arr.map(function(x){
+//         console.log(x+3);
+//     });
+//     return args;
+// };
+// const result=arr2(1,2,3,4,5,6);
+// console.log(result.length);
+
+// function Func(name){
+//     this.name=name;
+// }
+//var test=function(){};
+//console.log(test.name);
+//익명 함수 표현식
+//var anonymousFunc = function() {};
+// ES5: name 프로퍼티는 빈 문자열을 값으로 갖는다.
+// ES6: name 프로퍼티는 함수 객체를 가리키는 변수 이름을 값으로 갖는다.
+//console.log(anonymousFunc.name);
+
+//let obj={};
+// var test=function(){
+//     console.log(1);
+// }
+// const new_func= new Func('123');
+// console.log(new_func.hasOwnProperty('prototype'))
+// console.log(Func.hasOwnProperty('prototype'));
+// console.log(test.hasOwnProperty('prototype'));
+// console.log(new_func); 
+
+// console.log(new_func.__proto__===Object.prototype);
+
+// const obj={
+//     radius: 5,
+
+//     getDiaeter:function(){
+//         return 2*this.radius;
+//     },
+
+//     getArea:function(){
+//         return this.radius*this.radius*Math.PI;
+//     }
+// };
+
+// let result=obj.getDiaeter();
+// console.log(result);
+
+// result=obj.getArea();
+// console.log(result);
+
+// function Circle(radius){
+//     this.radius=radius;
+//     this.diameter=function(){
+//         return this.radius*2;
+//     }; 
+// };
+
+// const circle1= new Circle(5);
+
+// let result2= circle1.diameter();
+// console.log(result2);
+
+// function Circle2(radius){
+//     this.radius=radius;
+// }
+
+// Circle2.prototype.getDiameter=function(){
+//     return 2*this.radius;
+// }
+
+// const circle3 = new Circle2(10);
+// result2=circle3.getDiameter();
+// console.log(result2);
+
+// const child={x:3};
+// const parent={y:1};
+
+// child.__proto__=parent;
+// parent.__proto__=child;
+
+// console.log(parent);
+
+// const child={x:1};
+// const parent={y:1};
+
+// Object.setPrototypeOf(child,parent);
+// console.log(child.y);
+
+// let obj= new Object();
+// console.log(obj.constructor===Object);
+
+// function Person(name){
+//     this.name=name;
+// }
+
+// function func(){
+// };
+// console.log(func.prototype)
+
+// const obj={a:1};
+// const obj2= new Object();
+// function func(){}
+// console.log(Object.prototype);
+
+// function Test(name){
+//     this.name=name;
+// }
+// const child=new Test();
+
+// console.log(child);
+
+// const Person=(function(){
+//     function person(name){
+//         this.name=name;
+//     }
+//     person.prototype.sayHello=function(){
+//         return  `hi my name is ${this.name}`
+//     }
+//     return person;
+// }());
+
+// const me = new Person('andy');
+// me.sayHello('andy')
+
+// const Person = (function(){
+//     function Person(name){
+//       this.name=name;
+//     }
+    
+//     //1. 생성자 함수의 prototype 프로퍼티를 통해 프로토타입을 교체
+//     Person.prototype={
+//       sayHello(){
+//         console.log(`hi my name is ${this.name}`);
+//       }
+//     }
+//     return Person;
+//   }());
+//   const me = new Person('andy');
+
+// function Person(name){
+//     this.name=name;
+// }
+
+// const me = new Person('andy');
+
+// const parent={x:1};
+// //Object.setPrototypeOf(me,parent);
+// console.log(Person.prototype===);
+
+// //익명 클래스 표현식
+// const Person= class{};
+
+// //기명 클래스 표현식
+// const Person2= class myClass{};
+
+// //클래스 선언문
+// class Person{
+//     //생성자
+//     constructor(name){
+//         //인스턴스 생성 및 초기화
+//         this.name=name; //name프로퍼티는 public이다.
+//     }
+//     //프로토타입 메서드
+//     sayHi(){
+//         console.log(`hi my name is ${this.name}`);
+//     }
+
+//     //정적 메서드
+//     static sayHello(){
+//         console.log('hello');
+//     }
+// }
+
+// //인스턴스 생성
+// const me = new Person('andy');
+
+// //인스턴스의 프로퍼티 참조
+// console.log(me.name); //andy
+// //프로토타입 메서드 호출
+// me.sayHi(); //hi my name is andy
+// //정적 메서드 호출
+// Person.sayHello(); //hello
+
+// class Person{};
+// console.log(typeof Person); //function
+
+// console.log(Test); //ReferenceError: Cannot access 'test' before initialization
+// class Test{};
+
+// const person='';
+
+// {
+//     console.log(person);
+
+//     class person{};
+// // }
+// class Person{}
+
+// //인스턴스 생성
+// const me =Person();
+// console.log(me); //TypeError: Class constructor Person cannot be invoked without 'new'
+
+
+
+// const Person=class myClass{};
+
+// //함수 표현식과 마찬가지로 클래스를 가리키는 식별자로 인스턴스를 생성해야 한다.
+// const me = new Person();
+
+// //클래스 이름 myClass는 함수와 동일하게 클래스 몸체 내부에서만 유용한 식별자다
+// console.log(myClass); //ReferenceError: myClass is not defined
+
+// const you=new myClass();//ReferenceError: myClass is not defined
+
+// class Person{
+//     //생성자
+//     constructor(name){
+//         //인스턴스 생성 및 초기화
+//         this.name=name;
+//     }
+// }
+
+// //생성자 함수
+// function Person2(name){
+//     //인스턴스 생성 및 초기화
+//     this.name=name;
+// }
+
+// const you= new Person2('han');
+
+// class Person{
+//     constructor(){
+
+//     };
+//     constructor(){ //SyntaxError: A class may only have one constructor
+
+//     };
+// }
+
+// class Person{
+//     //constructor는 생략하면 아래와 같인 빈 constructor가 암묵적으로 정의된다.
+//     constructor(){}
+// }
+
+// //빈 객체가 생성된다.
+// const me = new Person();
+// console.log(me);//Person {};
+// const 
