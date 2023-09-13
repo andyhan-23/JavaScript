@@ -6166,3 +6166,360 @@
 // //빈 객체가 생성된다.
 // const me= new Person('andy'); //Person {}
 // console.log(me);
+
+// class Person{
+//     constructor(){
+//         //고정 값으로 인스턴스 초기화
+//         this.name='andy';
+//         this.address='ilsan';
+//     }
+// }
+
+// //인스턴스 프로퍼티가 초가된다.
+// const me = new Person();
+// console.log(me); //Person { name: 'andy', address: 'ilsan' }
+
+// class Person{
+//     constructor(name,age){
+//         //인수로 인스턴스 초기화
+//         this.name=name;
+//         this.age=age;
+//     }
+// };
+
+// //인수로 초기값을 전달한다. 초기값은 constructor에 전달된다.
+// const me= new Person('andy', 25);
+// console.log(me); //Person { name: 'andy', age: 25 }
+
+// class Person{
+//     constructor(name){
+//         this.name=name;
+
+//         //명시적으로 원시값을 반환하면 원시값 반환은 무시되고 암묵적으로 this가 반환된다. 
+//         return 100;
+//     }
+// };
+
+// const me = new Person('andy');
+// console.log(me); //Person { name: 'andy' };
+
+// function Person(name){
+//     this.name=name
+// }
+
+// const me = new Person('andy');
+
+// Person.prototype.sayHi=function(){
+//     console.log(`hi my name is ${this.name}`);
+// }
+
+// me.sayHi();
+
+// class Person{
+//     constructor(name){
+//         this.name=name;
+//     }
+
+//     sayHi(){
+//         console.log(`hi my name is ${this.name}`);
+//     }
+// };
+
+// const me = new Person('andy');
+// me.sayHi(); //hi my name is andy
+
+// //me 객체의 프로토타입은 Person.prototype 이다.
+// console.log(Object.getPrototypeOf(me)===Person.prototype); //true
+
+// //Person.prototype의 프로토타입은 Object.prototype이다.
+// console.log(Object.getPrototypeOf(Person.prototype)===Object.prototype); //true
+
+// //me객체의 constructor는 Person 클래스다.
+// console.log(me.constructor === Person); //true
+
+// //생성자 함수
+// function Person(name){
+//     this.name=name;
+// }
+// //정적 메서드
+// Person.sayHi=function(){
+//     console.log(`hi`);
+// }
+
+// //정적 메서드 호출
+// Person.sayHi();
+
+// class Person{
+//     constructor(name){
+//         //인스턴스 생성 및 초기화
+//         this.name=name;
+//     }
+
+//     //정적 메서드
+//     static sayHi(){
+//         console.log(`hi`);
+//     }
+// };
+
+// //정적 메서드는 클래스로 호출한다.
+// //정적 메서드는 인스턴스 없이도 호출할 수 있다.
+// Person.sayHi(); //hi
+
+// const me = new Person('han');
+// me.sayHi(); //TypeError: me.sayHi is not a function
+
+// class Square{
+//     //정적 메서드
+//     static area(width, height){
+//         return width*height;
+//     }
+// }
+// console.log(Square.area(10,10)) //100
+
+// class Square2{
+//     constructor(width, height){
+//         this.width=width;
+//         this.height=height;
+//     }
+//     area(){
+//         return this.width*this.height;
+//     }
+// };
+
+// const rectangle= new Square2(10,30);
+// console.log(rectangle.area()); //300
+
+// //표준 빌트인 객체의 정적 메서드
+// console.log(Math.max(1,2,3)); //3
+// console.log(Number.isNaN(NaN)); //true
+// console.log(JSON.stringify({a:1})); //{"a":1}
+// console.log(Reflect.has({a:1},'a')); //true
+
+// class Person{
+//     constructor(name){
+//         //1. 암묵적으로 인스턴스가 생성되고 this에 바인딩된다.
+//         console.log(this);
+
+//         //2. this에 바인딩되어 있는 인스턴스를 초기화한다.
+//         this.name=name;
+
+//         //3. 완성된 인스턴스가 바인딩된 this가 암묵적으로 반환된다.
+//     }
+    
+// };
+
+// class Person{
+//     constructor(name){
+//         //인스턴스 프로퍼티
+//         this.name=name;
+//     }
+
+// }
+// const me= new Person('andy');
+// console.log(me); //Person { name: 'andy' }
+
+// class Person{
+//     constructor(name){
+//         //인스턴스 프로퍼티
+//         this.name=name; //name 프로퍼티는 public하다.
+//     }
+// }
+
+// const me = new Person('andy');
+// //name은 public 하다.
+// console.log(me.name); //andy
+
+// const person ={
+//     //데이터 프로퍼티
+//     firstName: 'andy',
+//     lastName: 'han',
+
+//     //fullName은 접근자 함수로 구성된 접근자 프로퍼티다.
+//     //getter 함수
+//     get fullName(){
+//         return `${this.firstName} ${this.lastName}`;
+//     },
+//     //setter 함수
+//     set fullName(name){
+//         [this.firstName,this.lastName]=name.split(' ');
+//     }
+// };
+
+// //데이터 프로퍼티를통한 프로퍼티 값의 참조
+// console.log(`${person.firstName} ${person.lastName}`); //andy han
+
+// //접근자 프로퍼티를 통한 프로퍼티 값의 저장
+// //접근자 프로퍼티 fullName에 값을 저장하면 setter 함수가 호출된다.
+// console.log(person); //{ firstName: 'andy', lastName: 'han', fullName: [Getter/Setter] }
+// person.fullName='han jahyeok';
+// console.log(person); //{ firstName: 'han', lastName: 'jahyeok', fullName: [Getter/Setter] }
+
+// //접근자 프로퍼티를 통한 프로퍼티 값의 참조
+// //접근자 프로퍼티 fullName에 접근하면 getter함수가 호출된다.
+// console.log(person.fullName); //han jahyeok
+
+// //fullName은 접근자 프로퍼티다
+// //접근자 프로퍼티는 get, set, enumerable, configurable 프로퍼티 어트리뷰트를 갖는다.
+// console.log(Object.getOwnPropertyDescriptor(person,'fullName'));
+// /*{
+//   get: [Function: get fullName],
+//   set: [Function: set fullName],
+//   enumerable: true,
+//   configurable: true
+// }*/
+
+// class Person{
+//     constructor(firstName, lastName){
+//         this.firstName=firstName;
+//         this.lastName=lastName;
+//     }
+
+//     //fullName은 접근자 함수로 구성된 접근자 프로퍼티다.
+//     //getter 함수
+//     get fullName(){
+//         return `${this.firstName} ${this.lastName}`;
+//     }
+
+//     set fullName(name){
+//         [this.firstName,this.lastName]=name.split(' ');
+//     }
+// }
+
+// const me = new Person('andy','han');
+
+// //데이터 프로퍼티를 통한 프로퍼티 값의 참조
+// console.log(`${me.firstName} ${me.lastName}`); //andy han
+
+// //접근자 프로퍼티를 통한 프로퍼티 값의 참조
+// //접근자 프로퍼티 fullName에 값을 저장하면 setter 함수가 호출된다.
+// me.fullName="han jaehyeok";
+// console.log(me) //Person { firstName: 'han', lastName: 'jaehyeok' }
+
+// //접근자 프로퍼티를 통한 프로퍼티 값의 참조
+// //접근자 프로퍼티 fullName에 접근하면 getter 함수가 호출된다.
+// console.log(me.fullName); //han jaehyeok
+
+// //fullName은 접근자 프로퍼티다
+// //접근자 프로퍼티는 get, set, enumerable, configurable 프로퍼티 어트리뷰트를 갖는다.
+// console.log(Object.getOwnPropertyDescriptor(Person.prototype, 'fullName'));
+// /*{
+//   get: [Function: get fullName],
+//   set: [Function: set fullName],
+//   enumerable: false,
+//   configurable: true
+// }*/
+
+// class Person{
+//     name='han';
+// }
+
+// const me = new Person('andy');
+// console.log(me) //Person { name: 'han' }
+
+// class Person{
+//     //클래스 필드
+//     name= 'Han';
+
+//     constructor(){
+//         console.log(name); //ReferenceError: name is not defined
+//     }
+// }
+
+// new Person();
+
+// class Person{
+//     //클래스 필드를 초기화하지 않으면 undefined를 갖는다.
+//     name;
+// }
+// const me = new Person(); 
+// console.log(me); //Person { name: undefined }
+
+// class Person{
+//     name;
+//     constructor(name){
+//         this.name=name;
+//     }
+// }
+
+// const me = new Person('han');
+// console.log(me); //Person { name: 'han' }
+
+// class Person{
+//     constructor(name){
+//         this.name=name;
+//     }
+// };
+
+// const me = new Person('han');
+// console.log(me);
+
+// class Person{
+//     //클래스 필드에 문자열을 할당
+//     name='han';
+
+//     //클래스 필드에 함수를 할당
+//     getName= function(){
+//         return this.name;
+//     }
+//     //화살표 함수로 정의할 수도 있다.
+//     //getName=()=>this.name;
+// }
+
+// const me = new Person();
+// console.log(me); //Person { name: 'han', getName: [Function: getName] }
+// console.log(me.getName()); //han
+
+// function Person(name){
+//     this.name=name;
+// }
+// const me = new Person('han');
+// console.log(me.name);
+
+// var test=()=>{
+//     console.log(this);
+// }
+// test();
+
+// class Test{
+//     constructor(name){
+//         this.name=name;
+//     }
+//     sayHi=()=>{
+//         console.log(this);
+//     }
+// }
+// const you = new Test('asd');
+// you.sayHi();
+
+// class Person{
+//     constructor(name){
+//         this.name=name; //인스턴스 프로퍼티는 기본적으로 public이다.
+//     }
+// }
+// const me = new Person('andy');
+// console.log(me.name); //andy
+
+// class Person{
+//     name='han';  //클래스 필드도 기본적으로 public 이다.
+// }
+// //인스턴스 생성
+// const me = new Person();
+// console.log(me.name); //han
+
+// class Person{
+//     //private 필드 정의
+//     #name= '';
+
+//     constructor(name){
+//         this.name=name;
+//     }
+// }
+
+// const me = new Person('andy');
+
+// //private 필드 #name은 클래스 외부에서 참조할 수 없다.
+// console.log(me.#name); //SyntaxError: Private field '#name' must be declared in an enclosing class
+
+class Person{
+    
+}
