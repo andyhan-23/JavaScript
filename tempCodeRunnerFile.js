@@ -1,14 +1,18 @@
-const Person = (function(){
-//     function Person(name){
-//       this.name=name;
-//     }
-    
-//     //1. 생성자 함수의 prototype 프로퍼티를 통해 프로토타입을 교체
-//     Person.prototype={
-//       sayHello(){
-//         console.log(`hi my name is ${this.name}`);
-//       }
-//     }
-//     return Person;
-//   }());
-//   const me = new Person('andy');
+
+// function foo(){
+//     const x=1;
+//     const y=2;
+
+//     //일반적으로 클로저라고 하지 않는다
+//     function bar(){
+//     const z=3;
+
+//     //debugger;
+//     //상위 스코프의 식별자를 참고하지 않는다.
+//     console.log(z);
+// }
+// return bar;   
+// }
+
+// const bar = foo();
+// bar();

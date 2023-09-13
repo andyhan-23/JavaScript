@@ -5591,12 +5591,578 @@
 // console.log(me);//Person {};
 // const 
 
-class Person{
-    constructor(name,age){
-        this.name=name;
-        this.age=age;
-    }
-};
+// class Person{
+//     constructor(name,age){
+//         this.name=name;
+//         this.age=age;
+//     }
+// };
 
-const me = new Person('andy',25);
-console.log(me);
+// const me = new Person('andy',25);
+// console.log(me);
+
+// var count=0;
+
+// function increase(count){
+//     return ++count;
+// }
+
+// let result=increase(count);
+// console.log(result);
+
+// result=increase(result);
+// console.log(result);
+
+// var count=0;
+// function test(number){
+//     return ++number;
+// }
+// console.log(test(count));
+// count=test(count);
+// console.log(count);
+// count=test(count);
+// console.log(count);
+
+
+// var i=3;
+// for (var i=0; i<5; ++i){
+//     console.log(i);
+// }
+// console.log(i);
+
+// let count=0;
+
+// function increase(){
+//     return++count;
+// }
+// increase();
+// console.log(count);
+
+// increase();
+// console.log(count);
+
+// const arr=[1,2,3,4,5];
+
+// const re_arr= arr.map(function(value){
+//     return value +1;
+// })
+
+// console.log(arr);
+// console.log(re_arr);
+
+// var even=function(num){
+//     return num%2===0;
+// };
+
+// const re_arr2= arr.filter(even);
+// console.log(re_arr2);
+
+// const re_arr3= arr.reduce(function(acc,cur){
+//     return acc+cur; 
+// },2)
+// console.log(re_arr3);
+
+// function Rectangle(width, height){
+//     this.width=width;
+//     this.height=height;
+// }
+
+// Rectangle.prototype.createSquare=function(){
+//     if(this.width===this.height){
+//         console.log('정사각형 입니다.')
+//     }
+//     else{
+//         console.log('직사각형 입니다.');
+//     }   
+// }
+// const square= new Rectangle(10,20);
+// //square.createSquare();
+
+// function func(){
+//     return this;
+// }
+
+// const call_bind={x:4};
+
+// //let result=func.call(call_bind);
+
+// (function func2(){
+//     const foo=()=>{
+//         console.log(this);
+//     }
+//     foo();
+// }).call({x:4});
+
+// console.log(func2.x)
+
+// function foo(){
+//     console.log(arguments,this);
+//     //return this;
+// }
+// const x={x:5};
+
+// let result=foo.call(x,1,2,3);
+
+// result=foo.apply(x,[1,2,3]);
+
+// result=foo.bind(x,12,3);
+// result();
+
+// let arr={
+//     a:[1,2,3],
+//     method: function(){
+//         this.a.map(function(value){
+//             console.log(value*5,this.a);
+//         }.bind(this));
+//     }
+// };
+// arr.method();
+
+// var test=(function(name){
+//     console.log(this);
+//     name();
+// }).bind({x:4});
+
+// function me(){
+//     console.log(1);
+// };
+// test(me);
+
+
+// [1,2,3,4].map(function(x){
+//     console.log(x*5);
+// });
+
+// function func(){
+//     console.log(arguments);
+//     console.log(this);
+//     }
+
+// const bind={x:1};
+    
+// func.call(bind,1,2,3);
+// func.apply(bind,[1,2,3]);
+ 
+// var test=func.bind(bind,1,2,3);
+
+// function circle(){
+//     'use strict'
+//     a=4;
+//     console.log(a);
+// }
+// circle();
+
+// function func(){
+//     var let=20;
+//     function innerFunc(){ 
+//         let=30;
+//         console.log(let);
+//     }
+//     innerFunc();
+// }
+// func();
+
+// (function test(){
+//     console.log(1);
+// }());
+
+// // function test(){
+// //     console.log(1);
+// // }
+
+
+// function func(callback){
+//     callback();
+// };
+// //func(test);
+
+// let res = (function(){
+// 	let a =3;
+//   	let b = 5;
+//   	return a+b;
+// }());
+// console.log(res); //8
+// // console.log(res);
+
+// function func(a,a){
+//     console.log(a+a);
+// }
+// func(1,2);
+
+// // var arrow=(a,a)=>{
+// //     console.log(a,a);
+// // }
+// // //arrow(1,2);
+
+// function Person(name){
+//     this.name=name;
+// };
+
+// var arrow=()=>{};
+// console.log(arrow.hasOwnProperty('prototype'));
+
+// function func(name){
+//     name();    
+//     console.log(this);
+// }
+
+// function number(){
+//     console.log(1);
+// };
+
+// func(number);
+
+// var obj={
+//     a:[1,2,3],
+//     method: function(){
+//         console.log(this);
+//         this.a.map(function(value){
+//             console.log(value*2,this.a);
+//         }.bind(this))
+//     },
+// };
+
+// obj.method();
+
+
+// var person={
+//     name:'andy',
+//     sayHi:function(){
+//      console.log(`my name is ${this.name}`);
+//     var func=()=>{
+//         console.log(`my name is ${this.name}`);
+//      }
+//      func();
+//     },
+// }
+// person.sayHi();
+
+// function func(){
+//     return 1;
+// }
+
+//var test=func();
+
+//setTimeout(func,2000);
+
+
+
+// function outer(){
+//     var x=3;
+//     function inner(){
+//         console.log(x);
+//     }
+//     return inner;
+// }
+
+// var test=outer();
+// test();
+// test();
+
+
+// const x=1;
+
+// //1번
+// function outer(){
+//     const x=10;
+//     const inner= function(){
+//         console.log(x); //2번
+//     };
+//     return inner;
+// }
+
+// //outer 함수를 호출하면 중첩 합수 inner를 반환한다.
+// //그리고 outer함수의 실행 컨텍스트는 실행 컨텍스트 스택에서 팝되어 제거된다.
+// const innerFunc = outer(); //3번
+// innerFunc(); //4번 ->10 출력
+
+// function foo(){
+//     const x=1;
+//     const y=2;
+
+//     //일반적으로 클로저라고 하지 않는다
+//     function bar(){
+//     const z=3;
+
+//     //debugger;
+//     //상위 스코프의 식별자를 참고하지 않는다.
+//     console.log(z);
+// }
+// return bar;   
+// }
+
+// const bar = foo();
+// bar();
+
+
+// function increase(){
+//     let num=0;
+//     return ++num;
+// }
+// console.log(increase());
+// console.log(increase());
+
+// const increase=(function(){
+//     let num=0;
+//     return function(){
+//         return ++num;
+//     }
+// })();
+
+// console.log(increase());
+// console.log(increase());
+
+// const func=(function(){
+//     let num=0;
+//     return function(){
+//         return ++num;
+//     }
+// })();
+// console.log(func);
+
+// const obj=Object.create(null);
+
+// let arr= Array();
+
+// for(let i=0; i<5; i++){
+//     arr=i;
+// }
+// console.log(arr);
+
+// let obj={};
+// obj.test=function(){
+//     console.log(1);
+// }
+// obj.test();
+
+// function Person(name){
+//     this.name=name;
+// };
+// Person.test=function(){
+//     console.log(1);
+// };
+
+// Person.prototype.hi=function(){
+//     console.log(`hi my name is${this.name}`);
+// }
+
+// const me = new Person('andy');
+// //Person.test();
+// setTimeout(function(){
+//     console.log(this);
+// },2000);
+
+// (function(){
+
+// })
+
+// const arr=[];
+// // arr.map(function(x){
+// //     console.log(x);
+// // }.bind(this))
+
+// const person={
+//     name:1,
+//     func:function(callback){
+//         setTimeout(callback.bind(this),1000);
+//     }
+// };
+
+
+// function callMe(){
+//     console.log(this.name);
+// }
+
+// person.func(function(){
+//     console.log(this.name);
+// });
+
+// function test(){
+//     let a=3;
+//     function inner(){
+//         console.log(++a)
+//     }
+//     return inner;
+// };
+
+// const result=test();
+// result();
+// result();
+
+
+// function one(){
+//     console.log(1)
+// }
+// setTimeout(function(){
+//     console.log(1);
+//     setTimeout(function(){
+//         console.log(2);
+//         setTimeout(function(){
+//             console.log(3); 
+//         })
+//         setTimeout(function(){
+//             console.log(4);
+//         },1000)
+//     },2000)
+// },3000)
+
+// let count=0;
+// function increase(num){
+//     return ++num
+// }
+
+// count=increase(count);
+// console.log(count);
+
+// count=increase(count);
+// console.log(count);
+
+// let count2=0;
+// function increase2(){
+//     return ++count2;
+// }
+// increase2();
+// console.log(count2);
+
+// setTimeout(function(){
+//     console.log(this.x);
+// }.bind({x:4}),2000)
+
+// function test(){
+//     return this;
+// }
+// function test2(){
+//     console.log(this);
+// }
+
+// const obj={
+//     name:'andy',
+//     method:function(){
+//         const func=()=>{
+//             console.log(this.name);
+//         }
+//         func();
+//     }
+// };
+// obj.method();
+
+// const obj={
+//     arr:[1,2,3],
+//     a:1,
+//     method: function(){
+//         return this.arr.map(function(x){
+//             return x;
+//         });
+//     },
+//  }
+// // const result=obj.method();
+// // console.log(result);
+// console.log(obj.method());
+
+
+
+// setTimeout(function me(){
+//     console.log(this);
+// }.bind({x:4}),1000)
+
+// setPrototypeOf('adasd');
+
+// function func(a,a){
+//     return a;
+// }
+// console.log(func(1,2));
+
+// //익명 클래스 표현식
+// const Person=class {};
+
+// //기명 클래스 표현식
+// const Person2= class myClass {}; 
+
+// //클래스 선언식
+// class Person{
+//     //생성자
+//     constructor(name){
+//         //인스턴스 생성 및 초기화
+//         this.name=name;
+//     }
+    
+//     //프로토타입 메서드
+//     sayHi(){
+//         console.log(`Hi! My name is ${this.name}`);
+//     }
+
+//     //정적 메서드
+//     static sayHello(){
+//         console.log('hello');
+//     }
+// }
+
+// //인스턴스 생성
+// const me =new Person('andy');
+
+// //인스턴스의 프로토타입 참조
+// console.log(me.name); //andy
+// //프로토타입의 메서드 호출
+// me.sayHi(); //Hi! My name is andy
+// //정적 메서드 호출
+// Person.sayHello(); //hello
+
+// class Person{};
+// console.log(typeof Person); //function
+
+// console.log(Person); //ReferenceError: Cannot access 'Person' before initialization
+
+// //클래스 선언문
+// class Person{}
+
+// const Person=' ';
+
+// {
+//     //호이스팅이 발생하지 않는다면 ''이 출력되어야 한다.
+//     console.log(Person); //ReferenceError: Cannot access 'Person' before initialization
+    
+//     //클래스 선언문
+//     class Person{};
+// }
+
+// class Person{};
+
+// //클래스를 new연산자 없이 호출하면 타입 에러가 발생한다.
+// const me =  Person();
+// console.log(me); //TypeError: Class constructor Person cannot be invoked without 'new'
+
+// const Person= class myClass{};
+
+// const me = new Person();
+// //클래스 이름 MyClass는 함수와 동일하게 클래스 몸체 내부에서만 유요한 식별자다.
+// console.log(myClass); //ReferenceError: myClass is not defined
+
+// const you= new Person(); //ReferenceError: myClass is not defined
+
+// class Person{
+//     //생성자
+//     constructor(name){
+//         //인스턴스 생성 및 초기화
+//         this.name=name;
+//     }
+// };
+
+// //생성자 함수
+// function Person(name){
+//     this.name=name;
+
+// }
+
+// class Person{
+//     constructor(){}; //SyntaxError: A class may only have one constructor
+//     constructor(){};
+// }
+
+// class Person{
+//     //constructor는 생략하면 아래와 같이 빈 constructor가 암묵적으로 정의된다.
+//     constructor(){};
+// }
+
+// //빈 객체가 생성된다.
+// const me= new Person('andy'); //Person {}
+// console.log(me);
