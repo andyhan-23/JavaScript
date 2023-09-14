@@ -1,21 +1,3 @@
-@font-face{
-    font-family: Comfortaa;
-    src: url('Comfortaa.ttf');
-}
-
-body{
-    background-color: #77d5fb;
-    background-image: url('bottom_bg.jpg');
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    font-family: Comfortaa;
-}
-
-#searchbar{
-    width:700px;
-    height:200px;
-    position:absolute;
-    left:50%;
-    top:50%;
-    margin:-100px 0 0 -350px;
+html{
+    background: black;
 }

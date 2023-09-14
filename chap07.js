@@ -6520,6 +6520,364 @@
 // //private 필드 #name은 클래스 외부에서 참조할 수 없다.
 // console.log(me.#name); //SyntaxError: Private field '#name' must be declared in an enclosing class
 
-class Person{
+// class Person{   
+//     //private 필드 정의
+//     #name='';
+
+//     constructor(name){
+//         this.#name=name;
+//     }
+
+//     //name은 접근자 프로퍼티다.
+//     get name(){
+//         //private 필드를 참조하여 trim한 다음 반환한다.
+//         return this.#name.trim();
+//     }
+// }
+
+// const me = new Person('han');
+// console.log(me.name); //han
+// console.log(me); //Person {}
+
+// class Person{
+//     constructor(name){
+//         this.#name=name; //SyntaxError: Private field '#name' must be declared in an enclosing class
+//     }
+// }
+
+// class MyMath {
+//     //static public 필드 정의
+//     static PI =22/7;
+
+//     //static private 필드 정의
+//     static #num=10;
+
+//     //static 메섣,
+//     static increment(){
+//         return ++MyMath.#num;
+//     }
+// }
+
+// console.log(MyMath.PI); //3.142857142857143
+// console.log(MyMath.increment()); //11
+
+// class Animal{
+//     constructor(age, weight){
+//         this.age=age;
+//         this.weight=weight;
+//     }
+//     eat(){
+//         return 'eat';
+//     }
+//     move(){
+//         return 'move';
+//     }
+// }
+
+// //상속을 통해 Animal 클래스를 확장한 Bird 클래스
+// class Bird extends Animal{
+//     fly(){
+//         return 'fly';
+//     }
+// }
+
+// const bird = new Bird(1,5);
+
+// console.log(bird); //Bird { age: 1, weight: 5 }
+// console.log(bird instanceof Bird); //true
+// console.log(bird instanceof Animal); //true
+
+// console.log(bird.eat()); //eat
+// console.log(bird.move()); //move
+// console.log(bird.fly()); //fly
+
+// //수퍼(베이스/부모)클래스
+// class Base{}
+
+// //서브(파생/자식)클래스
+// class Derived extends Base{}
+
+// //생성자 함수
+// function Base(a){
+//     this.a=a;
+// }
+
+// //생성자 함수를 상속받는 서브 클래스
+// class Derived extends Base{}
+
+// const derived= new Derived(1);
+// console.log(derived);//Derived { a: 1 }
+
+// function Base1(){};
+
+// class Base2{}
+
+// let condition = true;
+
+// //조건에 따라 동적으로 상속 대상을 결정하는 서브클래스
+// class Derived extends (condition? Base1: Base2){}
+
+// const derived = new Derived();
+// console.log(derived); //Derived {}
+
+// console.log(derived instanceof Base1); //true
+// console.log(derived instanceof Base2); //false
+
+// constructor(...args) {super(...args);  }
+
+// //수퍼클래스
+// class Base{
+//     constructor(){}
+// }
+
+// //서브클래스
+// class Derived extends Base{
+//     constructor(...args){
+//         super(...args);
+//     }
+// }
+
+// const derived = new Derived();
+// console.log(derived); //Derived {}
+
+// //수퍼 클래스
+// class Base{
+//     constructor(a,b){
+//         this.a=a;
+//         this.b=b;
+//     }
+// }
+
+// //서브 클래스
+// class Derived extends Base{
+//     //다음과 같이 암묵적으로 constructor가 정의된다.
+//     //constructor(...args){super(...args)}
+// };
+
+// const derived = new Derived(1,2);
+// console.log(derived); //Derived { a: 1, b: 2 }
+
+// //수퍼클래스
+// class Base{
+//     constructor(a,b){
+//         this.a=a; 
+//         this.b=b;
+//     }
+// };
+
+// //서브클래스
+// class Derived extends Base{
+//     constructor(a,b,c){
+//         super(a,b);
+//         this.c=c;
+//     }
+// };
+
+// const derived= new Derived(1,2,3);
+// console.log(derived); //Derived { a: 1, b: 2, c: 3 }
+
+// class Base{};
+
+// class Derived extends Base{
+//     constructor(){
+//         super();
+//         console.log('hi');
+//     }
+// }
+// const derived = new Derived(); //ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+
+// class Base{
     
+// };
+
+// class Derived extends Base{
+//     constructor(){
+//        this.a=1; 
+//        super();
+//     }
+// }
+// const derived = new Derived(); //ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+// console.log(derived.a);
+
+// class Base{
+//     constructor(){
+//         super(); //SyntaxError: 'super' keyword unexpected here
+//     }
+// }
+
+// function func(){
+//     super(); //SyntaxError: 'super' keyword unexpected here
+// };
+
+// //수퍼 클래스
+// class Base{
+//     constructor(name){
+//         this.name=name;
+//     }
+//     sayHi(){
+//         return `hi ${this.name}`;
+//     }    
+// }
+
+// //서브 클래스
+// class Derived extends Base{
+//     sayHi(){
+//         //super.sayHi는 수퍼클래스의 프로토타입 메서드를 가리킨다.
+//         return `${super.sayHi()}. how are you doing?`
+//     }
+// }
+
+// const derived = new Derived('andy');
+// console.log(derived.sayHi()); //hi andy. how are you doing?
+
+// //수퍼 클래스
+// class Base{
+//     constructor(name){
+//         this.name=name;
+//     }
+//     sayHi(){
+//         return `hi ${this.name}`;
+//     }
+// }
+
+// class Derived extends Base{
+//     sayHi(){
+//         //super는 Base.prototype을 가리킨다.
+//         const __super = Object.getPrototypeOf(Derived.prototype);
+//         return `${__super.sayHi.call(this)} how are you doing?`
+//     }
+// }
+// const me = new Derived('andy');
+// console.log(me.sayHi()); //hi andy how are you doing?
+
+// /*[[HomeObject]]는 메서드 자신을 바인딩하고 있는 객체를 가리킨다.
+// [[HomeObject]]를 통해 메서드 자신을 바인딩하고 있는 객체의 프로토타입을 찾을 수 있다.
+// 예를 들어 Derived 클래스의 sayHi 메서드는 Derived.prototype에 바인딩되어 있다.
+// 따라서 Derived 클래스의 sayHi 메서드의 [[HomeObject]]는 Derived.prototype이고
+// 이를 통해 Derived 클래스의 sayHi 메서드 내부의 super 참조가 Base.prototype으로 결정된다.
+// 따라서 super.sayHi는 Base.prototype.sayHi를 가리키게 된다.
+// */
+// super=Object.getPrototypeOf([[HomeObject]])
+
+// const obj={
+//     //foo는 ES6의 메서드 축약 표현으로 정의한 메서드다. 따라서 [[HomeObject]]를 갖는다.
+//     foo(){
+
+//     },
+//     //bar는 ES6의 메서드 축약 표현으로 정의한 메서드가 아니라 일반 함수다.
+//     //따라서 [[HomeObject]]를 갖지 않는다.
+//     bar: function(){
+
+//     }
+// }
+
+// const base={
+//     name: 'andy',
+//     sayHi(){
+//         return `hi ${this.name}`;
+//     },
+// }
+
+// const derived={
+//     __proto__: base,
+//     sayHi(){
+//         return `${super.sayHi()}. how are you doing?`;
+//     }
+// }
+// console.log(derived.sayHi()); //hi andy. how are you doing?
+
+// //수퍼 클래스
+// class Base{
+//     static sayHi(){
+//         return 'Hi'
+//     }
+// }
+
+// //서브 클래스
+// class Derived extends Base{
+//     static sayHi(){
+//         return `${super.sayHi()}. how are you doing?`
+//     }
+// }
+
+// console.log(Derived.sayHi()) //Hi. how are you doing?
+
+// class Rectangle{
+//     constructor(width, height){
+//         this.width=width;
+//         this.height=height;
+//     }
+//     getArea(){
+//         return this.width*this.height;
+//     }
+//     toString(){
+//         return `width=${this.width}, height= ${this.height}`;
+//     }
+// }
+
+// //서브클래스
+// class ColorRectangle extends Rectangle{
+//     constructor(width, height, color){
+//         super(width, height);
+//         this.color=color;
+//     }
+    
+//     //메서드 오버라이딩
+//     toString(){
+//         return super.toString()+`,color =${this.color}`;
+//     }
+// }
+
+// const colorRectangle = new ColorRectangle(2,4,'red');
+// console.log(colorRectangle); //ColorRectangle { width: 2, height: 4, color: 'red' }
+
+// //상속을 통해 getArea 메서드를 호출
+// console.log(colorRectangle.getArea()); //8
+// //오버라이딩된 toString 메서드를 호출
+// console.log(colorRectangle.toString()); //width=2, height= 4,color =red
+
+// //수퍼클래스
+// class Rectangle{
+//     constructor(width, height){
+//         //암묵적으로 빈 객체, 즉 인스턴스가 생성되고 this에 바인딩된다.
+//         console.log(this); //ColorRectangle {}
+//         //new 연산자와 함께 호출된 함수, 즉 new.target은 ColorRectangle이다.
+//         console.log(new.target);
+
+//         //인스턴스 초기화
+//         this.width=width;
+//         this.height=height;
+
+//         console.log(this); //ColorRectangle {width: 2, height: 4}
+//     }
+// ...
+// }
+// //생성된 인스턴스의 프로토타입으로 ColorRectangle.prototype이 설정된다.
+// console.log(Object.getPrototypeOf(this)===ColorRectangle.prototype); //true
+// console.log(this instanceof ColorRectangle); //true
+// console.log(this instanceof Rectangle); //true
+
+// //서브 클래스
+// class ColorRectangle extends Rectangle{
+//     constructor(width, height, color){
+//         super(width, height);
+
+//         //super 가 반환한 인스턴스가 this에 바인딩된다.
+//         console.log(this); //ColorRectangle {width:2 , height: 4}
+
+//         //인스턴스 초기화
+//         this.color=color;
+        
+//         //완성된 인스턴스가 바인딩된 this가 암묵적으로 반환된다.
+//         console.log(this); //ColorRectangle {width:2 , height: 4, color: "red"}
+//     }
+// }
+
+
+//Array 생성자 함수를 상속받아 확장한 MyArray
+class MyArray extends Array{
+    //중복된 배열 요소를 제거하고 반환한다: [1,1,2,3,] =>[1,2,3]
+    uniq(){
+        return this.filter
+    }
 }

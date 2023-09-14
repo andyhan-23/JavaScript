@@ -1,18 +1,5 @@
-
-// function foo(){
-//     const x=1;
-//     const y=2;
-
-//     //일반적으로 클로저라고 하지 않는다
-//     function bar(){
-//     const z=3;
-
-//     //debugger;
-//     //상위 스코프의 식별자를 참고하지 않는다.
-//     console.log(z);
+class Base{
+//     constructor(){
+//         super();
+//     }
 // }
-// return bar;   
-// }
-
-// const bar = foo();
-// bar();
