@@ -1,43 +1,99 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="css/desktop.css" media="screen">
-    <link rel="stylesheet" href="css/print.css" media="print"> -->
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
     <style>
-        /*화면 너비 0픽셀~767픽셀*/
-        @media screen and (max-width:767px) {
-            html{
-                background: red;
-                color: white;
-            }
-            
-        }
-
-        /*화면 너비 767픽셀~959픽셀*/
-        @media screen and (min-width: 767px) and (max-width: 959px){
-            html{
-                background: green;
-                color: white;
-            }
-        }
-
-        /*화면 너비 960픽셀~무한너비*/
-        @media screen and (min-width:960px){
-            html{
-                background: blue;
-                color: white;
-            }
+        body {
+            padding-top: 80px;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
 </head>
 <body>
-    <h1>lorem ipsum</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum tempore nemo laudantium deleniti velit, ea dicta, numquam minima illum eaque, nulla cum vel hic reprehenderit aliquid! Beatae praesentium porro recusandae?</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias nulla obcaecati perspiciatis quibusdam blanditiis ipsam vel, iste similique mollitia, accusantium, debitis perferendis facilis animi quas quam non nemo saepe doloribus!</p>
+    <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">bootstrap</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-content">
+                <ul class="navbar-nav mr-auto">
+                    <!--드롭 다운 아이템을 만듭니다.-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">HTML5</a>
+                        <!--드롭다운 대상입니다.-->
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">geolocation</a>
+                            <a class="dropdown-item" href="#">drag and drop</a>
+                            <div class="dropdown-divider" ></div>
+                            <a class="dropdown-item" href="#">motion</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">CSS3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">ECMAScript</a></li>
+                </ul>
+                <!--입력 양식을 넣습니다.-->
+                <form class="form-inline">
+                    <input type="text" class="form-control" placeholder="Search" />
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item"><a class="nav-link" href="#">node.js</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!--수직 목록-->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">panel title</div>
+                       <!--flush는 리스트 윗부분의 둥근 모서리를 각지게 만급니다.-->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="#">HTML5</a></li>
+                        <li class="list-group-item"><a href="#">CSS3</a></li>
+                        <li class="list-group-item"><a href="#">ECMAScript5</a></li>
+                    </ul>
+                </div>
+                <br />
+                <div class="card bg-info">
+                    <div class="card-header">panel title</div> 
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="#">jquery</a></li>
+                        <li class="list-group-item"><a href="#">HTML5 API</a></li>
+                    </ul>
+                </div>
+                <br />
+                <div class="card bg-secondary">
+                    <div class="card-header">panel title</div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="#">About</a></li>
+                        <li class="list-group-item"><a href="#">help</a></li>
+                    </ul>
+                </div>
+                <br />
+            </div>
+            <div class="col-md-9">
+                <div class="jumbotron">
+                    <h1>html5+css3 basic</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet illum voluptates distinctio consequuntur consectetur recusandae sint nisi explicabo laudantium? Sed, quaerat iste. Error, explicabo dolore nisi ex aut placeat tenetur.</p>
+                    <a class="btn btn-primary btn-lg" href="#">learn more</a>
+                </div>
+                <h1>lorem ipsum</h1>
+                <p>Lorem ipsum dolorit amet consectetur, adipisicing elit. Repellat iusto officia similique fugiat, odit placeat praesentium et obcaecati illo minima commodi quaerat odio beatae earum amet molestias provident quisquam libero!</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat iusto officia similique fugiat, odit placeat praesentium et obcaecati illo minima commodi quaerat odio beatae earum amet molestias provident quisquam libero!</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat iusto officia similique fugiat, odit placeat praesentium et obcaecati illo minima commodi quaerat odio beatae earum amet molestias provident quisquam libero!</p>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
