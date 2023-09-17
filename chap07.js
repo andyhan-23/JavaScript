@@ -6873,11 +6873,330 @@
 //     }
 // }
 
+// //Array 생성자 함수를 상속받아 확장한 MyArray
+// class MyArray extends Array{
+//     //중복된 배열 요소를 제거하고 반환한다: [1,1,2,3,] =>[1,2,3]
+//     uniq(){
+//         return this.filter
+//     }
+// }
 
-//Array 생성자 함수를 상속받아 확장한 MyArray
-class MyArray extends Array{
-    //중복된 배열 요소를 제거하고 반환한다: [1,1,2,3,] =>[1,2,3]
-    uniq(){
-        return this.filter
-    }
-}
+// var foo=function(){
+//     return 1;
+// }
+
+// //일반적인 함수로서 호출
+// console.log(foo()); //1
+
+// //생성자 함수로서 호출
+// const fuc= new foo();
+// console.log(fuc); //foo{}
+
+// //메서드로서 호출
+// var obj={
+//     method:foo,
+// }
+// console.log(obj.method()); //1
+
+
+// //프로퍼티 f에 바인딩된 함수는 callable 이면서 constructor다.
+// var obj={
+//     x:10,
+//     f:function(){
+//         return this.x;
+//     }
+// };
+
+// //프로퍼티 f에 바인딩 된 함수를 메서드로서 호출
+// console.log(obj.f()); //10
+
+// //프로퍼티 f에 바인딩된 함수를 일반 함수로서 호출
+// var bar=obj.f;
+// console.log(bar()); //undefiend
+
+// //프로퍼티 f에 바인딩된 함수를 생성자 함수로서 호출
+// var foo= new obj.f();
+// console.log(foo); //f{}
+
+// var obj={
+//     a:1,
+//     method:function(){
+//         return this.a;
+//     },
+// }
+// let result=obj.method();
+// console.log(result); //1
+
+// var obj2={
+//     a:1,
+    
+//     method(){
+//         return this;
+//     }
+// }
+// result=obj2.method();
+// console.log(result); //2
+
+// const test= new obj.method();
+// console.log(test); //method{};
+// //const test2= new obj2.method();
+// //console.log(test2); //TypeError: obj2.method is not a constructor
+
+// console.log(obj.method.hasOwnProperty('prototype')); //true
+// console.log(obj2.method.hasOwnProperty('prototype')); //false
+
+// const base ={
+//     name: 'han',
+//     sayHi(){
+//         return `hi ${this.name}`;
+//     }
+// };
+
+// const derived={
+//     __proto__:base,
+//     //sayHi는 ES6 메서드다. ES6 메서드는 [[HomeObject]]를 갖는다.
+//     //sayHi의 [[HomeObject]]는 derived.prototype을 가리키고
+//     //super는 sayHi의 [[HomeObject]]의 프로토타입인 base.prototype을 가리킨다.
+//     sayHi(){
+//         return `${super.sayHi()}. how are you doing?`;
+//     }
+// };
+
+// console.log(derived.sayHi()); //hi han. how are you doing?
+
+// //Bad
+// const person={
+//     name:'han',
+//     sayHi:()=>{
+//         return `hi ${this.name}`
+//     }
+// };
+
+// console.log(person.sayHi()); //hi undefined
+
+// //sayHi 프로퍼티에 할당된 화살표 함수 내부의 this는 상위 스코프인 전역의 this가 가리키는
+// //전역 객체를 가리키므로 이 코드를 브라우저에서 실행하면 this.name은 window.name과 같다.
+// //전역 객체 window에는 빌트인 프로퍼티 name이 존재한다.
+
+// //Good
+// const person={
+//     name: 'andy',
+//     sayHi(){
+//         return `hi ${this.name}`
+//     }
+// };
+
+// console.log(person.sayHi()); //hi andy
+
+// //Bad
+// function Person(name){
+//     this.name=name;
+// };
+
+// Person.prototype.sayHi=()=>{
+//     return `hi ${this.name}`;
+// }
+
+// Person.prototype.sayBye=function(){
+//     return `bye ${this.name}`;
+// }
+// const me = new Person('andy');
+// console.log(me.sayHi()); //hi undefined
+// console.log(me.sayBye()); //bye andy
+
+// function Person(name){
+//     this.name=name;
+// }
+
+// Person.prototype={
+//     //constructor 프로퍼티와 생성자 함수 간의 연결을 재설정
+//     constructor: Person,
+//     sayHi(){
+//         console.log(`hi ${this.name}`);
+//     }
+// };
+
+// const me = new Person('andy');
+// me.sayHi(); //hi andy
+
+// //Bad
+// class Person{
+//     //클래스 필드 정의 제한
+//     name='han';
+//     sayHi=()=>{
+//         console.log(`hi ${this.name}`);
+//     }
+// }
+// const me = new Person();
+// me.sayHi(); //hi han
+
+// class Person{
+//     constructor(){
+//         this.name= 'han',
+//         //클래스가 생성한 인스턴스(this)의 sayHi 프로퍼티에 화살표 함수를 할당한다.
+//         //따라서 sayHi 프로퍼티는 인스턴스 프로퍼티다.
+//         this.sayHi=()=>{
+//             console.log(`hi ${this.name}`);
+//         }
+//     }
+// }
+
+// //Good
+// class Person{
+//     //클래스 필드 정의
+//     name='han';
+
+//     sayHi(){
+//         console.log(`Hi ${this.name}`);
+//     }
+// }
+// const me = new Person();
+// me.sayHi(); //Hi han
+
+// class Base{
+//     constructor(name){
+//         this.name=name;
+//     }
+//     sayHi(){
+//         return `Hi ${this.name}`;
+//     }
+// }
+
+// class Derived extends Base{
+//     //화살표 함수의 super는 상위 스코프의 constructor의 super를 가리킨다.
+//     sayHi=()=>{
+//         console.log(`${super.sayHi()}. how are you doing?`)
+//     }
+// };
+
+// const me = new Derived('andy'); //Hi andy. how are you doing?
+// me.sayHi();
+
+// const obj={
+//     func:function(){
+//         console.log(arguments);
+//         var innerFunc=()=>{
+//             console.log(arguments);
+//         }
+//         innerFunc(1,2,3,4,5);
+//     }
+// }
+// obj.func(1,2,3,4);
+
+// (function(){
+//     //화살표 함수 foo의 arguments는 상위 스코프인 즉시 실행 함수의 arguments를 가리킨다.
+//     const foo =()=> console.log(arguments); //[Arguments] { '0': 1, '1': 2 }
+//     foo(3,4);
+// }(1,2))
+
+// //화살표 함수 foo의 arguments 는 상위 스코프인 전역의 arguments를 가리킨다.
+// //하지만 전역에는 arguments 객체가 존재하지 않는다. arguments 객체는 함수 내부에서만 유효하다.
+// const foo =()=> console.log(arguments);
+// foo(1,2);
+
+// function foo(...rest){
+//     //매개변수 rest는 인수들의 목록을 배열로 전달받는 Rest 파라미터다.
+//     console.log(rest); //[ 1, 2, 3, 4, 5 ]
+// }
+// foo(1,2,3,4,5);
+
+// function foo(param, ...rest){
+//     console.log(param); //1
+//     console.log(rest); //[2, 3, 4, 5]
+// }
+// foo(1,2,3,4,5);
+
+// function bar(param1, param2, ...rest){
+//     console.log(param1); //1
+//     console.log(param2); //2
+//     console.log(rest); //[3,4,5]
+// };
+
+// bar(1,2,3,4,5)
+
+// function foo(...rest, param1, param2){
+
+// }
+// foo(1,2,3,4,5); //SyntaxError: Rest parameter must be last formal parameter
+
+// function foo(...rest1, ...rest2){ }
+// foo(1,2,3,4,5);
+
+// function foo(...rest){}
+// console.log(foo.length); //0
+
+// function bar(x,...rest){}
+// console.log(bar.length); //1
+
+// function baz(x,y, ...rest){}
+// console.log(baz.length); //2
+
+// //매개변수의 개수를 사전에 알 수 없는 가변 인자 함수
+// function sum(){
+//     //가변 인자 함수는 arguments 객체를 통해 인수를 전달받는다.
+//     console.log(arguments); 
+// }
+// sum(1,2); //[Arguments] { '0': 1, '1': 2 }
+
+// function sum(){
+//     //유사 배열 객체인 arguments 객체를 배열로 변환한다.
+//     var array = Array.prototype.slice.call(arguments);
+
+//     return array.reduce(function(pre,cur){
+//         return pre+cur;
+//     }, 0);
+// }
+// console.log(sum(1,2,3,4,5)); //15
+
+// function sum(...args){
+//     //Rest 파라미터 args에는 배열 [1,2,3,4,5]가 할당된다.
+//     return args.reduce((pre,cur)=>pre+cur,0) //15
+// }
+// console.log(sum(1,2,3,4,5));
+
+// function sum(x,y){
+//     return x+y;
+// }
+// console.log(sum(1)); //NaN
+
+// function sum(x,y){
+//     //인수가 전달되지 않아 매개변수의 값이 undefined인 경우 기본값을 할당한다.
+//     x=x||0;
+//     y=y||0;
+//     return x+y;
+// }
+// console.log(sum(1,2)); //3
+// console.log(sum(1)); //1
+
+// function sum(x=0, y=0){
+//     return x+y;
+// }
+// console.log(sum(1,2)); //3
+// console.log(sum()); //1
+
+// function logName(name='han'){
+//     console.log(name);
+// }
+// logName(); //han
+// logName(undefined); //han
+// logName(null); //null
+
+// function foo(...rest=[]){
+//     console.log(rest) //SyntaxError: Rest parameter may not have a default initializer
+// }
+
+// function sum(x,y=0){
+//     console.log(arguments);
+// }
+// console.log(sum.length); //1
+
+// sum(1); //[Arguments] { '0': 1 }
+// sum(1,2,3); //[Arguments] { '0': 1, '1': 2, '2': 3 }
+
+// sum(1,2,3,4);
+// sum(1,2,3,4);
+
+// function func(){
+//     console.log()
+// }
+
